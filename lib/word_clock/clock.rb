@@ -38,35 +38,41 @@ module WordClock
     end
 
     def show(time = Time.now)
+      hours = []
+
       HOURS[time.hour].each do |part|
         row = table[WORD_POS.index(part)]
-        #puts "#{row[:text]} (#{row[:row]}:#{row[:column]},#{row[:length]})"
-
-        puts SIMULATOR[row[:row]][row[:column]..(row[:column] + row[:length] - 1)].join
 
         (0..row[:length] - 1).each do |i|
           #puts SIMULATOR[row[:row]][row[:column] + i]
           #matrix[row[:row], row[:column] + i] = FadeRuby::Pixel.new(255, 0, 0)
         end
+
+        hours << SIMULATOR[row[:row]][row[:column]..(row[:column] + row[:length] - 1)]
       end
+
+      minutes = []
+      swap = false
 
       MINUTES[time.min].each do |part|
         if part.respond_to?(:to_sym)
           row = table[WORD_POS.index(part)]
-          puts "#{row[:text]} (#{row[:row]}:#{row[:column]},#{row[:length]})"
 
           (0..row[:length] - 1).each do |i|
             #matrix[row[:row], row[:column] + i] = FadeRuby::Pixel.new(255, 0, 0)
           end
+
+          minutes << SIMULATOR[row[:row]][row[:column]..(row[:column] + row[:length] - 1)]
         else
-          # don't know what to do with 0 or 1 yet
+          swap = true if 1 == part
         end
       end
 
-      # matrix[ 0,  0] = FadeRuby::Pixel.new(255, 0, 0)   # red
-      # matrix[ 0, 17] = FadeRuby::Pixel.new(0, 0, 255)   # blue
-      # matrix[15,  0] = FadeRuby::Pixel.new(255, 0, 255) # pink
-      # matrix[15, 17] = FadeRuby::Pixel.new(0, 255, 0)   # green
+      if swap
+        puts "y #{time}: #{minutes.join(' ')} #{hours.join(' ')}"
+      else
+        puts "x #{time}: #{minutes.join(' ')} #{hours.join(' ')}"
+      end
 
       client.write(matrix)
     end
@@ -82,94 +88,94 @@ module WordClock
     # from http://www.mikrocontroller.net/svnbrowser/wordclock24h/src/display/tables.c?revision=46&view=markup
 
     HOURS = [
-      [:WP_NULL_2, :WP_UHR_2],                         #  0. Stunde
-      [:WP_EIN_4, :WP_UHR_2],                          #  1. Stunde
-      [:WP_ZWEI_2, :WP_UHR_2],                         #  2. Stunde
-      [:WP_DREI_2, :WP_UHR_2],                         #  3. Stunde
-      [:WP_VIER_2, :WP_UHR_2],                         #  4. Stunde
-      [:WP_FUENF_2, :WP_UHR_2],                        #  5. Stunde
-      [:WP_SECHS_2, :WP_UHR_2],                        #  6. Stunde
-      [:WP_SIEBEN_2, :WP_UHR_2],                       #  7. Stunde
-      [:WP_ACHT_2, :WP_UHR_2],                         #  8. Stunde
-      [:WP_NEUN_2, :WP_UHR_2],                         #  9. Stunde
-      [:WP_ZEHN_2, :WP_UHR_2],                         # 10. Stunde
-      [:WP_ELF_2, :WP_UHR_2],                          # 11. Stunde
-      [:WP_ZWOELF_2, :WP_UHR_2],                       # 12. Stunde
-      [:WP_DREI_2, :WP_ZEHN_2, :WP_UHR_2],              # 13. Stunde
-      [:WP_VIER_2, :WP_ZEHN_2, :WP_UHR_2],              # 14. Stunde
-      [:WP_FUENF_2, :WP_ZEHN_2, :WP_UHR_2],             # 15. Stunde
-      [:WP_SECH_2, :WP_ZEHN_2, :WP_UHR_2],              # 16. Stunde
-      [:WP_SIEB_2, :WP_ZEHN_2, :WP_UHR_2],              # 17. Stunde
-      [:WP_ACHT_2, :WP_ZEHN_2, :WP_UHR_2],              # 18. Stunde
-      [:WP_NEUN_2, :WP_ZEHN_2, :WP_UHR_2],              # 19. Stunde
-      [:WP_ZWANZIG_2, :WP_UHR_2],                      # 20. Stunde
-      [:WP_EIN_4, :WP_UND_3, :WP_ZWANZIG_2, :WP_UHR_2],  # 21. Stunde
-      [:WP_ZWEI_2, :WP_UND_3, :WP_ZWANZIG_2, :WP_UHR_2], # 22. Stunde
-      [:WP_DREI_2, :WP_UND_3, :WP_ZWANZIG_2, :WP_UHR_2], # 23. Stunde
-      [:WP_VIER_2, :WP_UND_3, :WP_ZWANZIG_2, :WP_UHR_2]  # 24. Stunde
+      [:WP_NULL_2, :WP_UHR_2],                           #  0. Stunde in Mode HM_4
+      [:WP_EIN_4, :WP_UHR_2],                            #  1. Stunde in Mode HM_4
+      [:WP_ZWEI_2, :WP_UHR_2],                           #  2. Stunde in Mode HM_4
+      [:WP_DREI_2, :WP_UHR_2],                           #  3. Stunde in Mode HM_4
+      [:WP_VIER_2, :WP_UHR_2],                           #  4. Stunde in Mode HM_4
+      [:WP_FUENF_2, :WP_UHR_2],                          #  5. Stunde in Mode HM_4
+      [:WP_SECHS_2, :WP_UHR_2],                          #  6. Stunde in Mode HM_4
+      [:WP_SIEBEN_2, :WP_UHR_2],                         #  7. Stunde in Mode HM_4
+      [:WP_ACHT_2, :WP_UHR_2],                           #  8. Stunde in Mode HM_4
+      [:WP_NEUN_2, :WP_UHR_2],                           #  9. Stunde in Mode HM_4
+      [:WP_ZEHN_2, :WP_UHR_2],                           # 10. Stunde in Mode HM_4
+      [:WP_ELF_2, :WP_UHR_2],                            # 11. Stunde in Mode HM_4
+      [:WP_ZWOELF_2, :WP_UHR_2],                         # 12. Stunde in Mode HM_4
+      [:WP_DREI_2, :WP_ZEHN_2, :WP_UHR_2],               # 13. Stunde in Mode HM_4
+      [:WP_VIER_2, :WP_ZEHN_2, :WP_UHR_2],               # 14. Stunde in Mode HM_4
+      [:WP_FUENF_2, :WP_ZEHN_2, :WP_UHR_2],              # 15. Stunde in Mode HM_4
+      [:WP_SECH_2, :WP_ZEHN_2, :WP_UHR_2],               # 16. Stunde in Mode HM_4
+      [:WP_SIEB_2, :WP_ZEHN_2, :WP_UHR_2],               # 17. Stunde in Mode HM_4
+      [:WP_ACHT_2, :WP_ZEHN_2, :WP_UHR_2],               # 18. Stunde in Mode HM_4
+      [:WP_NEUN_2, :WP_ZEHN_2, :WP_UHR_2],               # 19. Stunde in Mode HM_4
+      [:WP_ZWANZIG_2, :WP_UHR_2],                        # 20. Stunde in Mode HM_4
+      [:WP_EIN_4, :WP_UND_3, :WP_ZWANZIG_2, :WP_UHR_2],  # 21. Stunde in Mode HM_4
+      [:WP_ZWEI_2, :WP_UND_3, :WP_ZWANZIG_2, :WP_UHR_2], # 22. Stunde in Mode HM_4
+      [:WP_DREI_2, :WP_UND_3, :WP_ZWANZIG_2, :WP_UHR_2], # 23. Stunde in Mode HM_4
+      [:WP_VIER_2, :WP_UND_3, :WP_ZWANZIG_2, :WP_UHR_2], # 24. Stunde in Mode HM_4
     ]
 
     MINUTES = [
-      [0, :WP_UHR_2],                                               # 0. Minute
-      [0, :WP_EINE_1, :WP_MINUTE_1, :WP_NACH_1],                      # 1. Minute
-      [0, :WP_ZWEI_1, :WP_MINUTEN_1, :WP_NACH_1],                     # 2. Minute
-      [0, :WP_DREI_1, :WP_MINUTEN_1, :WP_NACH_1],                     # 3. Minute
-      [0, :WP_VIER_1, :WP_MINUTEN_1, :WP_NACH_1],                     # 4. Minute
-      [0, :WP_FUENF_1, :WP_MINUTEN_1, :WP_NACH_1],                    # 5. Minute
-      [0, :WP_SECHS_1, :WP_MINUTEN_1, :WP_NACH_1],                    # 6. Minute
-      [0, :WP_SIEBEN_1, :WP_MINUTEN_1, :WP_NACH_1],                   # 7. Minute
-      [0, :WP_ACHT_1, :WP_MINUTEN_1, :WP_NACH_1],                     # 8. Minute
-      [0, :WP_NEUN_1, :WP_MINUTEN_1, :WP_NACH_1],                     # 9. Minute
-      [0, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],                     # 10. Minute
-      [0, :WP_ELF_1, :WP_MINUTEN_1, :WP_NACH_1],                      # 11. Minute
-      [0, :WP_ZWOELF_1, :WP_MINUTEN_1, :WP_NACH_1],                   # 12. Minute
-      [0, :WP_DREI_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],          # 13. Minute
-      [0, :WP_VIER_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],          # 14. Minute
-      [1, :WP_VIERTEL_1],                                           # 15. Minute
-      [0, :WP_SECH_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],          # 16. Minute
-      [0, :WP_SIEB_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],          # 17. Minute
-      [0, :WP_ACHT_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],          # 18. Minute
-      [0, :WP_NEUN_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],          # 19. Minute
-      [1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],             # 20. Minute
-      [1, :WP_NEUN_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],             # 21. Minute
-      [1, :WP_ACHT_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],             # 22. Minute
-      [1, :WP_SIEBEN_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],           # 23. Minute
-      [1, :WP_SECHS_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],            # 24. Minute
-      [1, :WP_FUENF_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],            # 25. Minute
-      [1, :WP_VIER_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],             # 26. Minute
-      [1, :WP_DREI_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],             # 27. Minute
-      [1, :WP_ZWEI_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],             # 28. Minute
-      [1, :WP_EINE_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],             # 29. Minute
-      [1, :WP_HALB],                                                # 30. Minute
-      [1, :WP_EINE_1, :WP_MINUTE_1, :WP_NACH_1, :WP_HALB],             # 31. Minute
-      [1, :WP_ZWEI_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],            # 32. Minute
-      [1, :WP_DREI_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],            # 33. Minute
-      [1, :WP_VIER_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],            # 34. Minute
-      [1, :WP_FUENF_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],           # 35. Minute
-      [1, :WP_SECHS_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],           # 36. Minute
-      [1, :WP_SIEBEN_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],          # 37. Minute
-      [1, :WP_ACHT_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],            # 38. Minute
-      [1, :WP_NEUN_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],            # 39. Minute
-      [1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],            # 40. Minute
-      [1, :WP_ELF_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],             # 41. Minute
-      [1, :WP_ZWOELF_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],          # 42. Minute
-      [1, :WP_DREI_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB], # 43. Minute
-      [1, :WP_VIER_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB], # 44. Minute
-      [1, :WP_DREIVIERTEL],                                         # 45. Minute
-      [1, :WP_VIER_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_VOR_1],           # 46. Minute
-      [1, :WP_DREI_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_VOR_1],           # 47. Minute
-      [1, :WP_ZWOELF_1, :WP_MINUTEN_1, :WP_VOR_1],                    # 48. Minute
-      [1, :WP_ELF_1, :WP_MINUTEN_1, :WP_VOR_1],                       # 49. Minute
-      [1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_VOR_1],                      # 50. Minute
-      [1, :WP_NEUN_1, :WP_MINUTEN_1, :WP_VOR_1],                      # 51. Minute
-      [1, :WP_ACHT_1, :WP_MINUTEN_1, :WP_VOR_1],                      # 52. Minute
-      [1, :WP_SIEBEN_1, :WP_MINUTEN_1, :WP_VOR_1],                    # 53. Minute
-      [1, :WP_SECHS_1, :WP_MINUTEN_1, :WP_VOR_1],                     # 54. Minute
-      [1, :WP_FUENF_1, :WP_MINUTEN_1, :WP_VOR_1],                     # 55. Minute
-      [1, :WP_VIER_1, :WP_MINUTEN_1, :WP_VOR_1],                      # 56. Minute
-      [1, :WP_DREI_1, :WP_MINUTEN_1, :WP_VOR_1],                      # 57. Minute
-      [1, :WP_ZWEI_1, :WP_MINUTEN_1, :WP_VOR_1],                      # 58. Minute
-      [1, :WP_EINE_1, :WP_MINUTE_1, :WP_VOR_1]                        # 59. Minute
+      [0, :WP_UHR_2],                                                   # 0. Minute in Mode MM_3
+      [0, :WP_EINE_1, :WP_MINUTE_1, :WP_NACH_1],                        # 1. Minute in Mode MM_3
+      [0, :WP_ZWEI_1, :WP_MINUTEN_1, :WP_NACH_1],                       # 2. Minute in Mode MM_3
+      [0, :WP_DREI_1, :WP_MINUTEN_1, :WP_NACH_1],                       # 3. Minute in Mode MM_3
+      [0, :WP_VIER_1, :WP_MINUTEN_1, :WP_NACH_1],                       # 4. Minute in Mode MM_3
+      [0, :WP_FUENF_1, :WP_MINUTEN_1, :WP_NACH_1],                      # 5. Minute in Mode MM_3
+      [0, :WP_SECHS_1, :WP_MINUTEN_1, :WP_NACH_1],                      # 6. Minute in Mode MM_3
+      [0, :WP_SIEBEN_1, :WP_MINUTEN_1, :WP_NACH_1],                     # 7. Minute in Mode MM_3
+      [0, :WP_ACHT_1, :WP_MINUTEN_1, :WP_NACH_1],                       # 8. Minute in Mode MM_3
+      [0, :WP_NEUN_1, :WP_MINUTEN_1, :WP_NACH_1],                       # 9. Minute in Mode MM_3
+      [0, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],                       # 10. Minute in Mode MM_3
+      [0, :WP_ELF_1, :WP_MINUTEN_1, :WP_NACH_1],                        # 11. Minute in Mode MM_3
+      [0, :WP_ZWOELF_1, :WP_MINUTEN_1, :WP_NACH_1],                     # 12. Minute in Mode MM_3
+      [0, :WP_DREI_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],           # 13. Minute in Mode MM_3
+      [0, :WP_VIER_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],           # 14. Minute in Mode MM_3
+      [1, :WP_VIERTEL_1],                                               # 15. Minute in Mode MM_3
+      [0, :WP_SECH_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],           # 16. Minute in Mode MM_3
+      [0, :WP_SIEB_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],           # 17. Minute in Mode MM_3
+      [0, :WP_ACHT_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],           # 18. Minute in Mode MM_3
+      [0, :WP_NEUN_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1],           # 19. Minute in Mode MM_3
+      [1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],              # 20. Minute in Mode MM_3
+      [1, :WP_NEUN_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],              # 21. Minute in Mode MM_3
+      [1, :WP_ACHT_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],              # 22. Minute in Mode MM_3
+      [1, :WP_SIEBEN_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],            # 23. Minute in Mode MM_3
+      [1, :WP_SECHS_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],             # 24. Minute in Mode MM_3
+      [1, :WP_FUENF_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],             # 25. Minute in Mode MM_3
+      [1, :WP_VIER_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],              # 26. Minute in Mode MM_3
+      [1, :WP_DREI_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],              # 27. Minute in Mode MM_3
+      [1, :WP_ZWEI_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],              # 28. Minute in Mode MM_3
+      [1, :WP_EINE_1, :WP_MINUTEN_1, :WP_VOR_1, :WP_HALB],              # 29. Minute in Mode MM_3
+      [1, :WP_HALB],                                                    # 30. Minute in Mode MM_3
+      [1, :WP_EINE_1, :WP_MINUTE_1, :WP_NACH_1, :WP_HALB],              # 31. Minute in Mode MM_3
+      [1, :WP_ZWEI_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],             # 32. Minute in Mode MM_3
+      [1, :WP_DREI_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],             # 33. Minute in Mode MM_3
+      [1, :WP_VIER_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],             # 34. Minute in Mode MM_3
+      [1, :WP_FUENF_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],            # 35. Minute in Mode MM_3
+      [1, :WP_SECHS_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],            # 36. Minute in Mode MM_3
+      [1, :WP_SIEBEN_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],           # 37. Minute in Mode MM_3
+      [1, :WP_ACHT_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],             # 38. Minute in Mode MM_3
+      [1, :WP_NEUN_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],             # 39. Minute in Mode MM_3
+      [1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],             # 40. Minute in Mode MM_3
+      [1, :WP_ELF_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],              # 41. Minute in Mode MM_3
+      [1, :WP_ZWOELF_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB],           # 42. Minute in Mode MM_3
+      [1, :WP_DREI_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB], # 43. Minute in Mode MM_3
+      [1, :WP_VIER_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_NACH_1, :WP_HALB], # 44. Minute in Mode MM_3
+      [1, :WP_DREIVIERTEL],                                             # 45. Minute in Mode MM_3
+      [1, :WP_VIER_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_VOR_1],            # 46. Minute in Mode MM_3
+      [1, :WP_DREI_1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_VOR_1],            # 47. Minute in Mode MM_3
+      [1, :WP_ZWOELF_1, :WP_MINUTEN_1, :WP_VOR_1],                      # 48. Minute in Mode MM_3
+      [1, :WP_ELF_1, :WP_MINUTEN_1, :WP_VOR_1],                         # 49. Minute in Mode MM_3
+      [1, :WP_ZEHN_1, :WP_MINUTEN_1, :WP_VOR_1],                        # 50. Minute in Mode MM_3
+      [1, :WP_NEUN_1, :WP_MINUTEN_1, :WP_VOR_1],                        # 51. Minute in Mode MM_3
+      [1, :WP_ACHT_1, :WP_MINUTEN_1, :WP_VOR_1],                        # 52. Minute in Mode MM_3
+      [1, :WP_SIEBEN_1, :WP_MINUTEN_1, :WP_VOR_1],                      # 53. Minute in Mode MM_3
+      [1, :WP_SECHS_1, :WP_MINUTEN_1, :WP_VOR_1],                       # 54. Minute in Mode MM_3
+      [1, :WP_FUENF_1, :WP_MINUTEN_1, :WP_VOR_1],                       # 55. Minute in Mode MM_3
+      [1, :WP_VIER_1, :WP_MINUTEN_1, :WP_VOR_1],                        # 56. Minute in Mode MM_3
+      [1, :WP_DREI_1, :WP_MINUTEN_1, :WP_VOR_1],                        # 57. Minute in Mode MM_3
+      [1, :WP_ZWEI_1, :WP_MINUTEN_1, :WP_VOR_1],                        # 58. Minute in Mode MM_3
+      [1, :WP_EINE_1, :WP_MINUTE_1, :WP_VOR_1]                          # 59. Minute in Mode MM_3
     ]
 
     # from http://www.mikrocontroller.net/svnbrowser/wordclock24h/src/display/tables.h?revision=46&view=markup
@@ -251,6 +257,5 @@ module WordClock
       :WP_MITTAGS,      # 74 = "74_MITTAGS" = "MITTAGS"
       :WP_COUNT,        # number of words
     ]
-
   end
 end
