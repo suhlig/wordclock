@@ -44,7 +44,6 @@ module WordClock
         row = table[WORD_POS.index(part)]
 
         (0..row[:length] - 1).each do |i|
-          #puts SIMULATOR[row[:row]][row[:column] + i]
           #matrix[row[:row], row[:column] + i] = FadeRuby::Pixel.new(255, 0, 0)
         end
 
