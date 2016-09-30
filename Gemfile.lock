@@ -1,0 +1,13 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    faderuby (0.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  faderuby (~> 0.0.2)
+
+BUNDLED WITH
+   1.12.5

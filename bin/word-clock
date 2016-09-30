@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby -I lib
+
+require 'word_clock/clock'
+clock = WordClock::Clock.new
+
+clock.show(Time.at(1475083440))
