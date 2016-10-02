@@ -19,6 +19,8 @@ module WordClock
     #
     def pixels(hour, minute)
       return lookup('ES', 'IST', 'MITTERNACHT') if hour.zero? && minute.zero?
+      return lookup('ES', 'IST', 'EINE', 'MINUTE', 'NACH', 'MITTERNACHT') if hour.zero? && 1 == minute
+      return lookup('ES', 'IST', minute_words(minute), 'MINUTEN', 'NACH', 'MITTERNACHT') if hour.zero? && (2..5).cover?(minute)
 
       lookup('ES', 'IST', hour_words(hour), 'UHR', minute_words(minute))
     end
