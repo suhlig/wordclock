@@ -9,18 +9,24 @@ module WordClock
   class Stripe
     STRIPE = 'ESAISTOVIERTELEINSDREINERSECHSIEBENEELFÜNFNEUNVIERACHTNULLZWEINZWÖLFZEHNUNDOZWANZIGVIERZIGDREISSIGFÜNFZIGUHRMINUTENIVORUNDNACHEINDREIVIERTELHALBSIEBENEUNULLZWEINEFÜNFSECHSNACHTVIERDREINSUNDAELFEZEHNZWANZIGGRADREISSIGVIERZIGZWÖLFÜNFZIGMINUTENUHREFRÜHVORABENDSMITTERNACHTSMORGENSWARMMITTAGS'
 
-    # Idea: find each word in STRIPE and get their positions. These are the bits
-    # to be set.
+    # Find each word in STRIPE and get their positions, which are the bits to be set
     def pixels(hour, minute)
-      ['ES', 'IST', hour_words(hour), minute_words(minute)].map do |words|
-        result = Array(words).map do |word|
-          first = STRIPE.index(word)
-          last = first + word.length
-          (first..last).to_a
-        end
+      return lookup('ES', 'IST', 'MITTERNACHT') if hour.zero? && minute.zero?
 
-        warn "#{words}:  #{result}"
-      end.flatten
+      lookup('ES', 'IST', hour_words(hour), 'UHR', minute_words(minute))
+    end
+
+    def lookup(*words)
+      index = 0
+
+      words.compact.flatten.map do |word|
+        next if word.nil?
+        index = STRIPE.index(word, index)
+        last = index + word.length - 1
+        (index..last).to_a
+      end.compact.flatten.tap do |result|
+        warn "#{words}: #{result}"
+      end
     end
 
     def hour_words(hour)
@@ -53,7 +59,32 @@ module WordClock
     end
 
     def minute_words(minute)
-      []
+      [
+        nil,
+        'EINS',
+        'ZWEI',
+        'DREI',
+        'VIER',
+        'FÜNF',
+        'SECHS',
+        'SIEBEN',
+        'ACHT',
+        'NEUN',
+        'ZEHN',
+        'ELF',
+        'ZWÖLF',
+        ['DREI', 'ZEHN'],
+        ['VIER', 'ZEHN'],
+        ['FÜNF', 'ZEHN'],
+        ['SECHS', 'ZEHN'],
+        ['SIEBEN', 'ZEHN'],
+        ['ACHT', 'ZEHN'],
+        ['NEUN', 'ZEHN'],
+        'ZWANZIG',
+        ['EIN', 'UND', 'ZWANZIG'],
+        ['ZWEI', 'UND', 'ZWANZIG'],
+        ['DREI', 'UND', 'ZWANZIG'],
+      ][minute]
     end
   end
 end
