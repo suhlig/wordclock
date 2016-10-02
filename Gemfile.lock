@@ -85,6 +85,7 @@ DEPENDENCIES
   faderuby (~> 0.0.2)
   guard-bundler
   guard-rspec
+  pry
   pry-byebug
   rake
   rspec

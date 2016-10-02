@@ -8,6 +8,7 @@ group :development do
   gem 'rake'
   gem 'rspec'
   gem 'rubocop'
+  gem 'pry'
   gem 'pry-byebug'
   gem 'guard-rspec', require: false
   gem 'guard-bundler'
