@@ -15,3 +15,7 @@ RSpec.shared_examples 'a word clock' do |hour, minute, phrase_length, expected_p
     expect(pixels).to eq(expected_pixels)
   end
 end
+
+def it_behaves_like_a_word_clock(*args)
+  it_behaves_like('a word clock', *args)
+end
