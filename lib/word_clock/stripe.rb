@@ -66,7 +66,7 @@ module WordClock
         %w(DREI ZEHN),
         %w(VIER ZEHN),
         %w(FÜNF ZEHN),
-        %w(SECHS ZEHN),
+        %w(SECH ZEHN),
         %w(SIEBEN ZEHN),
         %w(ACHT ZEHN),
         %w(NEUN ZEHN),
@@ -95,14 +95,21 @@ module WordClock
         %w(DREI ZEHN),
         %w(VIER ZEHN),
         %w(FÜNF ZEHN),
-        %w(SECHS ZEHN),
+        %w(SECH ZEHN),
         %w(SIEBEN ZEHN),
         %w(ACHT ZEHN),
         %w(NEUN ZEHN),
         'ZWANZIG',
         %w(EIN UND ZWANZIG),
         %w(ZWEI UND ZWANZIG),
-        %w(DREI UND ZWANZIG)
+        %w(DREI UND ZWANZIG),
+        %w(VIER UND ZWANZIG),
+        %w(FÜNF UND ZWANZIG),
+        %w(SECHS UND ZWANZIG),
+        %w(SIEBEN UND ZWANZIG),
+        %w(ACHT UND ZWANZIG),
+        %w(NEUN UND ZWANZIG),
+        'DREISSIG',
       ][minute]
     end
   end
