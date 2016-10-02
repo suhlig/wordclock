@@ -1,25 +1,7 @@
 # frozen_string_literal: true
 require 'spec_helper'
-
 require 'word_clock/stripe'
-
-RSpec.shared_examples 'a word clock' do |hour, minute, phrase_length, expected_pixels|
-  let(:pixels) { subject.pixels(hour, minute) }
-
-  it 'has the right amount of pixels lit' do
-    expect(pixels.size).to eq(phrase_length)
-  end
-
-  it 'has indices that are only increasing' do
-    pixels.each_cons(2) do |prev, this|
-      expect(this).to be > prev
-    end
-  end
-
-  it 'has the right pixels lit' do
-    expect(pixels).to eq(expected_pixels)
-  end
-end
+require 'shared_examples_for_word_clock'
 
 # Indexes (read from top to bottom, with MSB in the top row)
 #                                                                                                     1         1         1         1         1         1         1         1         1         1         2         2         2         2         2         2         2         2         2
