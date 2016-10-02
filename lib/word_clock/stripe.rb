@@ -22,8 +22,14 @@ module WordClock
       return lookup('ES', 'IST', 'MITTERNACHT') if hour.zero? && minute.zero?
       return lookup('ES', 'IST', 'EINE', 'MINUTE', 'NACH', 'MITTERNACHT') if hour.zero? && 1 == minute
       return lookup('ES', 'IST', minute_words(minute), 'MINUTEN', 'NACH', 'MITTERNACHT') if hour.zero? && (2..5).cover?(minute)
+      return lookup('ES', 'IST', 'HALB', 'EINS') if hour.zero? && 30 == minute
+      return lookup('ES', 'IST', 'HALB', hour_words(hour + 1)) if 13 > hour && 30 == minute
 
       lookup('ES', 'IST', hour_words(hour), 'UHR', minute_words(minute))
+    end
+
+    def reverse(pixels)
+      Array(pixels).map{ |i| STRIPE[i] }.join
     end
 
     private
@@ -111,6 +117,15 @@ module WordClock
         %w(ACHT UND ZWANZIG),
         %w(NEUN UND ZWANZIG),
         'DREISSIG',
+        %w(EIN UND DREISSIG),
+        %w(ZWEI UND DREISSIG),
+        %w(DREI UND DREISSIG),
+        %w(VIER UND DREISSIG),
+        %w(FÜNF UND DREISSIG),
+        %w(SECHS UND DREISSIG),
+        %w(SIEBEN UND DREISSIG),
+        %w(ACHT UND DREISSIG),
+        %w(NEUN UND DREISSIG),
       ][minute]
     end
   end

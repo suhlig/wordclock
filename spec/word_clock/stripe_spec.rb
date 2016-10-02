@@ -134,11 +134,39 @@ RSpec.describe WordClock::Stripe do
   end
 
   describe 'es ist halb eins' do
+    it_behaves_like_a_word_clock(
+      0,
+      30,
+      [0, 1, 3, 4, 5, 140, 141, 142, 143, 182, 183, 184, 185]
+    )
   end
 
-  # 00:31..00:59
+  describe 'es ist null uhr ein und dreissig' do
+    it_behaves_like_a_word_clock(
+      0,
+      31,
+      [0, 1, 3, 4, 5, 54, 55, 56, 57, 105, 106, 107, 126, 127, 128, 186, 187, 188, 208, 209, 210, 211, 212, 213, 214, 215]
+    )
+  end
+
+  # 00:32..00:59
 
   describe 'es ist ein uhr' do
+    it_behaves_like_a_word_clock(
+      1,
+      0,
+      [0, 1, 3, 4, 5, 14, 15, 16, 105, 106, 107]
+    )
+  end
+
+  # 01:01..01:29
+
+  describe 'es ist halb zwei' do
+    it_behaves_like_a_word_clock(
+      1,
+      30,
+      [0, 1, 3, 4, 5, 140, 141, 142, 143, 156, 157, 158, 159]
+    )
   end
 
   describe 'es ist sechs uhr vier zehn' do
@@ -149,7 +177,6 @@ RSpec.describe WordClock::Stripe do
     )
   end
 
-  # ...
-
+  # 06:15..23:58
   # 'es ist ist eine minute vor mitternacht'
 end

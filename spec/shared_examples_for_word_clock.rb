@@ -13,6 +13,6 @@ RSpec.shared_examples 'a word clock' do |description, hour, minute, expected_pix
   end
 
   it 'has the right pixels lit' do
-    expect(pixels).to eq(expected_pixels)
+    expect(pixels).to eq(expected_pixels), "Expected #{expected_pixels}, but got #{pixels} => '#{subject.reverse(pixels)}'"
   end
 end
