@@ -1,5 +1,5 @@
-
 require 'faderuby'
+require 'logger'
 
 #
 # Idea: Treat the whole thing as one logical stripe of LEDs and let a physical
@@ -9,11 +9,28 @@ module WordClock
   class Stripe
     STRIPE = 'ESAISTOVIERTELEINSDREINERSECHSIEBENEELFÜNFNEUNVIERACHTNULLZWEINZWÖLFZEHNUNDOZWANZIGVIERZIGDREISSIGFÜNFZIGUHRMINUTENIVORUNDNACHEINDREIVIERTELHALBSIEBENEUNULLZWEINEFÜNFSECHSNACHTVIERDREINSUNDAELFEZEHNZWANZIGGRADREISSIGVIERZIGZWÖLFÜNFZIGMINUTENUHREFRÜHVORABENDSMITTERNACHTSMORGENSWARMMITTAGS'
 
-    # Find each word in STRIPE and get their positions, which are the bits to be set
+    def initialize(logger: default_logger)
+      @logger = logger
+    end
+
+    #
+    # For the given hour and minute, return the indices of all pixels to be lit
+    # in the stripe of pixels
+    #
     def pixels(hour, minute)
       return lookup('ES', 'IST', 'MITTERNACHT') if hour.zero? && minute.zero?
 
       lookup('ES', 'IST', hour_words(hour), 'UHR', minute_words(minute))
+    end
+
+    private
+
+    attr_reader :logger
+
+    def default_logger
+      Logger.new(STDERR).tap do |logger|
+        logger.level = Logger::WARN
+      end
     end
 
     def lookup(*words)
@@ -25,7 +42,7 @@ module WordClock
         last = index + word.length - 1
         (index..last).to_a
       end.compact.flatten.tap do |result|
-        warn "#{words}: #{result}"
+        logger.debug "#{words}: #{result}"
       end
     end
 
