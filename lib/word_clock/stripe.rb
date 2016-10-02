@@ -7,7 +7,7 @@ require 'logger'
 #
 module WordClock
   class Stripe
-    STRIPE = 'ESAISTOVIERTELEINSDREINERSECHSIEBENEELFÜNFNEUNVIERACHTNULLZWEINZWÖLFZEHNUNDOZWANZIGVIERZIGDREISSIGFÜNFZIGUHRMINUTENIVORUNDNACHEINDREIVIERTELHALBSIEBENEUNULLZWEINEFÜNFSECHSNACHTVIERDREINSUNDAELFEZEHNZWANZIGGRADREISSIGVIERZIGZWÖLFÜNFZIGMINUTENUHREFRÜHVORABENDSMITTERNACHTSMORGENSWARMMITTAGS'
+    STRIPE = 'ESAISTOVIERTELEINSDREINERSECHSIEBENEELFÜNFNEUNVIERACHTNULLZWEINZWÖLFZEHNUNDOZWANZIGVIERZIGDREISSIGFÜNFZIGUHRMINUTENIVORUNDNACHEINDREIVIERTELHALBSIEBENEUNULLZWEINEFÜNFSECHSNACHTVIERDREINSUNDAELFEZEHNZWANZIGGRADREISSIGVIERZIGZWÖLFÜNFZIGMINUTENUHREFRÜHVORABENDSMITTERNACHTSMORGENSWARMMITTAGS'.freeze
 
     def initialize(logger: default_logger)
       @logger = logger
@@ -61,17 +61,17 @@ module WordClock
         'ZEHN',
         'ELF',
         'ZWÖLF',
-        ['DREI', 'ZEHN'],
-        ['VIER', 'ZEHN'],
-        ['FÜNF', 'ZEHN'],
-        ['SECHS', 'ZEHN'],
-        ['SIEBEN', 'ZEHN'],
-        ['ACHT', 'ZEHN'],
-        ['NEUN', 'ZEHN'],
+        %w(DREI ZEHN),
+        %w(VIER ZEHN),
+        %w(FÜNF ZEHN),
+        %w(SECHS ZEHN),
+        %w(SIEBEN ZEHN),
+        %w(ACHT ZEHN),
+        %w(NEUN ZEHN),
         'ZWANZIG',
-        ['EIN', 'UND', 'ZWANZIG'],
-        ['ZWEI', 'UND', 'ZWANZIG'],
-        ['DREI', 'UND', 'ZWANZIG'],
+        %w(EIN UND ZWANZIG),
+        %w(ZWEI UND ZWANZIG),
+        %w(DREI UND ZWANZIG)
       ][hour]
     end
 
@@ -90,17 +90,17 @@ module WordClock
         'ZEHN',
         'ELF',
         'ZWÖLF',
-        ['DREI', 'ZEHN'],
-        ['VIER', 'ZEHN'],
-        ['FÜNF', 'ZEHN'],
-        ['SECHS', 'ZEHN'],
-        ['SIEBEN', 'ZEHN'],
-        ['ACHT', 'ZEHN'],
-        ['NEUN', 'ZEHN'],
+        %w(DREI ZEHN),
+        %w(VIER ZEHN),
+        %w(FÜNF ZEHN),
+        %w(SECHS ZEHN),
+        %w(SIEBEN ZEHN),
+        %w(ACHT ZEHN),
+        %w(NEUN ZEHN),
         'ZWANZIG',
-        ['EIN', 'UND', 'ZWANZIG'],
-        ['ZWEI', 'UND', 'ZWANZIG'],
-        ['DREI', 'UND', 'ZWANZIG'],
+        %w(EIN UND ZWANZIG),
+        %w(ZWEI UND ZWANZIG),
+        %w(DREI UND ZWANZIG)
       ][minute]
     end
   end
