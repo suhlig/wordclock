@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.shared_examples 'a word clock' do |description, hour, minute, expected_pixels|
   let(:pixels) { subject.pixels(hour, minute) }
 

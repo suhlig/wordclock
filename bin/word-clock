@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby -I lib
+# frozen_string_literal: true
 
 require 'word_clock/clock'
 clock = WordClock::Clock.new
