@@ -5,19 +5,19 @@ require 'word_clock/stripe'
 require 'word_clock/simulator'
 
 stripe = WordClock::Stripe.new
-clock = WordClock::Simulator.new(stripe)
+clock = WordClock::Simulator.new
 
 if ARGV.size.zero?
   now = Time.new
-  clock.show(stripe.pixels(now.hour, now.min))
+  puts clock.show(stripe.pixels(now.hour, now.min))
 elsif 1 == ARGV.size && '--all' == ARGV.first
   (0..23).each do |hour|
     (0..59).each do |minute|
-      clock.show(stripe.pixels(hour, minute))
+      puts clock.show(stripe.pixels(hour, minute))
     end
   end
 elsif 2 == ARGV.size
-  clock.show(stripe.pixels(ARGV.first.to_i, ARGV.last.to_i))
+  puts clock.show(stripe.pixels(ARGV.first.to_i, ARGV.last.to_i))
 else
   warn "Unknown arguments #{ARGV}"
   exit
