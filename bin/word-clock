@@ -2,11 +2,25 @@
 # frozen_string_literal: true
 
 require 'word_clock/stripe'
-clock = WordClock::Stripe.new
 
-(0..23).each do |hour|
-  (0..59).each do |minute|
-    pixels = clock.pixels(hour, minute)
-    puts "#{clock.reverse(pixels)} => #{pixels}"
+def show(hour, minute)
+  clock = WordClock::Stripe.new
+  pixels = clock.pixels(hour, minute)
+  puts "#{clock.reverse(pixels)} => #{pixels}"
+end
+
+if 0 == ARGV.size
+  now = Time.new
+  show(now.hour, now.min)
+elsif 1 == ARGV.size && '--all' == ARGV.first
+  (0..23).each do |hour|
+    (0..59).each do |minute|
+      show(hour, minute)
+    end
   end
+elsif 2 == ARGV.size
+  show(ARGV.first.to_i, ARGV.last.to_i)
+else
+  warn "Unknown arguments #{ARGV}"
+  exit
 end
