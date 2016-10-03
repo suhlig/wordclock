@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'word_clock'
+
 RSpec.shared_examples 'a word clock' do |description, hour, minute, expected_pixels|
   let(:pixels) { subject.pixels(hour, minute) }
 
@@ -13,6 +15,6 @@ RSpec.shared_examples 'a word clock' do |description, hour, minute, expected_pix
   end
 
   it 'has the right pixels lit' do
-    expect(pixels).to eq(expected_pixels), "Expected #{expected_pixels}, but got #{pixels} => '#{subject.reverse(pixels)}'"
+    expect(pixels).to eq(expected_pixels), "Expected #{expected_pixels}, but got #{pixels} => '#{WordClock.reverse(pixels)}'"
   end
 end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'word_clock'
 require 'faderuby'
 require 'logger'
 
@@ -8,9 +9,6 @@ require 'logger'
 #
 module WordClock
   class Stripe
-    # All words on the [WC24h](https://www.mikrocontroller.net/articles/WordClock_mit_WS2812#WC24h_Sammelbestellung_Frontplatten)
-    STRIPE = 'ESAISTOVIERTELEINSDREINERSECHSIEBENEELFÜNFNEUNVIERACHTNULLZWEINZWÖLFZEHNUNDOZWANZIGVIERZIGDREISSIGFÜNFZIGUHRMINUTENIVORUNDNACHEINDREIVIERTELHALBSIEBENEUNULLZWEINEFÜNFSECHSNACHTVIERDREINSUNDAELFEZEHNZWANZIGGRADREISSIGVIERZIGZWÖLFÜNFZIGMINUTENUHREFRÜHVORABENDSMITTERNACHTSMORGENSWARMMITTAGS'
-
     def initialize(logger: default_logger)
       @logger = logger
     end
@@ -54,13 +52,6 @@ module WordClock
       lookup('ES', 'IST', hour_words(hour), 'UHR', minute_words(minute))
     end
 
-    #
-    # For the given pixel indices, return the words (without spaces) that are lit
-    #
-    def reverse(pixels)
-      Array(pixels).map { |i| STRIPE[i] }.join
-    end
-
     private
 
     attr_reader :logger
@@ -76,7 +67,7 @@ module WordClock
 
       words.compact.flatten.map do |word|
         next if word.nil?
-        index = STRIPE.index(word, index)
+        index = WordClock::STRIPE.index(word, index)
         last = index + word.length - 1
         (index..last).to_a
       end.compact.flatten.tap do |result|
