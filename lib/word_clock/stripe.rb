@@ -36,6 +36,9 @@ module WordClock
       return lookup('ES', 'IST', 'ZEHN', 'VOR', hour_words(hour + 1)) if 13 > hour && 50 == minute
       return lookup('ES', 'IST', 'FÜNF', 'VOR', 'EINS') if hour.zero? && 55 == minute
       return lookup('ES', 'IST', 'FÜNF', 'VOR', hour_words(hour + 1)) if 13 > hour && 55 == minute
+      return lookup('ES', 'IST', minute_words(60 - minute), 'VOR', 'MITTERNACHT') if 23 == hour && (55..59).cover?(minute)
+      return lookup('ES', 'IST', minute_words(60 - minute), 'VOR', 'EINS') if hour.zero? && (55..59).cover?(minute)
+      return lookup('ES', 'IST', minute_words(60 - minute), 'VOR', hour_words(hour + 1)) if 13 > hour && (55..59).cover?(minute)
 
       lookup('ES', 'IST', hour_words(hour), 'UHR', minute_words(minute))
     end
