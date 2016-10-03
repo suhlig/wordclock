@@ -21,9 +21,9 @@ module WordClock
     #
     def pixels(hour, minute)
       return lookup('ES', 'IST', 'MITTERNACHT') if hour.zero? && minute.zero?
-      return lookup('ES', 'IST', 'EINS', 'NACH', 'MITTERNACHT') if hour.zero? && 1 == minute # TODO obsolete?
+      return lookup('ES', 'IST', 'EINS', 'NACH', 'MITTERNACHT') if hour.zero? && 1 == minute # TODO: obsolete?
       return lookup('ES', 'IST', minute_words(minute), 'NACH', 'MITTERNACHT') if hour.zero? && (2..5).cover?(minute)
-      return lookup('ES', 'IST', 'FÜNF', 'NACH', 'MITTERNACHT') if hour.zero? && 5 == minute # TODO obsolete?
+      return lookup('ES', 'IST', 'FÜNF', 'NACH', 'MITTERNACHT') if hour.zero? && 5 == minute # TODO: obsolete?
       return lookup('ES', 'IST', 'FÜNF', 'NACH', 'EINS') if 1 == hour && 5 == minute
       return lookup('ES', 'IST', 'FÜNF', 'NACH', hour_words(hour + 1)) if 13 > hour && 5 == minute
       return lookup('ES', 'IST', minute_words(minute), 'NACH', 'MITTERNACHT') if hour.zero? && 10 == minute
@@ -58,7 +58,7 @@ module WordClock
     # For the given pixel indices, return the words (without spaces) that are lit
     #
     def reverse(pixels)
-      Array(pixels).map{ |i| STRIPE[i] }.join
+      Array(pixels).map { |i| STRIPE[i] }.join
     end
 
     private

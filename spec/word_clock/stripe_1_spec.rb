@@ -196,5 +196,4 @@ RSpec.describe WordClock::Stripe do
   end
 
   # 01:55..01:59
-  
 end
