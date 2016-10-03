@@ -89,11 +89,11 @@ RSpec.describe WordClock::Stripe do
     )
   end
 
-  describe 'es ist null uhr zehn' do
+  describe 'es ist zehn nach mitternacht' do
     it_behaves_like_a_word_clock(
       0,
       10,
-      [0, 1, 3, 4, 5, 54, 55, 56, 57, 105, 106, 107, 194, 195, 196, 197]
+      [0, 1, 3, 4, 5, 68, 69, 70, 71, 122, 123, 124, 125, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268]
     )
   end
 
@@ -123,7 +123,17 @@ RSpec.describe WordClock::Stripe do
     )
   end
 
-  # 00:17..00:24
+  # 00:17..00:19
+
+  describe 'es ist zehn vor halb eins' do
+    it_behaves_like_a_word_clock(
+      0,
+      20,
+      [0, 1, 3, 4, 5, 68, 69, 70, 71, 116, 117, 118, 140, 141, 142, 143, 182, 183, 184, 185]
+    )
+  end
+
+  # 00:21..00:24
 
   describe 'es ist fünf vor halb eins' do
     it_behaves_like_a_word_clock(
@@ -165,7 +175,7 @@ RSpec.describe WordClock::Stripe do
     it_behaves_like_a_word_clock(
       0,
       35,
-      []
+      [0, 1, 3, 4, 5, 38, 39, 40, 41, 122, 123, 124, 125, 140, 141, 142, 143, 182, 183, 184, 185]
     )
   end
 
@@ -175,7 +185,7 @@ RSpec.describe WordClock::Stripe do
     it_behaves_like_a_word_clock(
       0,
       40,
-      []
+      [0, 1, 3, 4, 5, 68, 69, 70, 71, 122, 123, 124, 125, 140, 141, 142, 143, 182, 183, 184, 185]
     )
   end
 
@@ -193,7 +203,7 @@ RSpec.describe WordClock::Stripe do
     it_behaves_like_a_word_clock(
       0,
       45,
-      []
+      [0, 1, 3, 4, 5, 18, 19, 20, 21, 133, 134, 135, 136, 137, 138, 139, 182, 183, 184, 185]
     )
   end
 
@@ -313,7 +323,7 @@ RSpec.describe WordClock::Stripe do
     it_behaves_like_a_word_clock(
       1,
       10,
-      []
+      [0, 1, 3, 4, 5, 68, 69, 70, 71, 122, 123, 124, 125, 182, 183, 184, 185]
     )
   end
 
@@ -365,7 +375,7 @@ RSpec.describe WordClock::Stripe do
     it_behaves_like_a_word_clock(
       1,
       20,
-      []
+      [0, 1, 3, 4, 5, 68, 69, 70, 71, 116, 117, 118, 140, 141, 142, 143, 156, 157, 158, 159]
     )
   end
 
@@ -376,7 +386,6 @@ RSpec.describe WordClock::Stripe do
       [0, 1, 3, 4, 5, 14, 15, 16, 105, 106, 107, 126, 127, 128, 186, 187, 188, 198, 199, 200, 201, 202, 203, 204]
     )
   end
-
 
   # 01:22..01:23
 
@@ -422,7 +431,27 @@ RSpec.describe WordClock::Stripe do
     )
   end
 
-  # 01:31..01:53
+  # 01:31..01:39
+
+  describe 'es ist zehn nach halb zwei' do
+    it_behaves_like_a_word_clock(
+      1,
+      40,
+      [0, 1, 3, 4, 5, 68, 69, 70, 71, 122, 123, 124, 125, 140, 141, 142, 143, 156, 157, 158, 159]
+    )
+  end
+
+  # 01:41..01:44
+
+  describe 'es ist drei viertel zwei' do
+    it_behaves_like_a_word_clock(
+      1,
+      45,
+      [0, 1, 3, 4, 5, 18, 19, 20, 21, 133, 134, 135, 136, 137, 138, 139, 156, 157, 158, 159]
+    )
+  end
+
+  # 01:46..01:53
 
   describe 'es ist ein uhr vier und fünfzig' do
     it_behaves_like_a_word_clock(

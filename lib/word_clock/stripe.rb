@@ -26,12 +26,23 @@ module WordClock
       return lookup('ES', 'IST', 'FÜNF', 'NACH', 'MITTERNACHT') if hour.zero? && 5 == minute # TODO obsolete?
       return lookup('ES', 'IST', 'FÜNF', 'NACH', 'EINS') if 1 == hour && 5 == minute
       return lookup('ES', 'IST', 'FÜNF', 'NACH', hour_words(hour + 1)) if 13 > hour && 5 == minute
+      return lookup('ES', 'IST', minute_words(minute), 'NACH', 'MITTERNACHT') if hour.zero? && 10 == minute
+      return lookup('ES', 'IST', 'ZEHN', 'NACH', 'EINS') if 1 == hour && 10 == minute
+      return lookup('ES', 'IST', 'ZEHN', 'NACH', hour_words(hour + 1)) if 13 > hour && 10 == minute
       return lookup('ES', 'IST', 'VIERTEL', 'EINS') if hour.zero? && 15 == minute
       return lookup('ES', 'IST', 'VIERTEL', hour_words(hour + 1)) if 13 > hour && 15 == minute
+      return lookup('ES', 'IST', 'ZEHN', 'VOR', 'HALB', 'EINS') if hour.zero? && 20 == minute
+      return lookup('ES', 'IST', 'ZEHN', 'VOR', 'HALB', hour_words(hour + 1)) if 13 > hour && 20 == minute
       return lookup('ES', 'IST', 'FÜNF', 'VOR', 'HALB', 'EINS') if hour.zero? && 25 == minute
       return lookup('ES', 'IST', 'FÜNF', 'VOR', 'HALB', hour_words(hour + 1)) if 13 > hour && 25 == minute
       return lookup('ES', 'IST', 'HALB', 'EINS') if hour.zero? && 30 == minute
       return lookup('ES', 'IST', 'HALB', hour_words(hour + 1)) if 13 > hour && 30 == minute
+      return lookup('ES', 'IST', 'FÜNF', 'NACH', 'HALB', 'EINS') if hour.zero? && 35 == minute
+      return lookup('ES', 'IST', 'FÜNF', 'NACH', 'HALB', hour_words(hour + 1)) if 13 > hour && 35 == minute
+      return lookup('ES', 'IST', 'ZEHN', 'NACH', 'HALB', 'EINS') if hour.zero? && 40 == minute
+      return lookup('ES', 'IST', 'ZEHN', 'NACH', 'HALB', hour_words(hour + 1)) if 13 > hour && 40 == minute
+      return lookup('ES', 'IST', 'DREI', 'VIERTEL', 'EINS') if hour.zero? && 45 == minute
+      return lookup('ES', 'IST', 'DREI', 'VIERTEL', hour_words(hour + 1)) if 13 > hour && 45 == minute
       return lookup('ES', 'IST', 'ZEHN', 'VOR', 'EINS') if hour.zero? && 50 == minute
       return lookup('ES', 'IST', 'ZEHN', 'VOR', hour_words(hour + 1)) if 13 > hour && 50 == minute
       return lookup('ES', 'IST', 'FÜNF', 'VOR', 'EINS') if hour.zero? && 55 == minute
