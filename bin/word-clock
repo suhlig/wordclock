@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby -I lib
 # frozen_string_literal: true
 
-require 'word_clock/clock'
-clock = WordClock::Clock.new
+require 'word_clock/stripe'
+clock = WordClock::Stripe.new
 
 (0..23).each do |hour|
   (0..59).each do |minute|
-    clock.show(Time.utc(2000, 'jan', 1, hour, minute))
+    pixels = clock.pixels(hour, minute)
+    puts "#{clock.reverse(pixels)} => #{pixels}"
   end
 end
