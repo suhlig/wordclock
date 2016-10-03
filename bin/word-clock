@@ -7,7 +7,7 @@ require 'word_clock/simulator'
 stripe = WordClock::Stripe.new
 clock = WordClock::Simulator.new(stripe)
 
-if 0 == ARGV.size
+if ARGV.size.zero?
   now = Time.new
   clock.show(stripe.pixels(now.hour, now.min))
 elsif 1 == ARGV.size && '--all' == ARGV.first
