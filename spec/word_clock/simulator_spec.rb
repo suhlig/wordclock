@@ -4,7 +4,7 @@ require 'word_clock/simulator'
 
 RSpec.describe WordClock::Simulator do
   context 'with no pixels' do
-    let(:pixels){[]}
+    let(:pixels) { [] }
 
     it 'has the right total amount of lines' do
       result = subject.show(pixels)
@@ -39,7 +39,7 @@ RSpec.describe WordClock::Simulator do
   end
 
   context 'with some pixels' do
-    let(:pixels){[0, 1, 3, 4, 5]}
+    let(:pixels) { [0, 1, 3, 4, 5] }
 
     it 'has the right total amount of lines' do
       result = subject.show(pixels)
