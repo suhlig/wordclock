@@ -19,7 +19,7 @@ module WordClock
     def pixels(hour, minute)
       if hour.zero?
         return lookup('ES', 'IST', 'MITTERNACHT')                               if minute.zero?
-        return lookup('ES', 'IST', 'EINS', 'NACH', 'MITTERNACHT')               if  1 == minute
+        return lookup('ES', 'IST', 'EINS', 'NACH', 'MITTERNACHT')               if 1 == minute
         return lookup('ES', 'IST', minute_words(minute), 'NACH', 'MITTERNACHT') if (2..5).cover?(minute)
         return lookup('ES', 'IST', minute_words(minute), 'NACH', 'MITTERNACHT') if 10 == minute
         return lookup('ES', 'IST', 'VIERTEL', 'EINS')                           if 15 == minute
@@ -35,12 +35,12 @@ module WordClock
       end
 
       if 1 == hour
-        return lookup('ES', 'IST', 'FÜNF', 'NACH', 'EINS') if  5 == minute
+        return lookup('ES', 'IST', 'FÜNF', 'NACH', 'EINS') if 5 == minute
         return lookup('ES', 'IST', 'ZEHN', 'NACH', 'EINS') if 10 == minute
       end
 
       if 13 > hour
-        return lookup('ES', 'IST', 'FÜNF', 'NACH', hour_words(hour + 1))         if  5 == minute
+        return lookup('ES', 'IST', 'FÜNF', 'NACH', hour_words(hour + 1))         if 5 == minute
         return lookup('ES', 'IST', 'ZEHN', 'NACH', hour_words(hour + 1))         if 10 == minute
         return lookup('ES', 'IST', 'VIERTEL', hour_words(hour + 1))              if 15 == minute
         return lookup('ES', 'IST', 'ZEHN', 'VOR', 'HALB', hour_words(hour + 1))  if 20 == minute

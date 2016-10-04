@@ -8,7 +8,7 @@ require 'word_clock/border'
 stripe = WordClock::Stripe.new
 clock = WordClock::Simulator.new
 border = WordClock::Border::FRAME
-#border = WordClock::Border::NULL
+# border = WordClock::Border::NULL
 
 if ARGV.size.zero?
   now = Time.new
