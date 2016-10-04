@@ -3,18 +3,25 @@
 
 require 'word_clock/stripe'
 require 'word_clock/simulator'
+require 'word_clock/border'
 
 stripe = WordClock::Stripe.new
 clock = WordClock::Simulator.new
+border = WordClock::Border::FRAME
 
 if ARGV.size.zero?
   now = Time.new
   puts clock.show(stripe.pixels(now.hour, now.min))
-elsif 1 == ARGV.size && '--all' == ARGV.first
-  (0..23).each do |hour|
-    (0..59).each do |minute|
-      puts clock.show(stripe.pixels(hour, minute))
+elsif 1 == ARGV.size
+  if '--all' == ARGV.first
+    (0..23).each do |hour|
+      (0..59).each do |minute|
+        puts "#{hour}:#{'%02d' % minute}"
+        puts clock.show(stripe.pixels(hour, minute))
+      end
     end
+  elsif '--words' == ARGV.first
+    puts clock.show
   end
 elsif 2 == ARGV.size
   puts clock.show(stripe.pixels(ARGV.first.to_i, ARGV.last.to_i))

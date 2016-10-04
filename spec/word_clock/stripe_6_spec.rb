@@ -29,5 +29,15 @@ RSpec.describe WordClock::Stripe do
     )
   end
 
+  # 06:18..06:19
+
+  describe 'es ist zehn vor halb sieben' do
+    it_behaves_like_a_word_clock(
+      6,
+      20,
+      [0, 1, 3, 4, 5, 68, 69, 70, 71, 116, 117, 118, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149]
+    )
+  end
+
   # 06:21..06:59
 end

@@ -4,8 +4,7 @@ require 'faderuby'
 require 'logger'
 
 #
-# Idea: Treat the whole thing as one logical stripe of LEDs and let a physical
-# layer underneath figure out how to map a logical pixel to a physical position
+# Treat the whole thing as one logical stripe of LEDs
 #
 module WordClock
   class Stripe
@@ -67,10 +66,13 @@ module WordClock
 
       words.compact.flatten.map do |word|
         index = WordClock::STRIPE.index(word, index)
-
         last = index + word.length
         (index..(last - 1)).to_a.tap do
-          index = last + 1
+          index = last
+
+          # Search after the next char except we are at the end of the current line
+          # so that there is always space between two words
+          index += 1 unless (index % 18).zero?
         end
       end.compact.flatten.tap do |result|
         logger.debug "#{words}: #{result}"
