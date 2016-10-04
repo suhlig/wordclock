@@ -12,7 +12,7 @@ border = WordClock::Border::FRAME
 
 if ARGV.size.zero?
   now = Time.new
-  puts clock.show(stripe.pixels(now.hour, now.min))
+  puts border.frame(clock.show(stripe.pixels(now.hour, now.min)))
 elsif 1 == ARGV.size
   if '--all' == ARGV.first
     (0..23).each do |hour|
@@ -22,10 +22,10 @@ elsif 1 == ARGV.size
       end
     end
   elsif '--words' == ARGV.first
-    puts clock.show
+    puts border.frame(clock.show)
   end
 elsif 2 == ARGV.size
-  puts clock.show(stripe.pixels(ARGV.first.to_i, ARGV.last.to_i))
+  puts border.frame(clock.show(stripe.pixels(ARGV.first.to_i, ARGV.last.to_i)))
 else
   warn "Unknown arguments #{ARGV}"
   exit
