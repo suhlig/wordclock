@@ -17,36 +17,46 @@ module WordClock
     # in the stripe of pixels
     #
     def pixels(hour, minute)
-      return lookup('ES', 'IST', 'MITTERNACHT') if hour.zero? && minute.zero?
-      return lookup('ES', 'IST', 'EINS', 'NACH', 'MITTERNACHT') if hour.zero? && 1 == minute # TODO: obsolete?
-      return lookup('ES', 'IST', minute_words(minute), 'NACH', 'MITTERNACHT') if hour.zero? && (2..5).cover?(minute)
-      return lookup('ES', 'IST', 'FÜNF', 'NACH', 'MITTERNACHT') if hour.zero? && 5 == minute # TODO: obsolete?
-      return lookup('ES', 'IST', 'FÜNF', 'NACH', 'EINS') if 1 == hour && 5 == minute
-      return lookup('ES', 'IST', 'FÜNF', 'NACH', hour_words(hour + 1)) if 13 > hour && 5 == minute
-      return lookup('ES', 'IST', minute_words(minute), 'NACH', 'MITTERNACHT') if hour.zero? && 10 == minute
-      return lookup('ES', 'IST', 'ZEHN', 'NACH', 'EINS') if 1 == hour && 10 == minute
-      return lookup('ES', 'IST', 'ZEHN', 'NACH', hour_words(hour + 1)) if 13 > hour && 10 == minute
-      return lookup('ES', 'IST', 'VIERTEL', 'EINS') if hour.zero? && 15 == minute
-      return lookup('ES', 'IST', 'VIERTEL', hour_words(hour + 1)) if 13 > hour && 15 == minute
-      return lookup('ES', 'IST', 'ZEHN', 'VOR', 'HALB', 'EINS') if hour.zero? && 20 == minute
-      return lookup('ES', 'IST', 'ZEHN', 'VOR', 'HALB', hour_words(hour + 1)) if 13 > hour && 20 == minute
-      return lookup('ES', 'IST', 'FÜNF', 'VOR', 'HALB', 'EINS') if hour.zero? && 25 == minute
-      return lookup('ES', 'IST', 'FÜNF', 'VOR', 'HALB', hour_words(hour + 1)) if 13 > hour && 25 == minute
-      return lookup('ES', 'IST', 'HALB', 'EINS') if hour.zero? && 30 == minute
-      return lookup('ES', 'IST', 'HALB', hour_words(hour + 1)) if 13 > hour && 30 == minute
-      return lookup('ES', 'IST', 'FÜNF', 'NACH', 'HALB', 'EINS') if hour.zero? && 35 == minute
-      return lookup('ES', 'IST', 'FÜNF', 'NACH', 'HALB', hour_words(hour + 1)) if 13 > hour && 35 == minute
-      return lookup('ES', 'IST', 'ZEHN', 'NACH', 'HALB', 'EINS') if hour.zero? && 40 == minute
-      return lookup('ES', 'IST', 'ZEHN', 'NACH', 'HALB', hour_words(hour + 1)) if 13 > hour && 40 == minute
-      return lookup('ES', 'IST', 'DREI', 'VIERTEL', 'EINS') if hour.zero? && 45 == minute
-      return lookup('ES', 'IST', 'DREI', 'VIERTEL', hour_words(hour + 1)) if 13 > hour && 45 == minute
-      return lookup('ES', 'IST', 'ZEHN', 'VOR', 'EINS') if hour.zero? && 50 == minute
-      return lookup('ES', 'IST', 'ZEHN', 'VOR', hour_words(hour + 1)) if 13 > hour && 50 == minute
-      return lookup('ES', 'IST', 'FÜNF', 'VOR', 'EINS') if hour.zero? && 55 == minute
-      return lookup('ES', 'IST', 'FÜNF', 'VOR', hour_words(hour + 1)) if 13 > hour && 55 == minute
-      return lookup('ES', 'IST', minute_words(60 - minute), 'VOR', 'MITTERNACHT') if 23 == hour && (55..59).cover?(minute)
-      return lookup('ES', 'IST', minute_words(60 - minute), 'VOR', 'EINS') if hour.zero? && (55..59).cover?(minute)
-      return lookup('ES', 'IST', minute_words(60 - minute), 'VOR', hour_words(hour + 1)) if 13 > hour && (55..59).cover?(minute)
+      if hour.zero?
+        return lookup('ES', 'IST', 'MITTERNACHT')                               if minute.zero?
+        return lookup('ES', 'IST', 'EINS', 'NACH', 'MITTERNACHT')               if  1 == minute
+        return lookup('ES', 'IST', minute_words(minute), 'NACH', 'MITTERNACHT') if (2..5).cover?(minute)
+        return lookup('ES', 'IST', minute_words(minute), 'NACH', 'MITTERNACHT') if 10 == minute
+        return lookup('ES', 'IST', 'VIERTEL', 'EINS')                           if 15 == minute
+        return lookup('ES', 'IST', 'ZEHN', 'VOR', 'HALB', 'EINS')               if 20 == minute
+        return lookup('ES', 'IST', 'FÜNF', 'VOR', 'HALB', 'EINS')               if 25 == minute
+        return lookup('ES', 'IST', 'HALB', 'EINS')                              if 30 == minute
+        return lookup('ES', 'IST', 'FÜNF', 'NACH', 'HALB', 'EINS')              if 35 == minute
+        return lookup('ES', 'IST', 'ZEHN', 'NACH', 'HALB', 'EINS')              if 40 == minute
+        return lookup('ES', 'IST', 'DREI', 'VIERTEL', 'EINS')                   if 45 == minute
+        return lookup('ES', 'IST', 'ZEHN', 'VOR', 'EINS')                       if 50 == minute
+        return lookup('ES', 'IST', 'FÜNF', 'VOR', 'EINS')                       if 55 == minute
+        return lookup('ES', 'IST', minute_words(60 - minute), 'VOR', 'EINS')    if (55..59).cover?(minute)
+      end
+
+      if 1 == hour
+        return lookup('ES', 'IST', 'FÜNF', 'NACH', 'EINS') if  5 == minute
+        return lookup('ES', 'IST', 'ZEHN', 'NACH', 'EINS') if 10 == minute
+      end
+
+      if 13 > hour
+        return lookup('ES', 'IST', 'FÜNF', 'NACH', hour_words(hour + 1))         if  5 == minute
+        return lookup('ES', 'IST', 'ZEHN', 'NACH', hour_words(hour + 1))         if 10 == minute
+        return lookup('ES', 'IST', 'VIERTEL', hour_words(hour + 1))              if 15 == minute
+        return lookup('ES', 'IST', 'ZEHN', 'VOR', 'HALB', hour_words(hour + 1))  if 20 == minute
+        return lookup('ES', 'IST', 'FÜNF', 'VOR', 'HALB', hour_words(hour + 1))  if 25 == minute
+        return lookup('ES', 'IST', 'HALB', hour_words(hour + 1))                 if 30 == minute
+        return lookup('ES', 'IST', 'FÜNF', 'NACH', 'HALB', hour_words(hour + 1)) if 35 == minute
+        return lookup('ES', 'IST', 'ZEHN', 'NACH', 'HALB', hour_words(hour + 1)) if 40 == minute
+        return lookup('ES', 'IST', 'DREI', 'VIERTEL', hour_words(hour + 1))      if 45 == minute
+        return lookup('ES', 'IST', 'ZEHN', 'VOR', hour_words(hour + 1))          if 50 == minute
+        return lookup('ES', 'IST', 'FÜNF', 'VOR', hour_words(hour + 1))          if 55 == minute
+        return lookup('ES', 'IST', minute_words(60 - minute), 'VOR', hour_words(hour + 1)) if (55..59).cover?(minute)
+      end
+
+      if 23 == hour
+        return lookup('ES', 'IST', minute_words(60 - minute), 'VOR', 'MITTERNACHT') if (55..59).cover?(minute)
+      end
 
       lookup('ES', 'IST', hour_words(hour), 'UHR', minute_words(minute))
     end
