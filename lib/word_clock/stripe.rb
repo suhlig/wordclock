@@ -66,10 +66,12 @@ module WordClock
       index = 0
 
       words.compact.flatten.map do |word|
-        next if word.nil?
         index = WordClock::STRIPE.index(word, index)
-        last = index + word.length - 1
-        (index..last).to_a
+
+        last = index + word.length
+        (index..(last - 1)).to_a.tap do
+          index = last + 1
+        end
       end.compact.flatten.tap do |result|
         logger.debug "#{words}: #{result}"
       end
