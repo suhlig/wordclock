@@ -1,0 +1,29 @@
+- name: Download fcserver
+  get_url:
+    url="https://github.com/scanlime/fadecandy/raw/master/bin/fcserver-rpi"
+    dest="/usr/sbin/fcserver"
+    owner="root"
+    mode="0755"
+
+- name: Create the /etc/fadecandy directory
+  file:
+    path=/etc/fadecandy
+    state=directory
+
+- name: Put config.json in place
+  copy:
+    src="config.json"
+    dest="/etc/fadecandy/config.json"
+    mode="0755"
+
+- name: Create fcserver systemd service config
+  copy:
+    src="fcserver.service"
+    dest="/etc/systemd/system/fcserver.service"
+    mode="0664"
+
+- name: Start the fadecandy service
+  service: # TODO this is systemd for ansible >= 2.2
+    name=fcserver
+    state=started
+    enabled=True

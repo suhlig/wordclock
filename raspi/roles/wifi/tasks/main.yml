@@ -1,0 +1,18 @@
+- name: "Flag whether wifi configuration settings are present"
+  local_action: stat path=wifi.yml
+  register: configure_wifi
+  become: no
+  tags: wifi
+
+- name: "Include wifi configuration settings if present"
+  include_vars: wifi.yml
+  when: configure_wifi.stat.exists
+  tags: wifi
+
+- name: Configure wifi if configuration settings are present
+  when: configure_wifi.stat.exists
+  template:
+    src="wpa_supplicant.conf.j2"
+    dest="/etc/wpa_supplicant/wpa_supplicant.conf"
+    mode="0600"
+  tags: wifi

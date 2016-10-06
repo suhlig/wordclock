@@ -1,0 +1,29 @@
+- name: Update APT package cache
+  action: apt update_cache=yes
+
+- name: Upgrade APT to the lastest packages
+  action: apt upgrade=safe
+
+- name: Set the host name
+  hostname:
+    name="{{ inventory_hostname }}"
+
+- name: No stupid login message
+  file:
+    path=/home/pi/.hushlogin
+    state=touch
+    owner=pi
+    group=pi
+    mode=0755
+
+- name: Install software
+  apt:
+    name=tmux,htop,ntp
+    state=present
+
+- name: Set the time zone
+  # timezone: name=Europe/Berlin # ansible >= 2.2.0
+  when: ansible_date_time.tz != 'Europe/Berlin'
+  command: timedatectl set-timezone 'Europe/Berlin'
+
+# TODO Set the keyboard layout to German

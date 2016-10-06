@@ -1,0 +1,10 @@
+[Unit]
+Description=Fadecandy Server
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/fcserver /etc/fadecandy/config.json
+Type=simple
+
+[Install]
+WantedBy=default.target
