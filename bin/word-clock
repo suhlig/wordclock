@@ -2,31 +2,21 @@
 # frozen_string_literal: true
 
 require 'word_clock/stripe'
-require 'word_clock/simulator'
+require 'word_clock/fade_candy'
 require 'word_clock/border'
-
-stripe = WordClock::Stripe.new
-clock = WordClock::Simulator.new
-border = WordClock::Border::FRAME
-# border = WordClock::Border::NULL
 
 if ARGV.size.zero?
   now = Time.new
-  puts border.frame(clock.show(stripe.pixels(now.hour, now.min)))
-elsif 1 == ARGV.size
-  if '--all' == ARGV.first
-    (0..23).each do |hour|
-      (0..59).each do |minute|
-        puts "#{hour}:#{'%02d' % minute}"
-        puts border.frame(clock.show(stripe.pixels(hour, minute)))
-      end
-    end
-  elsif '--words' == ARGV.first
-    puts border.frame(clock.show)
-  end
+  hour = now.hour
+  min = now.min
 elsif 2 == ARGV.size
-  puts border.frame(clock.show(stripe.pixels(ARGV.first.to_i, ARGV.last.to_i)))
+  hour = ARGV.first.to_i
+  min = ARGV.last.to_i
 else
   warn "Unknown arguments #{ARGV}"
-  exit
+  exit 1
 end
+
+stripe = WordClock::Stripe.new
+clock = WordClock::FadeCandy.new('wordclock', 7890)
+clock.show(stripe.pixels(hour, min))
