@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby -I lib
+# frozen_string_literal: true
+
+require 'word_clock/stripe'
+require 'word_clock/icon_display'
+
+if ARGV.size.zero?
+  now = Time.new
+  hour = now.hour
+  min = now.min
+elsif 2 == ARGV.size
+  hour = ARGV.first.to_i
+  min = ARGV.last.to_i
+else
+  warn "Unknown arguments #{ARGV}"
+  exit 1
+end
+
+stripe = WordClock::Stripe.new
+clock = WordClock::IconDisplay.new('wordclock', 7890)
+
+require "pnm"
+require "matrix"
+require "paint"
+
+image = PNM.read('assets/xmastree.ppm')
+icon = Matrix.rows(image.pixels.dup)
+
+# fill missing columns with off pixels
+# TODO Center the image if too small
+icon = Matrix.columns(icon.transpose.to_a << Array.new(16, [0,0,0]))
+icon = Matrix.columns(icon.transpose.to_a << Array.new(16, [0,0,0]))
+
+icon.row_vectors.each do |row|
+  warn '| ' + row.map { |e| Paint['•', e] }.to_a.join(' ') << '|'
+end
+
+clock.show(icon)
