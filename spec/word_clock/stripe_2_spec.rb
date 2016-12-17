@@ -13,11 +13,21 @@ RSpec.describe WordClock::Stripe do
 
   describe 'es ist fünf nach zwei' do
     it_behaves_like_a_word_clock(
-      1,
+      2,
       5,
       [0, 1, 3, 4, 5, 38, 39, 40, 41, 122, 123, 124, 125, 182, 183, 184, 185]
     )
   end
 
-  # 2:06..02:59
+  # 2:06..02:09
+
+  describe 'es ist zehn nach zwei' do
+    it_behaves_like_a_word_clock(
+      2,
+      10,
+      [0, 1, 3, 4, 5, 68, 69, 70, 71, 122, 123, 124, 125, 182, 183, 184, 185]
+    )
+  end
+
+  # 2:11..02:59
 end
