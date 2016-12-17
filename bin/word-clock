@@ -3,7 +3,6 @@
 
 require 'word_clock/stripe'
 require 'word_clock/fade_candy'
-require 'word_clock/border'
 
 if ARGV.size.zero?
   now = Time.new
