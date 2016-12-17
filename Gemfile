@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 source 'http://rubygems.org'
 
-gem 'faderuby', '~> 0.0.2'
+gem 'faderuby'
 
 group :development do
   gem 'bundler'
@@ -10,6 +10,7 @@ group :development do
   gem 'rubocop'
   gem 'pry'
   gem 'pry-byebug'
+  gem 'rb-readline'
   gem 'guard-rspec', require: false
   gem 'guard-bundler'
 end
