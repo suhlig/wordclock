@@ -19,5 +19,9 @@ else
 end
 
 stripe = WordClock::Stripe.new
-clock = WordClock::FadeCandy.new('wordclock', 7890)
+clock = WordClock::FadeCandy.new(
+  ENV.fetch('WORDCLOCK_HOST', 'localhost'),
+  ENV.fetch('WORDCLOCK_PORT', '7890').to_i
+)
+
 clock.show(stripe.pixels(hour, min))
