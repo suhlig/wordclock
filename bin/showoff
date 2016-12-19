@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby -I lib
+# frozen_string_literal: true
+
+(0..23).each do |hour|
+  (0..59).each do |minute|
+    `bundle exec bin/word-clock #{hour} #{minute}`
+    sleep 0.5
+  end
+end
