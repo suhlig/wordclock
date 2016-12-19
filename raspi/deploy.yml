@@ -1,0 +1,16 @@
+# Run with
+#
+#   ansible-playbook -i raspi/hosts raspi/deploy.yml
+#
+- name: Deploy word-clock
+  hosts: all
+  become: true
+  vars:
+    ansistrano_deploy_from: "{{ playbook_dir }}/.."
+    ansistrano_deploy_to: "/opt/word-clock"
+    ansistrano_current_via: rsync
+    ansistrano_rsync_set_remote_user: no
+    ansistrano_after_update_code_tasks_file: "{{ playbook_dir }}/roles/word-clock/after-update-code-tasks.yml"
+
+  roles:
+    - carlosbuenosvinos.ansistrano-deploy

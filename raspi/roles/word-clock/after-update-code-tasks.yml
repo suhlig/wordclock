@@ -1,0 +1,6 @@
+- name: Bundle word-clock
+  bundler:
+    state: present
+    chdir: /opt/word-clock/current
+    gem_path: vendor/bundle
+    deployment_mode: yes

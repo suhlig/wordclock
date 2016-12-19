@@ -1,8 +1,10 @@
 - name: Update APT package cache
   action: apt update_cache=yes
+  tags: apt
 
 - name: Upgrade APT to the lastest packages
   action: apt upgrade=safe
+  tags: apt
 
 - name: Set the host name
   hostname:
@@ -18,7 +20,8 @@
 
 - name: Install software
   apt:
-    name=tmux,htop
+    name=tmux,htop,rsync
     state=present
+  tags: apt
 
 # TODO Set the keyboard layout to German
