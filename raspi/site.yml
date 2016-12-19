@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: Deploy word-clock
+  hosts: all
   become: true
   vars:
     ntp_timezone: Europe/Berlin
@@ -14,6 +15,12 @@
         major: 2
         minor: 3
         revision: 3
+
+    ansistrano_deploy_from: "{{ playbook_dir }}/.."
+    ansistrano_deploy_to: /opt/word-clock
+    ansistrano_current_via: symlink
+    ansistrano_deploy_via: rsync
+    ansistrano_after_update_code_tasks_file: "{{ playbook_dir }}/roles/word-clock/after-update-code-tasks.yml"
 
   roles:
     - common

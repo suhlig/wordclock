@@ -1,5 +1,7 @@
-#!/usr/bin/env ruby -I lib
+#!/usr/bin/env ruby
 # frozen_string_literal: true
+
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'word_clock/stripe'
 require 'word_clock/fade_candy'
