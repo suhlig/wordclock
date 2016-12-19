@@ -9,8 +9,15 @@
      - ptbtime2.ptb.de iburst
      - ptbtime3.ptb.de iburst
 
+    ruby_version:
+        full: ruby-2.3.3
+        major: 2
+        minor: 3
+        revision: 3
+
   roles:
     - common
     - wifi
+    - ruby
     - fadecandy
     - geerlingguy.ntp
