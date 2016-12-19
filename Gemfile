@@ -5,12 +5,12 @@ gem 'faderuby'
 
 group :development do
   gem 'bundler'
-  gem 'rake'
-  gem 'rspec'
-  gem 'rubocop'
+  gem 'guard-bundler'
+  gem 'guard-rspec', require: false
   gem 'pry'
   gem 'pry-byebug'
+  gem 'rake'
   gem 'rb-readline'
-  gem 'guard-rspec', require: false
-  gem 'guard-bundler'
+  gem 'rspec'
+  gem 'rubocop'
 end
