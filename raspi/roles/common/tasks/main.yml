@@ -18,12 +18,7 @@
 
 - name: Install software
   apt:
-    name=tmux,htop,ntp
+    name=tmux,htop
     state=present
-
-- name: Set the time zone
-  # timezone: name=Europe/Berlin # ansible >= 2.2.0
-  when: ansible_date_time.tz != 'Europe/Berlin'
-  command: timedatectl set-timezone 'Europe/Berlin'
 
 # TODO Set the keyboard layout to German
