@@ -45,7 +45,7 @@
 
 - name: Do not generate gem documentation
   lineinfile:
-    dest: /etc/gemrc
+    dest: /root/.gemrc
     regexp: '^gem: --no-document'
     line: 'gem: --no-document'
     state: present
