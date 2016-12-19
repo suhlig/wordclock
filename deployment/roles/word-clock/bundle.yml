@@ -1,6 +1,6 @@
-- name: Bundle word-clock
+- name: Bundle dependencies
   bundler:
     state: present
-    chdir: /opt/word-clock/current
+    chdir: "{{ ansistrano_deploy_to }}/current"
     gem_path: vendor/bundle
     deployment_mode: yes

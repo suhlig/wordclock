@@ -35,7 +35,7 @@ This is an ansible library that deploys a fresh Raspberry Pi with all configurat
 # Deployment
 
 ```
-control$ ansible-playbook raspi/site.yml
+control$ ansible-playbook deployment/playbook.yml
 ```
 
 # WiFi
