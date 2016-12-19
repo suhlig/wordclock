@@ -1,0 +1,26 @@
+# Until we have a daemon, we launch via cron
+
+- cron:
+    env: yes
+    user: "{{ ansible_user_id }}"
+    name: PATH
+    value: "/usr/local/bin:/usr/bin:/bin"
+  become: false
+  tags: cron
+
+- cron:
+    become: false
+    env: yes
+    user: "{{ ansible_user_id }}"
+    name: BUNDLE_GEMFILE
+    value: "/opt/word-clock/current/Gemfile"
+  become: false
+  tags: cron
+
+- cron:
+    become: false
+    user: "{{ ansible_user_id }}"
+    name: "Update time at word-clock"
+    job: "bundle exec /opt/word-clock/current/bin/word-clock"
+  become: false
+  tags: cron

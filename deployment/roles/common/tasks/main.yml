@@ -8,7 +8,7 @@
 
 - name: Set the host name
   hostname:
-    name="{{ inventory_hostname }}"
+    name: "{{ inventory_hostname }}"
 
 - name: No stupid login message
   file:
