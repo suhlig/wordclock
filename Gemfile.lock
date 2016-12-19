@@ -37,8 +37,10 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    paint (1.0.1)
     parser (2.3.3.1)
       ast (~> 2.2)
+    pnm (0.5.0)
     powerpack (0.1.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -90,6 +92,8 @@ DEPENDENCIES
   faderuby
   guard-bundler
   guard-rspec
+  paint
+  pnm
   pry
   pry-byebug
   rainbow

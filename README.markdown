@@ -122,3 +122,7 @@ Since then, this is my safety procedure when soldering LEDs:
 | [Cable box](https://www.amazon.de/dp/B01C6V7OP4/) | 12,99 € |
 
 All prices as of Sept. 2016 incl. S&H.
+
+# Icons
+
+* X-Mas tree from https://grammio.com/static/images/emoji/D83CDF84.png

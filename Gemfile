@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 
 gem 'easter'
 gem 'faderuby'
+gem 'paint'
+gem 'pnm'
 gem 'rainbow'
 
 group :development do
