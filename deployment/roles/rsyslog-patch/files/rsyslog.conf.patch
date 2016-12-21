@@ -1,0 +1,18 @@
+--- rsyslog.conf	2015-12-14 13:34:27.000000000 +0100
++++ rsyslog.conf	2016-12-21 18:54:13.591082448 +0100
+@@ -107,15 +107,3 @@
+ #	*.=debug;*.=info;\
+ #	*.=notice;*.=warn	/dev/tty8
+ 
+-# The named pipe /dev/xconsole is for the `xconsole' utility.  To use it,
+-# you must invoke `xconsole' with the `-file' option:
+-# 
+-#    $ xconsole -file /dev/xconsole [...]
+-#
+-# NOTE: adjust the list below, or you'll go crazy if you have a reasonably
+-#      busy site..
+-#
+-daemon.*;mail.*;\
+-	news.err;\
+-	*.=debug;*.=info;\
+-	*.=notice;*.=warn	|/dev/xconsole

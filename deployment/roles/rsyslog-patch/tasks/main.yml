@@ -1,0 +1,12 @@
+# https://anonscm.debian.org/cgit/collab-maint/rsyslog.git/commit/?id=67bc8e5326b0d3564c7e2153dede25f9690e6839
+- name: Patch rsyslog to not spam logs
+  patch:
+    src: rsyslog.conf.patch
+    dest: /etc/rsyslog.conf
+  tags: syslog,patch
+
+- name: Restart rsyslog to make patch effective
+  systemd:
+    name: rsyslog
+    state: restarted
+  tags: syslog
