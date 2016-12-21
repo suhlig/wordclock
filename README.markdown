@@ -1,8 +1,27 @@
 # Ruby Word Clock
 
+![Front](doc/front.jpg) ![Back](doc/back.jpg)
+
 This is an implementation of a [Word Clock](http://www.instructables.com/id/Wordclock/) in Ruby. It maps every point in time between 0:01 and midnight to a sentence, which is represented as positions of pixels to light up. The positions are for a single, continuous strip of LEDs. The current implementation uses German words.
 
 The LEDs are driven by a [Fadecandy](https://github.com/scanlime/fadecandy) board using [faderuby](https://github.com/JamesHarrison/faderuby).
+
+The hardware setup was largely inspired by the [WordClock mit WS2812](https://www.mikrocontroller.net/articles/WordClock_mit_WS2812) article at [mikrocontroller.net](https://www.mikrocontroller.net/).
+
+# Development
+
+This is a regular Ruby project, i.e. after cloning the project, the usual
+
+```bash
+$ bundle install
+$ bundle exec rake
+```
+
+will get you started with running the tests.
+
+# Deployment
+
+See [deployment](deployment/README.markdown) for details.
 
 # Troubleshooting the WS2811B LEDs
 
@@ -12,7 +31,7 @@ I accidentally killed a number of LEDs with a ground loop because the Raspberry 
 
 To find out whether an LED is dead, someone in [the forum](https://www.mikrocontroller.net/topic/385955) recommended to measure the resistance between `DATA` and `GND`:
 
-* If the resistance is between 2 and 15 MΩ, the LED is ok.
+* If the resistance is between 2 and 15 MΩ, the LED is ok.
 * If the resistance is ∞, the LED is dead.
 
 Since then, this is my safety procedure when soldering LEDs:
@@ -33,7 +52,7 @@ Since then, this is my safety procedure when soldering LEDs:
 
 * Also useful:
 
-  ```
+  ```bash
   $ cd ~/workspace/fadecandy/examples/perl
   $ ./random.pl; ./turnthemoff.pl
   ```
@@ -42,7 +61,7 @@ Since then, this is my safety procedure when soldering LEDs:
 
 * Tailing the log file
 
-  ```
+  ```bash
   ssh wordclock sudo journalctl -u fcserver -f
   ```
 
@@ -54,11 +73,11 @@ Since then, this is my safety procedure when soldering LEDs:
 
 # Bill of Materials
 
-## Elektronic Parts
+## Electronics Parts
 
 | Component |   Price |
 | :-------- | ------: |
-| [300 LEDs](https://www.ebay.de/itm/222192610445) | 33,21 € |
+| [300 WS2811B LEDs](https://www.ebay.de/itm/222192610445) | 33,21 € |
 | [Adafruit FadeCandy](http://www.exp-tech.de/adafruit-fadecandy-dithering-usb-controlled-driver-for-neopixels) Dithering USB-Controlled Driver for NeoPixels | 28,45 € |
 | [Raspberry Pi 3 Model B](https://www.amazon.de/dp/B01CEFWQFA/) | 34,99 € |
 | [SanDisk Ultra Android microSDHC 16GB](https://www.amazon.de/dp/B013UDL5V6/) | 7,99 € |
@@ -69,7 +88,7 @@ Since then, this is my safety procedure when soldering LEDs:
 
 | Component |   Price |
 | :-------- | ------: |
-| [Back plane](https://www.ebay.de/itm/301477115708) zur Montage der LEDs | 7,88 € |
+| [Back plane](https://www.ebay.de/itm/301477115708) for mouting the LEDs | 7,88 € |
 | [Front plane](https://www.mikrocontroller.net/articles/WordClock_mit_WS2812#WC24h_Sammelbestellung_Frontplatten) |  54,00 € |
 | [Mounting plane](https://www.mikrocontroller.net/articles/WordClock_mit_WS2812#WC24h_Sammelbestellung_Zwischenb.C3.B6den) | 59,50 € |
 | [Picture frame](https://www.alutech.de/alu---zuschnitt-profil-18.html) (incl. mounting set) | 42,48 € |
