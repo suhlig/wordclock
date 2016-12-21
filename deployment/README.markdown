@@ -1,46 +1,50 @@
 # Raspberry Pi WordClock Host
 
-This is an ansible library that deploys a fresh Raspberry Pi with all configuration and software required for running as a WordClock Host. The Raspberry Pi will hereafter be called `wordclock`, whereas the controlling machine is called `control`.
+This is an ansible library that deploys a fresh RaspberryPi with all configuration and software required for running as a WordClock Host.
 
-* Boot `wordclock` with a [fresh installation of Raspbian](https://www.raspberrypi.org/downloads/raspbian/)
+In this document, the RaspberryPi will be called `wordclock`, whereas the controlling machine is called `control`.
 
-* Make sure you have a recent [Ansible installation](http://docs.ansible.com/ansible/intro_installation.html) on `control`, e.g.
+# Prepare the Control Machine
 
-  ```
-  $ brew install ansible
+* Make sure you have a recent [Ansible installation](http://docs.ansible.com/ansible/intro_installation.html):
+
+  ```bash
+  control$ brew install ansible
   ```
 
   Replace `brew` with `yum` or `apt-get`, depending on your OS.
 
-* Install additional Ansible roles:
+* Install the required Ansible roles:
 
-  ```
-  $ ansible-galaxy install geerlingguy.ntp jnv.unattended-upgrades
-  ```
-
-* Copy the public key to `wordclock`:
-
-  ```
-  $ ssh-copy-id pi@wordclock
+  ```bash
+  control$ ansible-galaxy install geerlingguy.ntp jnv.unattended-upgrades
   ```
 
-1. Test that you can login without a password:
+# Prepare the RaspberryPi
 
-  ```
-  control$ ssh pi@wordclock
-  ```
+* Connect Ethernet to the RaspberryPi. The deployment will configure WLAN, but until then Ethernet is easier.
 
-  Note that there is no password prompt because authentication happens using the private key previously loaded into the SSH agent.
+* Boot the RaspberryPi with a [fresh installation of Raspbian](https://www.raspberrypi.org/downloads/raspbian/).
 
-1. Check that Ansible can reach `wordclock`:
+* Log on at the console (beware the keyboard layout) and enable sshd:
 
-  ```
-  control$ ansible all -m ping
+  ```bash
+  raspberrypi$ sudo service ssh start
   ```
 
-# Deployment
+# First Deployment
 
+The RaspberryPi will start with the default hostname `raspberrypi` so that we need to pass a custom inventory:
+
+```bash
+control$ ansible-playbook -i raspberrypi, deployment/playbook.yml
 ```
+
+# Subsequent Deployments
+
+The first deployment did set the hostname to `wordclock` and also copied the public key, so that subsequent deployments become as simple as:
+
+```bash
 control$ ansible-playbook deployment/playbook.yml
 ```
 
@@ -48,7 +52,7 @@ control$ ansible-playbook deployment/playbook.yml
 
 If you want to configure the WiFi network, create a file `wifi.yml` with the following contents (adapt it to your WIFI settings):
 
-```
+```yaml
 wlan_country: DE
 wlan_ssid: your-wlan-ssid
 wlan_password: your-wlan-password
