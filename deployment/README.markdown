@@ -12,6 +12,12 @@ This is an ansible library that deploys a fresh Raspberry Pi with all configurat
 
   Replace `brew` with `yum` or `apt-get`, depending on your OS.
 
+* Install additional Ansible roles:
+
+  ```
+  $ ansible-galaxy install geerlingguy.ntp jnv.unattended-upgrades
+  ```
+
 * Copy the public key to `wordclock`:
 
   ```
@@ -49,7 +55,3 @@ wlan_password: your-wlan-password
 ```
 
 If `wifi.yml` is not present, WiFi will not be configured.
-
-# TODO
-
-* Set the keyboard layout to German

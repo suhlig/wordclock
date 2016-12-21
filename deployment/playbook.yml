@@ -22,6 +22,9 @@
     ansistrano_deploy_via: rsync
     ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/roles/word-clock/main.yml"
 
+    unattended_origins_patterns:
+      - 'origin=Raspbian,codename=${distro_codename},label=Raspbian'
+
   roles:
     - common
     - wifi
@@ -29,3 +32,4 @@
     - fadecandy
     - geerlingguy.ntp
     - carlosbuenosvinos.ansistrano-deploy
+    - jnv.unattended-upgrades

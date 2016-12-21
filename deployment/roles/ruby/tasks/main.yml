@@ -21,7 +21,7 @@
 - name: Unpack Ruby tarball
   unarchive:
     src: "/tmp/{{ ruby_version.full }}.tar.gz"
-    dest: "/usr/local/src/{{ ruby_version.full }}/"
+    dest: "/usr/local/src"
     remote_src: yes
   when: ruby_present|failed
   tags: ruby
