@@ -49,3 +49,7 @@ wlan_password: your-wlan-password
 ```
 
 If `wifi.yml` is not present, WiFi will not be configured.
+
+# TODO
+
+* Set the keyboard layout to German

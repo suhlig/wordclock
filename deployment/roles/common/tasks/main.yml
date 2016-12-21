@@ -23,5 +23,3 @@
     name=tmux,htop,rsync
     state=present
   tags: apt
-
-# TODO Set the keyboard layout to German
