@@ -1,9 +1,7 @@
-- name: Update APT package cache
-  action: apt update_cache=yes
-  tags: apt
-
-- name: Upgrade APT to the lastest packages
-  action: apt upgrade=safe
+- name: Update APT packages
+  apt:
+    update_cache: yes
+    upgrade: yes
   tags: apt
 
 - name: Set the host name
@@ -12,14 +10,17 @@
 
 - name: No stupid login message
   file:
-    path=/home/pi/.hushlogin
-    state=touch
-    owner=pi
-    group=pi
-    mode=0755
+    path:  /home/pi/.hushlogin
+    state: touch
+    owner: pi
+    group: pi
+    mode:  "0755"
 
 - name: Install software
   apt:
-    name=tmux,htop,rsync
-    state=present
+    name:
+      - tmux
+      - htop
+      - rsync
+    state: present
   tags: apt
