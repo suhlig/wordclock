@@ -1,7 +1,7 @@
 - name: Update APT packages
   apt:
     update_cache: yes
-    upgrade: yes
+    upgrade: full
   tags: apt
 
 - name: Install software
