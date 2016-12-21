@@ -1,2 +1,2 @@
-- include: bundle.yml
-- include: cron.yml
+- include: roles/word-clock/bundle.yml
+- include: roles/word-clock/launch.yml
