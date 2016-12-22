@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
 require 'pry'
 
 def it_behaves_like_a_word_clock(*args)

@@ -8,6 +8,16 @@ The LEDs are driven by a [Fadecandy](https://github.com/scanlime/fadecandy) boar
 
 The hardware setup was largely inspired by the [WordClock mit WS2812](https://www.mikrocontroller.net/articles/WordClock_mit_WS2812) article at [mikrocontroller.net](https://www.mikrocontroller.net/).
 
+# LED Indices
+
+Read from top to bottom, with MSB in the top row:
+
+```                                                                                                 1         1         1         1         1         1         1         1         1         1         2         2         2         2         2         2         2         2         2
+          1         2         3         4         5         6         7         8         9         0         1         2         3         4         5         6         7         8         9         0         1         2         3         4         5         6         7         8
+012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567
+ESAISTOVIERTELEINSDREINERSECHSIEBENEELFÜNFNEUNVIERACHTNULLZWEINZWÖLFZEHNUNDOZWANZIGVIERZIGDREISSIGFÜNFZIGUHRMINUTENIVORUNDNACHEINDREIVIERTELHALBSIEBENEUNULLZWEINEFÜNFSECHSNACHTVIERDREINSUNDAELFEZEHNZWANZIGGRADREISSIGVIERZIGZWÖLFÜNFZIGMINUTENUHREFRÜHVORABENDSMITTERNACHTSMORGENSWARMMITTAGS
+```
+
 # Development
 
 This is a regular Ruby project, i.e. after cloning the project, the usual

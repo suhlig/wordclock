@@ -16,6 +16,7 @@ module WordClock
     # For the given hour and minute, return the indices of all pixels to be lit
     # in the stripe of pixels
     #
+    # rubocop:disable Metrics/CyclomaticComplexity
     def pixels(hour, minute)
       if hour.zero?
         return lookup('ES', 'IST', 'MITTERNACHT')                               if minute.zero?
@@ -60,6 +61,7 @@ module WordClock
 
       lookup('ES', 'IST', hour_words(hour), 'UHR', minute_words(minute))
     end
+    # rubocop:enable Metrics/CyclomaticComplexity
 
     private
 
@@ -118,6 +120,7 @@ module WordClock
       ][hour]
     end
 
+    # rubocop:disable Metrics/MethodLength
     def minute_words(minute)
       [
         nil,
