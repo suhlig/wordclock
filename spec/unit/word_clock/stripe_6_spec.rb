@@ -4,7 +4,27 @@ require 'word_clock/stripe'
 require 'shared_examples_for_word_clock'
 
 RSpec.describe WordClock::Stripe do
-  # 06:00..06:13
+  # 06:00..06:04
+
+  describe 'es ist fünf nach sechs' do
+    it_behaves_like_a_word_clock(
+      6,
+      5,
+      [0, 1, 3, 4, 5, 38, 39, 40, 41, 122, 123, 124, 125, 166, 167, 168, 169, 170]
+    )
+  end
+
+  # 6:06..06:09
+
+  describe 'es ist zehn nach sechs' do
+    it_behaves_like_a_word_clock(
+      6,
+      10,
+      [0, 1, 3, 4, 5, 68, 69, 70, 71, 122, 123, 124, 125, 166, 167, 168, 169, 170]
+    )
+  end
+
+  # 06:11..06:13
 
   describe 'es ist sechs uhr vier zehn' do
     it_behaves_like_a_word_clock(
