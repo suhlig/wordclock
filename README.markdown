@@ -6,7 +6,7 @@ This is an implementation of a [Word Clock](http://www.instructables.com/id/Word
 
 The LEDs are driven by a [Fadecandy](https://github.com/scanlime/fadecandy) board using [faderuby](https://github.com/JamesHarrison/faderuby).
 
-The hardware setup was largely inspired by the [WordClock mit WS2812](https://www.mikrocontroller.net/articles/WordClock_mit_WS2812) article at [mikrocontroller.net](https://www.mikrocontroller.net/).
+The hardware setup was largely inspired by the [WordClock mit WS2812](https://www.mikrocontroller.net/articles/WordClock_mit_WS2812) article at [mikrocontroller.net](https://www.mikrocontroller.net/). It uses it's [24 hours version](https://www.mikrocontroller.net/wikifiles/1/12/WordClock24h-Frontplatte-800x800.png) as character table.
 
 # LED Indices
 
