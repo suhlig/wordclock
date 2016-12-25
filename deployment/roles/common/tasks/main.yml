@@ -13,10 +13,6 @@
     state: present
   tags: apt
 
-- name: Set the host name
-  hostname:
-    name: wordclock
-
 - name: Copy the public key of the user who is running ansible to the remote machine
   authorized_key:
     user: pi
