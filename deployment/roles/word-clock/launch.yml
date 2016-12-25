@@ -17,5 +17,5 @@
 - cron:
     user: pi
     name: "Update time at word-clock"
-    job: "bundle exec /opt/word-clock/current/bin/word-clock"
+    job: "bundle exec /opt/word-clock/current/exe/word-clock"
   tags: cron

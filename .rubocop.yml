@@ -5,7 +5,7 @@ AllCops:
     - '**/Guardfile'
     - '**/*.gemspec'
     - '**/Rakefile'
-    - 'bin/*'
+    - 'exe/*'
   Exclude:
     - vendor/**/*
     - db/migrations/**/*
