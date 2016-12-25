@@ -40,7 +40,7 @@ module WordClock
         return lookup('ES', 'IST', 'ZEHN', 'NACH', 'EINS') if 10 == minute
       end
 
-      if 13 > hour
+      if hour < 12
         return lookup('ES', 'IST', 'FÜNF', 'NACH', hour_words(hour))             if 5 == minute
         return lookup('ES', 'IST', 'ZEHN', 'NACH', hour_words(hour))             if 10 == minute
         return lookup('ES', 'IST', 'VIERTEL', hour_words(hour + 1))              if 15 == minute
