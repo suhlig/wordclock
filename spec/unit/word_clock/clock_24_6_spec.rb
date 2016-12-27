@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 require 'spec_helper'
-require 'word_clock/stripe'
 require 'shared_examples_for_word_clock'
 
-RSpec.describe WordClock::Stripe do
+RSpec.describe WordClock::Clock24 do
   # 06:00..06:04
 
   describe 'es ist fünf nach sechs' do

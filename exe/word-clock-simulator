@@ -3,32 +3,31 @@
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-require 'word_clock/stripe'
-require 'word_clock/simulator'
-require 'word_clock/border'
-
-stripe = WordClock::Stripe.new
-clock = WordClock::Simulator.new
-border = WordClock::Border::FRAME
-# border = WordClock::Border::NULL
+require 'word_clock/clock_24'
+require 'word_clock/terminal/client'
+require 'word_clock/terminal/strip'
 
 if ARGV.size.zero?
-  now = Time.new
-  puts border.frame(clock.show(stripe.pixels(now.hour, now.min)))
+  clock = WordClock::Clock24.new
 elsif 1 == ARGV.size
-  if '--all' == ARGV.first
-    (0..23).each do |hour|
-      (0..59).each do |minute|
-        puts sprintf('%{h}:%02{m}', h: hour, m: minute)
-        puts border.frame(clock.show(stripe.pixels(hour, minute)))
-      end
-    end
-  elsif '--words' == ARGV.first
-    puts border.frame(clock.show)
-  end
-elsif 2 == ARGV.size
-  puts border.frame(clock.show(stripe.pixels(ARGV.first.to_i, ARGV.last.to_i)))
+  time = Time.parse(ARGV.first)
+  clock = WordClock::Clock24.new(time)
 else
   warn "Unknown arguments #{ARGV}"
-  exit
+  exit 1
 end
+
+client = WordClock::Terminal::Client.new(
+  STDOUT,
+  18, 16
+  )
+
+strip = WordClock::Terminal::Strip.new(clock)
+
+color = { r: rand(50..255), g: rand(50..255), b: rand(50..255) }
+
+clock.pixels.each do |i|
+  strip.pixels[i].set(color)
+end
+
+client.write(strip)

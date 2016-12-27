@@ -2,7 +2,7 @@
 
 ![Front](doc/front.jpg) ![Back](doc/back.jpg)
 
-This is an implementation of a [Word Clock](http://www.instructables.com/id/Wordclock/) in Ruby. It maps every point in time between 0:01 and midnight to a sentence, which is represented as positions of pixels to light up. The positions are for a single, continuous strip of LEDs. The current implementation uses German words.
+This is an implementation of a [Word Clock](http://www.instructables.com/id/Wordclock/) in Ruby. It maps every point in time between midnight and 23:59 hours to a sentence, which is represented as positions of pixels to light up. The current implementation uses German words.
 
 The LEDs are driven by a [Fadecandy](https://github.com/scanlime/fadecandy) board using [faderuby](https://github.com/JamesHarrison/faderuby).
 
@@ -10,7 +10,7 @@ The hardware setup was largely inspired by the [WordClock mit WS2812](https://ww
 
 # LED Indices
 
-Read from top to bottom, with MSB in the top row:
+The following table shows the positions for a single, continuous strip of LEDs. Read from top to bottom, with the MSB in the top row:
 
 ```
                                                                                                     1         1         1         1         1         1         1         1         1         1         2         2         2         2         2         2         2         2         2
@@ -59,9 +59,7 @@ Since then, this is my safety procedure when soldering LEDs:
 
 ## Software Tests
 
-* `grow.rb` is nice because it highlights the first and last LED)
-
-* Also useful:
+* `fadecandy` comes with a number of useful examples that can exercise a number of LEDs:
 
   ```bash
   $ cd ~/workspace/fadecandy/examples/perl
@@ -71,6 +69,8 @@ Since then, this is my safety procedure when soldering LEDs:
   Having `random.pl` and `turnthemoff.pl` in one line ensures that all LEDs are turned off when `random.pl` is interrupted.
 
 * Tailing the log file
+
+  Assuming that `wordclock` is the host, the following will tail entries related to  `fcserver` from the system journal:
 
   ```bash
   ssh wordclock sudo journalctl -u fcserver -f

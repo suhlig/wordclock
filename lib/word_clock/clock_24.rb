@@ -1,23 +1,31 @@
 # frozen_string_literal: true
-require 'word_clock'
-require 'faderuby'
-require 'logger'
-
-#
-# Treat the whole thing as one logical stripe of LEDs
-#
 module WordClock
-  class Stripe
-    def initialize(logger: default_logger)
-      @logger = logger
+  class Clock24
+    class << self
+      #
+      # For the given pixel indices, return the words (without spaces) that are lit
+      #
+      def words(pixels)
+        Array(pixels).map { |i| chars[i] }.join
+      end
+
+      def chars
+        STRIPE.dup.chars
+      end
     end
 
+    def initialize(time=Time.now)
+      @time = time
+    end
+
+    attr_accessor :time
+
     #
-    # For the given hour and minute, return the indices of all pixels to be lit
-    # in the stripe of pixels
+    # For the current hour and minute, return the indices of all pixels to be lit
+    # in the stripe of pixels.
     #
     # rubocop:disable Metrics/CyclomaticComplexity
-    def pixels(hour, minute)
+    def pixels
       if hour.zero?
         return lookup('ES', 'IST', 'MITTERNACHT')                               if minute.zero?
         return lookup('ES', 'IST', 'EINS', 'NACH', 'MITTERNACHT')               if 1 == minute
@@ -65,19 +73,31 @@ module WordClock
 
     private
 
-    attr_reader :logger
+    # All words on the [WC24h](https://www.mikrocontroller.net/articles/WordClock_mit_WS2812#WC24h_Sammelbestellung_Frontplatten)
+    STRIPE = 'ESAISTOVIERTELEINS' \
+             'DREINERSECHSIEBENE' \
+             'ELFÜNFNEUNVIERACHT' \
+             'NULLZWEINZWÖLFZEHN' \
+             'UNDOZWANZIGVIERZIG' \
+             'DREISSIGFÜNFZIGUHR' \
+             'MINUTENIVORUNDNACH' \
+             'EINDREIVIERTELHALB' \
+             'SIEBENEUNULLZWEINE' \
+             'FÜNFSECHSNACHTVIER' \
+             'DREINSUNDAELFEZEHN' \
+             'ZWANZIGGRADREISSIG' \
+             'VIERZIGZWÖLFÜNFZIG' \
+             'MINUTENUHREFRÜHVOR' \
+             'ABENDSMITTERNACHTS' \
+             'MORGENSWARMMITTAGS' \
 
-    def default_logger
-      Logger.new(STDERR).tap do |logger|
-        logger.level = Logger::WARN
-      end
-    end
+    attr_reader :hour, :minute
 
     def lookup(*words)
       index = 0
 
       words.compact.flatten.map do |word|
-        index = WordClock::STRIPE.index(word, index)
+        index = STRIPE.index(word, index)
         last = index + word.length
         (index..(last - 1)).to_a.tap do
           index = last
@@ -86,9 +106,7 @@ module WordClock
           # so that there is always space between two words
           index += 1 unless (index % 18).zero?
         end
-      end.compact.flatten.tap do |result|
-        logger.debug "#{words}: #{result}"
-      end
+      end.compact.flatten
     end
 
     def hour_words(hour)
@@ -184,6 +202,14 @@ module WordClock
         %w(ACHT UND FÜNFZIG),
         %w(NEUN UND FÜNFZIG),
       ][minute]
+    end
+
+    def hour
+      time.hour
+    end
+
+    def minute
+      time.min
     end
   end
 end

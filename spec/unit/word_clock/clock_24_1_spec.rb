@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 require 'spec_helper'
-require 'word_clock/stripe'
 require 'shared_examples_for_word_clock'
 
-RSpec.describe WordClock::Stripe do
+RSpec.describe WordClock::Clock24 do
   describe 'es ist ein uhr' do
     it_behaves_like_a_word_clock(
       1,

@@ -2,18 +2,34 @@
 # frozen_string_literal: true
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-require 'word_clock/stripe'
-require 'word_clock/fade_candy'
+require 'word_clock/clock_24'
+require 'faderuby'
 
-stripe = WordClock::Stripe.new
-clock = WordClock::FadeCandy.new(
-  ENV.fetch('WORDCLOCK_HOST', 'localhost'),
-  ENV.fetch('WORDCLOCK_PORT', '7890').to_i
+client = FadeRuby::Client.new(
+  ENV.fetch('OPC_HOST', 'localhost'),
+  ENV.fetch('OPC_PORT', '7890').to_i
 )
+
+strip = FadeRuby::Strip.new(18 * 16)
+strip.set_all(r: 0, g: 0, b: 0)
+client.write(strip)
+
+clock = WordClock::Clock24.new
 
 (0..23).each do |hour|
   (0..59).each do |minute|
-    clock.show(stripe.pixels(hour, minute))
-    sleep 0.5
+    strip.set_all(r: 0, g: 0, b: 0)
+    client.write(strip)
+
+    clock.time = Time.parse("#{hour}:#{minute}")
+
+    clock.pixels.each do |i|
+      color = { r: rand(50..255), g: rand(50..255), b: rand(50..255) }
+      strip.pixels[i].set(color)
+    end
+
+    client.write(strip)
+
+    sleep 0.2
   end
 end

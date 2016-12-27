@@ -1,8 +1,9 @@
 # frozen_string_literal: true
-require 'word_clock'
+require 'word_clock/clock_24'
 
 RSpec.shared_examples 'a word clock' do |description, hour, minute, expected_pixels|
-  let(:pixels) { subject.pixels(hour, minute) }
+  let(:subject) { WordClock::Clock24.new(Time.parse("#{hour}:#{minute}")) }
+  let(:pixels) { subject.pixels }
 
   it 'has the right amount of pixels lit' do
     expect(pixels.size).to eq(phrase_length(description))
@@ -15,6 +16,6 @@ RSpec.shared_examples 'a word clock' do |description, hour, minute, expected_pix
   end
 
   it 'has the right pixels lit' do
-    expect(pixels).to eq(expected_pixels), "Expected #{expected_pixels}, but got #{pixels} => '#{WordClock.reverse(pixels)}'"
+    expect(pixels).to eq(expected_pixels), "Expected #{expected_pixels}, but got #{pixels} => '#{WordClock::Clock24.words(pixels)}'"
   end
 end

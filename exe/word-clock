@@ -3,25 +3,32 @@
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-require 'word_clock/stripe'
-require 'word_clock/fade_candy'
+require 'word_clock/clock_24'
+require 'faderuby'
 
 if ARGV.size.zero?
-  now = Time.new
-  hour = now.hour
-  min = now.min
-elsif 2 == ARGV.size
-  hour = ARGV.first.to_i
-  min = ARGV.last.to_i
+  clock = WordClock::Clock24.new
+elsif 1 == ARGV.size
+  time = Time.parse(ARGV.first)
+  clock = WordClock::Clock24.new(time)
 else
   warn "Unknown arguments #{ARGV}"
   exit 1
 end
 
-stripe = WordClock::Stripe.new
-clock = WordClock::FadeCandy.new(
-  ENV.fetch('WORDCLOCK_HOST', 'localhost'),
-  ENV.fetch('WORDCLOCK_PORT', '7890').to_i
+client = FadeRuby::Client.new(
+  ENV.fetch('OPC_HOST', 'localhost'),
+  ENV.fetch('OPC_PORT', '7890').to_i
 )
 
-clock.show(stripe.pixels(hour, min))
+strip = FadeRuby::Strip.new(18 * 16)
+strip.set_all(r: 0, g: 0, b: 0)
+client.write(strip)
+
+color = { r: rand(50..255), g: rand(50..255), b: rand(50..255) }
+
+clock.pixels.each do |i|
+  strip.pixels[i].set(color)
+end
+
+client.write(strip)
