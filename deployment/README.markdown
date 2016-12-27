@@ -17,7 +17,7 @@ In this document, the RaspberryPi will be called `wordclock`, whereas the contro
 * Install the required Ansible roles:
 
   ```bash
-  control$ ansible-galaxy install geerlingguy.ntp jnv.unattended-upgrades
+  control$ ansible-galaxy install geerlingguy.ntp carlosbuenosvinos.ansistrano-deploy jnv.unattended-upgrades
   ```
 
 # Prepare the RaspberryPi
