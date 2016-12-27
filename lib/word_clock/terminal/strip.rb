@@ -7,7 +7,7 @@ module WordClock
       attr_reader :pixels
 
       def initialize(clock)
-        @pixels = clock.chars.map do |char|
+        @pixels = Clock24.chars.map do |char|
           Pixel.new(char)
         end
       end
