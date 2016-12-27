@@ -8,7 +8,7 @@ guard :rspec, cmd: 'bundle exec rspec' do
   watch(rspec.spec_support) { rspec.spec_dir }
   watch(rspec.spec_files)
   watch(%r{^lib/.+/(.+)\.rb$}) do |m|
-    (0..23).map { |hour|  "spec/unit/word_clock/#{m[1]}_#{hour}_spec.rb"}
+    (0..23).map { |hour| "spec/unit/word_clock/#{m[1]}_#{hour}_spec.rb" }
   end
 
   ruby = dsl.ruby

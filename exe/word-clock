@@ -4,6 +4,7 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'word_clock/clock_24'
+require 'word_clock/minumum_luminance_sampler'
 require 'faderuby'
 
 if ARGV.size.zero?
@@ -25,7 +26,7 @@ strip = FadeRuby::Strip.new(18 * 16)
 strip.set_all(r: 0, g: 0, b: 0)
 client.write(strip)
 
-color = { r: rand(50..255), g: rand(50..255), b: rand(50..255) }
+color = WordClock::MinumumLuminanceSampler.new.sample.to_h
 
 clock.pixels.each do |i|
   strip.pixels[i].set(color)
