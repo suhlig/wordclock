@@ -1,11 +1,19 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
-
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
+require 'word_clock/stripe'
+require 'word_clock/fade_candy'
+
+stripe = WordClock::Stripe.new
+clock = WordClock::FadeCandy.new(
+  ENV.fetch('WORDCLOCK_HOST', 'localhost'),
+  ENV.fetch('WORDCLOCK_PORT', '7890').to_i
+)
 
 (0..23).each do |hour|
   (0..59).each do |minute|
-    `bundle exec exe/word-clock #{hour} #{minute}`
+    clock.show(stripe.pixels(hour, minute))
     sleep 0.5
   end
 end
