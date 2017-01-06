@@ -26,7 +26,7 @@ strip = FadeRuby::Strip.new(18 * 16)
 strip.set_all(r: 0, g: 0, b: 0)
 client.write(strip)
 
-color = WordClock::MinumumLuminanceSampler.new.sample.to_h
+color = WordClock::MinumumLuminanceSampler.new(100..150).sample.to_h
 
 clock.pixels.each do |i|
   strip.pixels[i].set(color)
