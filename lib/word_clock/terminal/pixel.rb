@@ -17,7 +17,7 @@ module WordClock
         if OFF == @color
           '.'
         else
-          @char # TODO: colorize
+          @char # print as-is, ignoring color
         end
       end
     end
