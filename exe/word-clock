@@ -5,17 +5,20 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'word_clock/clock_24'
 require 'word_clock/minumum_luminance_sampler'
+require 'word_clock/xkcd_colors'
+require 'word_clock/calendar_facade'
 require 'faderuby'
 
 if ARGV.size.zero?
-  clock = WordClock::Clock24.new
+  time = Time.now
 elsif 1 == ARGV.size
   time = Time.parse(ARGV.first)
-  clock = WordClock::Clock24.new(time)
 else
   warn "Unknown arguments #{ARGV}"
   exit 1
 end
+
+clock = WordClock::Clock24.new(time)
 
 client = FadeRuby::Client.new(
   ENV.fetch('OPC_HOST', 'localhost'),
@@ -26,10 +29,11 @@ strip = FadeRuby::Strip.new(18 * 16)
 strip.set_all(r: 0, g: 0, b: 0)
 client.write(strip)
 
-color = WordClock::MinumumLuminanceSampler.new(100..150).sample.to_h
+sampler = WordClock::CalendarFacade.new(WordClock::XkcdColors.new)
 
 clock.pixels.each do |i|
-  strip.pixels[i].set(color)
+  color = sampler.sample(time)
+  strip.pixels[i].set(color.to_h)
 end
 
 client.write(strip)

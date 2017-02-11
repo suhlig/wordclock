@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module WordClock
   class Color
+    attr_reader :red, :green, :blue
+
     def initialize(red, green, blue)
       @red   = red
       @green = green
@@ -13,6 +15,10 @@ module WordClock
 
     def to_h
       { r: @red, g: @green, b: @blue }
+    end
+
+    def to_s
+      "[#{red},#{green},#{blue}]"
     end
   end
 end
