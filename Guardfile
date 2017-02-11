@@ -11,6 +11,10 @@ guard :rspec, cmd: 'bundle exec rspec' do
     (0..23).map { |hour| "spec/unit/word_clock/#{m[1]}_#{hour}_spec.rb" }
   end
 
+  watch(%r{^lib(/.+/.+)\.rb$}) do |m|
+    "spec/unit#{m[1]}_spec.rb"
+  end
+
   ruby = dsl.ruby
   dsl.watch_spec_files_for(ruby.lib_files)
 end
