@@ -3,7 +3,7 @@ require 'word_clock/named_color'
 
 module WordClock
   class XkcdColors
-    COLORS = {
+    COLORS = { # http://www.w3schools.com/colors/colors_xkcd.asp
       '8FFE09' => 'acidgreen',
       'BD6C48' => 'adobe',
       '54AC68' => 'algae',
