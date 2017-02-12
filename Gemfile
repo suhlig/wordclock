@@ -13,4 +13,6 @@ group :development do
   gem 'rb-readline'
   gem 'rspec'
   gem 'rubocop'
+  gem 'terminal-notifier'
+  gem 'terminal-notifier-guard'
 end
