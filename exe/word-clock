@@ -29,10 +29,10 @@ strip = FadeRuby::Strip.new(18 * 16)
 strip.set_all(r: 0, g: 0, b: 0)
 client.write(strip)
 
-sampler = WordClock::CalendarFacade.new(WordClock::XkcdColors.new)
+color_picker = WordClock::ColorPicker.new(WordClock::XkcdColors.new)
 
 clock.pixels.each do |i|
-  color = sampler.sample(time)
+  color = color_picker.choose(time)
   strip.pixels[i].set(color.to_h)
 end
 
