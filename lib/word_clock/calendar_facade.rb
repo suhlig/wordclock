@@ -1,20 +1,37 @@
 # frozen_string_literal: true
+require 'easter'
+
 module WordClock
+  class Computus
+    class << self
+      def ash_wednesday
+        AllDayMatcher.new(Easter.ash_wednesday)
+      end
+
+      def shrove_monday
+        AllDayMatcher.new(Easter.easter - 48)
+      end
+
+      def shrove_tuesday
+        AllDayMatcher.new(Easter.easter - 47)
+      end
+    end
+  end
+
   class CarnivalMatcher
-    # TODO: Between 11.11. 11:11 and end of Faschingsdienstag
+    # TODO: use a range to express time >= "11.11. 11:11" && time <= "11.11. 23:59"
     def match(time)
       time.month == 11 && time.day == 11 && time.hour == 11 && time.min == 11
     end
   end
 
   class AllDayMatcher
-    def initialize(day:, month:)
-      @day = day
-      @month = month
+    def initialize(time)
+      @time = time
     end
 
     def match(time)
-      time.day == @day && time.month == @month
+      time.day == @time.day && time.month == @time.month
     end
   end
 
@@ -23,7 +40,10 @@ module WordClock
       @sampler = sampler
       @matchers = [
         CarnivalMatcher.new,
-        AllDayMatcher.new(day: 8, month: 4)
+        AllDayMatcher.new(Time.parse('April 8')),
+        Computus.shrove_monday,
+        Computus.shrove_tuesday,
+        Computus.ash_wednesday,
       ]
     end
 

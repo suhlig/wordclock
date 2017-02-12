@@ -39,7 +39,7 @@ RSpec.describe WordClock::CalendarFacade do
     end
   end
 
-  context 'at the start of carnival' do
+  context 'at 11.11. after 11:11' do
     let(:time) { Time.parse('11.11.2017 11:11:23') }
 
     it 'retrieves a new color from the delegate with every sample' do
@@ -50,6 +50,46 @@ RSpec.describe WordClock::CalendarFacade do
       expect(sampler.sample(time)).to eq('red')
       expect(sampler.sample(time)).to eq('green')
       expect(sampler.sample(time)).to eq('blue')
+    end
+  end
+
+  context 'at Rosenmontag 2017' do
+    let(:time) { Time.parse('27.2.2017') }
+
+    it 'retrieves a new color from the delegate with every sample' do
+      expect(delegate).to receive(:sample).and_return('red')
+      expect(delegate).to receive(:sample).and_return('green')
+      expect(delegate).to receive(:sample).and_return('blue')
+
+      expect(sampler.sample(time)).to eq('red')
+      expect(sampler.sample(time)).to eq('green')
+      expect(sampler.sample(time)).to eq('blue')
+    end
+  end
+
+  context 'at Faschingsdienstag 2017' do
+    let(:time) { Time.parse('28.2.2017') }
+
+    it 'retrieves a new color from the delegate with every sample' do
+      expect(delegate).to receive(:sample).and_return('red')
+      expect(delegate).to receive(:sample).and_return('green')
+      expect(delegate).to receive(:sample).and_return('blue')
+
+      expect(sampler.sample(time)).to eq('red')
+      expect(sampler.sample(time)).to eq('green')
+      expect(sampler.sample(time)).to eq('blue')
+    end
+  end
+
+  context 'at Aschermittwoch 2017' do
+    let(:time) { Time.parse('1.3.2017') }
+
+    it 'ignores the delegate and returns grey all day' do
+      expect(delegate).to_not receive(:sample)
+
+      42.times do
+        expect(sampler.sample(time)).to eq('grey')
+      end
     end
   end
 

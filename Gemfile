@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 source 'http://rubygems.org'
 
+gem 'easter'
 gem 'faderuby'
 
 group :development do
