@@ -14,7 +14,12 @@ module WordClock
       @samplers = {
         CarnivalArbiter.new => sampler,
         AllDayArbiter.new(Easter.ash_wednesday) => always_grey,
+
+        # Birthdays
+        AllDayArbiter.new(Time.parse('January 13')) => sampler,
+        AllDayArbiter.new(Time.parse('March 10')) => sampler,
         AllDayArbiter.new(Time.parse('April 8')) => sampler,
+        AllDayArbiter.new(Time.parse('July 18')) => sampler,
       }
     end
 
