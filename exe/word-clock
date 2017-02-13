@@ -4,9 +4,8 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'word_clock/clock_24'
-require 'word_clock/minumum_luminance_sampler'
 require 'word_clock/xkcd_colors'
-require 'word_clock/calendar_facade'
+require 'word_clock/color_picker'
 require 'faderuby'
 
 if ARGV.size.zero?

@@ -92,6 +92,7 @@ DEPENDENCIES
   guard-rspec
   pry
   pry-byebug
+  rainbow
   rake
   rb-readline
   rspec

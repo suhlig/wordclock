@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 
 gem 'easter'
 gem 'faderuby'
+gem 'rainbow'
 
 group :development do
   gem 'bundler'

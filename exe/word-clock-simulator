@@ -4,30 +4,27 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'word_clock/clock_24'
-require 'word_clock/minumum_luminance_sampler'
+require 'word_clock/xkcd_colors'
+require 'word_clock/color_picker'
 require 'word_clock/terminal/client'
 require 'word_clock/terminal/strip'
 
 if ARGV.size.zero?
-  clock = WordClock::Clock24.new
+  time = Time.now
 elsif 1 == ARGV.size
   time = Time.parse(ARGV.first)
-  clock = WordClock::Clock24.new(time)
 else
   warn "Unknown arguments #{ARGV}"
   exit 1
 end
 
-client = WordClock::Terminal::Client.new(
-  STDOUT,
-  18, 16
-  )
-
+clock = WordClock::Clock24.new(time)
 strip = WordClock::Terminal::Strip.new(clock)
-color = WordClock::MinumumLuminanceSampler.new(50..255).sample.to_h
+color_picker = WordClock::ColorPicker.new(WordClock::XkcdColors.new)
 
 clock.pixels.each do |i|
+  color = color_picker.choose(time)
   strip.pixels[i].set(color)
 end
 
-client.write(strip)
+WordClock::Terminal::Client.new(STDOUT, 18, 16).write(strip)

@@ -23,7 +23,7 @@ module WordClock
         return sampler.sample if arbiter.match?(time)
       end
 
-      @color ||= @sampler.sample(time)
+      @color ||= @sampler.sample
     end
   end
 end

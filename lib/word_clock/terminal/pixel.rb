@@ -1,8 +1,10 @@
 # frozen_string_literal: true
+require 'rainbow'
+
 module WordClock
   module Terminal
     class Pixel
-      OFF = { r: 0, g: 0, b: 0 }.freeze
+      OFF = { red: 0, green: 0, blue: 0 }.freeze
 
       def initialize(char)
         @color = OFF.dup
@@ -15,9 +17,9 @@ module WordClock
 
       def to_s
         if OFF == @color
-          '.'
+          Rainbow(@char).color(43, 43, 43)
         else
-          @char # print as-is, ignoring color
+          Rainbow(@char).color(@color.red, @color.green, @color.blue)
         end
       end
     end
