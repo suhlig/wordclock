@@ -8,7 +8,7 @@ module WordClock
       Kernel.srand
     end
 
-    def sample(time=nil)
+    def sample
       loop do
         c = self.class.sample
         return c if @luminance_range.include?(c.luminance)

@@ -928,7 +928,7 @@ module WordClock
       'BFF128' => 'yellowygreen',
     }.freeze
 
-    def sample(time=nil)
+    def sample
       index = Kernel.rand(COLORS.keys.size)
       rgb = COLORS.keys[index]
       r, g, b = *rgb.chars.each_slice(2).map { |pair| pair.join.to_i(16) }
