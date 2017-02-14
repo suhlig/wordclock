@@ -1,38 +1,33 @@
 #!/usr/bin/env ruby -I lib
 # frozen_string_literal: true
 
-require 'word_clock/stripe'
-require 'word_clock/icon_display'
+#
+# Convert an image to PNM format with
+#
+# convert -resize '18x16' image.png image.pnm
+#
 
-if ARGV.size.zero?
-  now = Time.new
-  hour = now.hour
-  min = now.min
-elsif 2 == ARGV.size
-  hour = ARGV.first.to_i
-  min = ARGV.last.to_i
-else
-  warn "Unknown arguments #{ARGV}"
+require 'pnm'
+require 'faderuby'
+
+if ARGV.empty?
+  warn 'Error: Need at least one PNM file to show'
   exit 1
 end
 
-stripe = WordClock::Stripe.new
-clock = WordClock::IconDisplay.new('wordclock', 7890)
+client = FadeRuby::Client.new(
+  ENV.fetch('OPC_HOST', 'localhost'),
+  ENV.fetch('OPC_PORT', '7890').to_i
+)
 
-require "pnm"
-require "matrix"
-require "paint"
+matrix = FadeRuby::Matrix.new(18, 16)
+matrix.set_all(r: 0, g: 0, b: 0)
+client.write(matrix)
 
-image = PNM.read('assets/xmastree.ppm')
-icon = Matrix.rows(image.pixels.dup)
-
-# fill missing columns with off pixels
-# TODO Center the image if too small
-icon = Matrix.columns(icon.transpose.to_a << Array.new(16, [0,0,0]))
-icon = Matrix.columns(icon.transpose.to_a << Array.new(16, [0,0,0]))
-
-icon.row_vectors.each do |row|
-  warn '| ' + row.map { |e| Paint['•', e] }.to_a.join(' ') << '|'
+PNM.read(ARGV.first).pixels.each.with_index do |row, y|
+  row.each.with_index do |pixel, x|
+    matrix[x, y] = FadeRuby::Pixel.new(*pixel)
+  end
 end
 
-clock.show(icon)
+client.write(matrix)

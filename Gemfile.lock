@@ -6,7 +6,7 @@ GEM
     coderay (1.1.1)
     diff-lcs (1.2.5)
     easter (0.1.2)
-    faderuby (0.0.1)
+    faderuby (0.0.2)
     ffi (1.9.14)
     formatador (0.2.5)
     guard (2.14.0)
@@ -89,7 +89,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   easter
-  faderuby
+  faderuby (~> 0.0.2)
   guard-bundler
   guard-rspec
   paint
