@@ -1,0 +1,4 @@
+- src: geerlingguy.ntp
+- src: carlosbuenosvinos.ansistrano-deploy
+- src: jnv.unattended-upgrades
+- src: nerab.rsyslog-patch

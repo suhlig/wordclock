@@ -38,4 +38,3 @@
     - carlosbuenosvinos.ansistrano-deploy
     - jnv.unattended-upgrades
     - nerab.rsyslog-patch
-    - tersmitten.logrotated
