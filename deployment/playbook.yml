@@ -37,4 +37,5 @@
     - geerlingguy.ntp
     - carlosbuenosvinos.ansistrano-deploy
     - jnv.unattended-upgrades
-    - rsyslog-patch
+    - nerab.rsyslog-patch
+    - tersmitten.logrotated
