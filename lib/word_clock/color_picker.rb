@@ -3,6 +3,7 @@ require 'word_clock/color'
 require 'word_clock/static_color_sampler'
 require 'word_clock/all_day_arbiter'
 require 'word_clock/carnival_arbiter'
+require 'word_clock/new_year_arbiter'
 
 module WordClock
   class ColorPicker
@@ -13,13 +14,14 @@ module WordClock
 
       @samplers = {
         CarnivalArbiter.new => sampler,
-        AllDayArbiter.new(Easter.ash_wednesday) => always_grey,
-
-        # Birthdays
+        AllDayArbiter.new(Easter.ash_wednesday)     => always_grey,
         AllDayArbiter.new(Time.parse('January 13')) => sampler,
-        AllDayArbiter.new(Time.parse('March 10')) => sampler,
-        AllDayArbiter.new(Time.parse('April 8')) => sampler,
-        AllDayArbiter.new(Time.parse('July 18')) => sampler,
+        AllDayArbiter.new(Time.parse('March 10'))   => sampler,
+        AllDayArbiter.new(Time.parse('April 8'))    => sampler,
+        AllDayArbiter.new(Time.parse('July 18'))    => sampler,
+        AllDayArbiter.new(Time.parse('Dec 31'))     => sampler,
+        NewYearPartyArbiter.new                     => sampler,
+        NewYearHangoverArbiter.new                  => always_grey,
       }
     end
 
