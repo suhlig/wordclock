@@ -3,6 +3,8 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'word_clock/clock_24'
+require 'word_clock/xkcd_colors'
+require 'word_clock/color_picker'
 require 'faderuby'
 
 client = FadeRuby::Client.new(
@@ -22,10 +24,11 @@ clock = WordClock::Clock24.new
     client.write(strip)
 
     clock.time = Time.parse("#{hour}:#{minute}")
+    color_picker = WordClock::ColorPicker.new(WordClock::XkcdColors.new)
 
     clock.pixels.each do |i|
-      color = { r: rand(50..255), g: rand(50..255), b: rand(50..255) }
-      strip.pixels[i].set(color)
+      color = color_picker.choose(clock.time)
+      strip.pixels[i].set({ r: color.red, g: color.green, b: color.blue })
     end
 
     client.write(strip)
