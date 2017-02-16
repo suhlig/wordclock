@@ -1,5 +1,7 @@
 # Ruby Word Clock
 
+[![Build Status](https://travis-ci.org/suhlig/wordclock.svg?branch=master)](https://travis-ci.org/suhlig/wordclock)
+
 ![Front](doc/front.jpg) ![Back](doc/back.jpg)
 
 This is an implementation of a [Word Clock](http://www.instructables.com/id/Wordclock/) in Ruby. It maps every point in time between midnight and 23:59 hours to a sentence, which is represented as positions of pixels to light up. The current implementation uses German words.

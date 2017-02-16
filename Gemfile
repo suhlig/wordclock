@@ -19,4 +19,5 @@ group :development do
   gem 'rubocop'
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
+  gem 'travis'
 end
