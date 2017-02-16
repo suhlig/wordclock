@@ -2,6 +2,7 @@
 require 'spec_helper'
 require 'word_clock/carnival_arbiter'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe WordClock::CarnivalArbiter do
   subject(:arbiter) { WordClock::CarnivalArbiter.new }
 

@@ -3,6 +3,7 @@ require 'spec_helper'
 require 'word_clock/terminal/client'
 require 'stringio'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe WordClock::Terminal::Client do
   subject { WordClock::Terminal::Client.new(output, 18, 16) }
   let(:output) { StringIO.new }

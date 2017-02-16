@@ -2,6 +2,7 @@
 require 'spec_helper'
 require 'shared_examples_for_word_clock'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe WordClock::Clock24 do
   describe 'es ist ein uhr' do
     it_behaves_like_a_word_clock(
