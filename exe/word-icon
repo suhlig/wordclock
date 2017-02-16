@@ -20,14 +20,18 @@ client = FadeRuby::Client.new(
   ENV.fetch('OPC_PORT', '7890').to_i
 )
 
-matrix = FadeRuby::Matrix.new(18, 16)
-matrix.set_all(r: 0, g: 0, b: 0)
-client.write(matrix)
+WIDTH = 18
+HEIGHT = 16
+
+strip = FadeRuby::Strip.new(WIDTH * HEIGHT)
+strip.set_all(r: 0, g: 0, b: 0)
+client.write(strip)
 
 PNM.read(ARGV.first).pixels.each.with_index do |row, y|
   row.each.with_index do |pixel, x|
-    matrix[x, y] = FadeRuby::Pixel.new(*pixel)
+    idx = y * WIDTH + x
+    strip.pixels[idx].set(r: pixel[0], g: pixel[1], b: pixel[2])
   end
 end
 
-client.write(matrix)
+client.write(strip)

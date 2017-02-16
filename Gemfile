@@ -2,7 +2,7 @@
 source 'http://rubygems.org'
 
 gem 'easter'
-gem 'faderuby', '~> 0.0.2'
+gem 'faderuby'
 gem 'paint'
 gem 'pnm'
 gem 'rainbow'
