@@ -8,7 +8,7 @@ set events: []
 get '/' do
   erb :events, layout: true, locals: {
     title: 'WordClock - letzte Ereignisse',
-    events: settings.events.reverse,
+    events: settings.events.last(10).reverse,
     sse_events_url: '/stream'
   }
 end
