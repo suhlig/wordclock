@@ -52,6 +52,26 @@ It's even prettier when the party mode is enabled (e.g. on Shrove Tuesday):
 
 See [deployment](deployment/README.markdown) for details.
 
+# Web Application
+
+## Server
+
+```
+$ bundle install
+$ PORT=4567 SSE_EVENTS_URL=http://localhost:4567/stream bundle exec foreman start
+$ open http://localhost:4567/
+```
+
+If you just want to listen in with `curl`:
+
+```
+$ curl -s -H "Accept: text/event-stream" http://localhost:4567/stream
+```
+
+## Client
+
+The `word-clock` script will post a message to where `$SSE_POST_URL` points. The server will then send an update event via SSE to all connected web browsers, which will show an updated event list.
+
 # Troubleshooting the WS2811B LEDs
 
 ## Wiring

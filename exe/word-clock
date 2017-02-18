@@ -7,6 +7,7 @@ require 'word_clock/clock_24'
 require 'word_clock/xkcd_colors'
 require 'word_clock/color_picker'
 require 'faderuby'
+require 'rest-client'
 
 if ARGV.size.zero?
   time = Time.now
@@ -29,6 +30,7 @@ strip.set_all(r: 0, g: 0, b: 0)
 client.write(strip)
 
 color_picker = WordClock::ColorPicker.new(WordClock::XkcdColors.new)
+color = nil
 
 clock.pixels.each do |i|
   color = color_picker.choose(time)
@@ -36,3 +38,10 @@ clock.pixels.each do |i|
 end
 
 client.write(strip)
+
+RestClient.post(
+  ENV.fetch('SSE_POST_URL'),
+  msg: { time: time, color: color }.to_json,
+  content_type: 'json',
+  accept: 'json'
+)

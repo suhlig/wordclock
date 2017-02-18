@@ -1,0 +1,117 @@
+// based on http://necolas.github.io/normalize.css
+
+html {
+  background: #fff;
+  color: #333;
+  font: 16px/1.4 Open Sans, Helvetica, Arial, sans-serif;
+}
+
+body {
+  padding: 20px 40px;
+  margin: 0 auto;
+}
+
+a {
+  color: #e3695f;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: underline;
+}
+
+h1,
+h2 {
+  line-height: 1.2;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+p {
+  margin: 1em 0;
+}
+
+@media screen and (max-width: 540px) {
+  body {
+    padding: 20px;
+    font-size: 0.875em;
+  }
+}
+
+/* http://stackoverflow.com/a/33880971 */
+.inline {
+  display: inline;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1em;
+  color: #e3695f;
+  text-decoration: none;
+}
+
+.link-button:focus {
+  outline: none;
+}
+
+.link-button:active {
+  color:red;
+}
+
+.link-button:hover {
+  text-transform: uppercase;
+}
+
+.link-button:hover:after {
+  content: "!"
+}
+
+/* navigation bar idea from http://www.w3schools.com/css/css_navbar.asp */
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul.navbar li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+
+ul.navbar li:last-child {
+    border-right: none;
+}
+
+ul.navbar li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    background-color: #eee;
+}
+
+ul.navbar li a:hover {
+    background-color: #ddd;
+}
+
+ul.navbar .active {
+  background-color: #e3695f;
+  color: #eee;
+}
+
+/* validation */
+input:invalid {
+  outline: 2px solid red;
+}
+
+input:focus:invalid {
+  color: red;
+}
+
+form th{
+  text-align: right;
+}

@@ -3,9 +3,13 @@ source 'http://rubygems.org'
 
 gem 'easter'
 gem 'faderuby'
+gem 'foreman'
 gem 'paint'
 gem 'pnm'
 gem 'rainbow'
+gem 'rest-client'
+gem 'sinatra'
+gem 'thin'
 
 group :development do
   gem 'bundler'
@@ -15,6 +19,7 @@ group :development do
   gem 'pry-byebug'
   gem 'rake'
   gem 'rb-readline'
+  gem 'rerun'
   gem 'rspec'
   gem 'rubocop'
   gem 'terminal-notifier'

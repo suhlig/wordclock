@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="de">
+  <head>
+    <title><%= title %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="normalize-4.1.1.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  </head>
+
+  <body>
+  <h1><%= title %></h1>
+  <%= yield %>
+
+  <script type="text/javascript">
+    var SSE_EVENTS_URL = "<%= sse_events_url %>";
+  </script>
+  <script src="sse.js"></script>
+  </body>
+</html>
