@@ -58,7 +58,7 @@ See [deployment](deployment/README.markdown) for details.
 
 ```
 $ bundle install
-$ PORT=4567 SSE_EVENTS_URL=http://localhost:4567/stream bundle exec foreman start
+$ PORT=4567 bundle exec foreman start
 $ open http://localhost:4567/
 ```
 

@@ -9,7 +9,7 @@ get '/' do
   erb :events, layout: true, locals: {
     title: 'WordClock - letzte Ereignisse',
     events: settings.events.reverse,
-    sse_events_url: ENV.fetch('SSE_EVENTS_URL')
+    sse_events_url: '/stream'
   }
 end
 
