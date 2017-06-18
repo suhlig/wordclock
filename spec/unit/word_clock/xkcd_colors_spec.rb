@@ -3,6 +3,7 @@
 require 'spec_helper'
 require 'word_clock/xkcd_colors'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe WordClock::XkcdColors do
   subject(:colors) { WordClock::XkcdColors.new }
 
@@ -17,6 +18,14 @@ RSpec.describe WordClock::XkcdColors do
 
     expect(sampled.name).to  eq('acidgreen')
     expect(sampled.to_s).to  eq('[143,254,9] (acidgreen)')
+  end
+
+  context 'all XKCD colors' do
+    subject(:colors) { WordClock::XkcdColors.all }
+
+    it 'have a luminance over a threshold' do
+      expect(colors).to all(satisfy { |c| c.luminance > 10 })
+    end
   end
 
   it "returns the color 'barneypurple'" do

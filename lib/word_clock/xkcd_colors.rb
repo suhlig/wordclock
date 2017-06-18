@@ -4,7 +4,9 @@ require 'word_clock/named_color'
 
 module WordClock
   class XkcdColors
-    COLORS = { # http://www.w3schools.com/colors/colors_xkcd.asp
+    # http://www.w3schools.com/colors/colors_xkcd.asp
+    # Colors commented out do not have enough luminance for us
+    COLORS = {
       '8FFE09' => 'acidgreen',
       'BD6C48' => 'adobe',
       '54AC68' => 'algae',
@@ -47,7 +49,7 @@ module WordClock
       'E6DAA6' => 'beige',
       '990F4B' => 'berry',
       'B5C306' => 'bile',
-      '000000' => 'black',
+      # '000000' => 'black',
       'AFA88B' => 'bland',
       '770001' => 'blood',
       'FE4B03' => 'bloodorange',
@@ -222,8 +224,8 @@ module WordClock
       '48C072' => 'darkmint',
       '20C073' => 'darkmintgreen',
       'A88905' => 'darkmustard',
-      '000435' => 'darknavy',
-      '00022E' => 'darknavyblue',
+      # '000435' => 'darknavy',
+      # '00022E' => 'darknavyblue',
       '373E02' => 'darkolive',
       '3C4D03' => 'darkolivegreen',
       'C65102' => 'darkorange',
@@ -542,8 +544,8 @@ module WordClock
       '4F738E' => 'metallicblue',
       '276AB3' => 'midblue',
       '50A747' => 'midgreen',
-      '03012D' => 'midnight',
-      '020035' => 'midnightblue',
+      # '03012D' => 'midnight',
+      # '020035' => 'midnightblue',
       '280137' => 'midnightpurple',
       '667C3E' => 'militarygreen',
       '7F4E1E' => 'milkchocolate',
@@ -873,8 +875,8 @@ module WordClock
       'B26400' => 'umber',
       '750851' => 'velvet',
       'F4320C' => 'vermillion',
-      '000133' => 'verydarkblue',
-      '1D0200' => 'verydarkbrown',
+      # '000133' => 'verydarkblue',
+      # '1D0200' => 'verydarkbrown',
       '062E03' => 'verydarkgreen',
       '2A0134' => 'verydarkpurple',
       'D5FFFF' => 'verylightblue',
@@ -928,6 +930,13 @@ module WordClock
       'AE8B0C' => 'yellowybrown',
       'BFF128' => 'yellowygreen',
     }.freeze
+
+    def self.all
+      COLORS.map do |rgb, name|
+        r, g, b = *rgb.chars.each_slice(2).map { |pair| pair.join.to_i(16) }
+        NamedColor.new(r, g, b, name)
+      end
+    end
 
     def sample
       index = Kernel.rand(COLORS.keys.size)
