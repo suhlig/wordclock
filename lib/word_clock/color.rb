@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module WordClock
   class Color
     attr_reader :red, :green, :blue

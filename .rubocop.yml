@@ -61,7 +61,7 @@ Performance/Sample:
 Style/Alias:
   EnforcedStyle: prefer_alias_method
 
-Style/AlignParameters:
+Layout/AlignParameters:
   Enabled: false
 
 Style/AsciiComments:
@@ -76,13 +76,13 @@ Style/BracesAroundHashParameters:
 Style/ClassAndModuleChildren:
   Enabled: false
 
-Style/ClosingParenthesisIndentation:
+Layout/ClosingParenthesisIndentation:
   Enabled: false
 
 Style/Documentation:
   Enabled: false
 
-Style/DotPosition:
+Layout/DotPosition:
   EnforcedStyle: trailing
 
 Style/DoubleNegation:
@@ -100,10 +100,10 @@ Style/GuardClause:
 Style/IfUnlessModifier:
   Enabled: false
 
-Style/IndentArray:
+Layout/IndentArray:
   EnforcedStyle: consistent
 
-Style/IndentHash:
+Layout/IndentHash:
   Enabled: false
 
 Style/Lambda:
@@ -112,10 +112,10 @@ Style/Lambda:
 Style/MultilineBlockChain:
   Enabled: false
 
-Style/MultilineBlockLayout:
+Layout/MultilineBlockLayout:
   Enabled: false
 
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   Enabled: false
 
 Style/NegatedIf:
@@ -145,7 +145,7 @@ Style/SignalException:
 Style/SingleLineBlockParams:
   Enabled: false
 
-Style/SpaceAroundEqualsInParameterDefault:
+Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
 Style/StructInheritance:

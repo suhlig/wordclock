@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'word_clock/color'
 
 module WordClock

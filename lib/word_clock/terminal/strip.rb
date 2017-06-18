@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'word_clock/terminal/pixel'
 
 module WordClock

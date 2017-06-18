@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'word_clock/color'
 require 'word_clock/static_color_sampler'
 require 'word_clock/all_day_arbiter'

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'word_clock/clock_24'
 
 RSpec.shared_examples 'a word clock' do |description, hour, minute, expected_pixels|

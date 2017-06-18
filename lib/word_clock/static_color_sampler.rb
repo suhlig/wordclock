@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'easter'
 require 'word_clock/color'
 

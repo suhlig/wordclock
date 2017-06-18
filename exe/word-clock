@@ -10,7 +10,7 @@ require 'faderuby'
 
 if ARGV.size.zero?
   time = Time.now
-elsif 1 == ARGV.size
+elsif ARGV.size == 1
   time = Time.parse(ARGV.first)
 else
   warn "Unknown arguments #{ARGV}"

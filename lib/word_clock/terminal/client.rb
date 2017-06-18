@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module WordClock
   module Terminal
     class Client
