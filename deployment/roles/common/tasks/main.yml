@@ -2,6 +2,7 @@
   apt:
     update_cache: yes
     upgrade: full
+  become: true
   tags: apt
 
 - name: Install software
@@ -11,6 +12,7 @@
       - htop
       - rsync
     state: present
+  become: true
   tags: apt
 
 - name: Copy the public key of the user who is running ansible to the remote machine
@@ -24,6 +26,7 @@
     name: ssh
     state: started
     enabled: true
+  become: true
 
 - name: No stupid login message
   file:
@@ -40,3 +43,4 @@
     owner: root
     group: root
     mode: 0644
+  become: true

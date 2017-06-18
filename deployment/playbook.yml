@@ -1,10 +1,11 @@
 ---
 - name: Deploy word-clock
   hosts: all
-  become: true
+
   vars:
-    ansible_user: pi
-    ansible_ssh_pass: raspberry
+    # First-time setup without SSH keys deployed use this
+    # ansible_ssh_user: pi
+    # ansible_ssh_pass: raspberry
 
     ntp_timezone: Europe/Berlin
     ntp_manage_config: true
@@ -20,7 +21,7 @@
         revision: 3
 
     ansistrano_deploy_from: "{{ playbook_dir }}/.."
-    ansistrano_deploy_to: /opt/word-clock
+    ansistrano_deploy_to: "~/apps/word-clock"
     ansistrano_current_via: symlink
     ansistrano_deploy_via: rsync
     ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/roles/word-clock/main.yml"

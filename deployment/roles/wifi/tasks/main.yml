@@ -18,6 +18,8 @@
     dest: "/etc/wpa_supplicant/wpa_supplicant.conf"
     mode: "0600"
   tags: wifi
+  become: true
 
 - name: Restart the WiFi interface in order to connect
   shell: "ifdown wlan0; ifup wlan0"
+  become: true

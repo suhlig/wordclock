@@ -5,6 +5,7 @@ require 'word_clock/static_color_sampler'
 require 'word_clock/all_day_arbiter'
 require 'word_clock/carnival_arbiter'
 require 'word_clock/new_year_arbiter'
+require 'time'
 
 module WordClock
   class ColorPicker

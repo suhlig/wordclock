@@ -11,11 +11,11 @@
     env: yes
     user: pi
     name: BUNDLE_GEMFILE
-    value: "/opt/word-clock/current/Gemfile"
+    value: "{{ ansistrano_deploy_to }}/current/Gemfile"
   tags: cron
 
 - cron:
     user: pi
     name: "Update time at word-clock"
-    job: "bundle exec /opt/word-clock/current/exe/word-clock"
+    job: "bundle exec {{ ansistrano_deploy_to }}/current/exe/word-clock"
   tags: cron
