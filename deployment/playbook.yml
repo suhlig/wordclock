@@ -15,10 +15,9 @@
      - ptbtime3.ptb.de iburst
 
     ruby_version:
-        full: ruby-2.3.3
-        major: 2
-        minor: 3
-        revision: 3
+      major: 2
+      minor: 4
+      revision: 0
 
     ansistrano_deploy_from: "{{ playbook_dir }}/.."
     ansistrano_deploy_to: "~/apps/word-clock"
@@ -33,9 +32,9 @@
   roles:
     - common
     - wifi
-    - ruby
     - fadecandy
     - geerlingguy.ntp
+    - nerab.ruby
     - carlosbuenosvinos.ansistrano-deploy
     - jnv.unattended-upgrades
     - nerab.rsyslog-patch
