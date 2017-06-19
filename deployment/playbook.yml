@@ -29,6 +29,8 @@
       - 'origin=Raspbian,codename=${distro_codename},label=Raspbian'
     unattended_automatic_reboot_time: "03:25"
 
+    cups_admin_user: pi
+
   roles:
     - common
     - wifi
@@ -38,3 +40,4 @@
     - carlosbuenosvinos.ansistrano-deploy
     - jnv.unattended-upgrades
     - nerab.rsyslog-patch
+    - nerab.airprint-server
