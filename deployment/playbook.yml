@@ -31,6 +31,9 @@
 
     cups_admin_user: pi
 
+    influxdb_version: 1.3.0
+    influxdb_ip_address: 127.0.0.1
+    influxdb_database_name: sandbox
   roles:
     - common
     - wifi
@@ -41,3 +44,5 @@
     - jnv.unattended-upgrades
     - nerab.rsyslog-patch
     - nerab.airprint-server
+    - influxdb
+    # - nats
