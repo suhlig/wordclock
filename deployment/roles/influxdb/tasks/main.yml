@@ -13,7 +13,6 @@
   become: true
   tags: influxdb
 
-# useradd --system -U -M influxdb -s /bin/false -d $DATA_DIR
 - group:
     name: influxdb
     state: present
@@ -30,7 +29,6 @@
   become: true
   tags: influxdb
 
-# chown -R -L influxdb:influxdb /var/lib/influxdb
 - file:
     path: /var/lib/influxdb
     owner: influxdb
@@ -38,7 +36,6 @@
   become: true
   tags: influxdb
 
-# chown -R -L influxdb:influxdb /var/log/influxdb
 - file:
     path: /var/log/influxdb
     owner: influxdb
@@ -54,11 +51,6 @@
   notify:
     - Restart Influxdb
   become: true
-  tags: influxdb
-
-# TODO Only run if auth is not on yet
-- name: Create influxdb database
-  shell: influx -execute "CREATE DATABASE sandbox"
   tags: influxdb
 
 - name: Create admin user
@@ -78,19 +70,3 @@
     - Restart Influxdb
   become: true
   tags: influxdb
-
-- name: Create gobot user with R/W access
-  shell: "influx
-            -username admin
-            -password d987f9fa4b08667ca683dbb
-            -execute \"CREATE USER gobot WITH PASSWORD 'bdf882e54c0fcb56ba25';
-                       GRANT ALL ON sandbox TO gobot;\""
-  tags: influxdb,gobot
-
-- name: Create Grafana user with READ access only
-  shell: "influx
-            -username admin
-            -password d987f9fa4b08667ca683dbb
-            -execute \"CREATE USER grafana WITH PASSWORD 'e00b3fefc794ec68';
-                       GRANT READ ON sandbox TO grafana\""
-  tags: influxdb,grafana
