@@ -1,0 +1,84 @@
+- name: Download tarball
+  get_url:
+    url: "https://dl.influxdata.com/telegraf/releases/telegraf-{{ telegraf_version }}_linux_armhf.tar.gz"
+    dest: "/tmp/telegraf-{{ telegraf_version }}_linux_armhf.tar.gz"
+  tags: telegraf
+
+- name: Unpack tarball
+  unarchive:
+    src: "/tmp/telegraf-{{ telegraf_version }}_linux_armhf.tar.gz"
+    dest: "/"
+    remote_src: true
+    extra_opts: "--strip-components=2"
+  become: true
+  tags: telegraf
+
+- name: Create system group
+  group:
+    name: telegraf
+    state: present
+  become: true
+  tags: telegraf
+
+- name: Create system user
+  user:
+    name: telegraf
+    group: telegraf
+    system: true
+    createhome: false
+    home: /var/lib/telegraf
+    shell: /bin/false
+  become: true
+  tags: telegraf
+
+- name: Create home directory
+  file:
+    path: /var/lib/telegraf
+    state: directory
+    owner: telegraf
+    group: telegraf
+  become: true
+  tags: telegraf
+
+- name: Create log directory
+  file:
+    path: /var/log/telegraf
+    owner: telegraf
+    group: telegraf
+  become: true
+  tags: telegraf
+
+- name: Create telegraf database
+  shell: "influx
+            -username {{ influxdb_admin_user }}
+            -password {{ influxdb_admin_password }}
+            -execute \"CREATE DATABASE {{ telegraf_database }}\""
+  tags: telegraf
+
+- name: Create telegraf user with R/W access
+  shell: "influx
+            -username {{ influxdb_admin_user }}
+            -password {{ influxdb_admin_password }}
+            -execute \"CREATE USER {{ telegraf_user }} WITH PASSWORD '{{ telegraf_password }}';
+                       GRANT ALL ON {{ telegraf_database }} TO {{ telegraf_user }};\""
+  tags: telegraf
+
+- name: Render config file
+  template:
+    src: "telegraf.conf.j2"
+    dest: "/etc/telegraf/telegraf.conf"
+    mode: "0644"
+    owner: telegraf
+    group: telegraf
+  tags: telegraf
+  become: true
+
+- name: Copy service definition file
+  copy:
+    src: /usr/lib/telegraf/scripts/telegraf.service
+    dest: /lib/systemd/system/telegraf.service
+    remote_src: true
+  notify:
+    - Restart Telegraf
+  become: true
+  tags: telegraf

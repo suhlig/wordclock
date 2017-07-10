@@ -54,7 +54,7 @@
   tags: influxdb
 
 - name: Create admin user
-  shell: influx -execute "CREATE USER admin WITH PASSWORD 'd987f9fa4b08667ca683dbb' WITH ALL PRIVILEGES"
+  shell: influx -execute "CREATE USER {{ influxdb_admin_user }} WITH PASSWORD '{{ influxdb_admin_password }}' WITH ALL PRIVILEGES"
   tags: influxdb
 
 - name: Enable HTTP authentication
