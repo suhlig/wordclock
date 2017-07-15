@@ -2,6 +2,9 @@
 - name: Deploy word-clock
   hosts: all
 
+  vars_files:
+    - private-variables.yml
+
   vars:
     # First-time setup without SSH keys deployed use this
     # ansible_ssh_user: pi
@@ -31,11 +34,16 @@
 
     cups_admin_user: pi
 
-    influxdb_database_name: sandbox
-    influxdb_admin_password: d987f9fa4b08667ca683dbb
+    influxdb_host: influxdb.uhlig.it
+    influxdb_port: 443
+    influxdb_url: https://{{ influxdb_host }}:{{ influxdb_port }}
+    influxdb_database_name: metrics
+    influxdb_admin_user: admin
+    influxdb_user: sensors
 
-    telegraf_database: sandbox
-    telegraf_password: d413891f0c3fb0bbbb8bb9
+    telegraf_database: "{{ influxdb_database_name }}"
+    telegraf_user: telegraf
+
   roles:
     - common
     - wifi

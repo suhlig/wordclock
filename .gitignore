@@ -2,3 +2,4 @@
 .DS_Store
 .byebug_history
 .envrc
+deployment/private-variables.yml
