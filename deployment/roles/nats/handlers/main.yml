@@ -1,0 +1,7 @@
+---
+- name: Restart NATS server
+  service:
+    name: gnatsd
+    state: restarted
+    enabled: true
+  become: true

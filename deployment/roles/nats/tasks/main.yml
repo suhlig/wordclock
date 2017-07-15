@@ -1,0 +1,65 @@
+- name: Download tarball
+  get_url:
+    url: "https://github.com/nats-io/gnatsd/releases/download/v{{ gnatsd_version }}/gnatsd-v{{ gnatsd_version }}-linux-arm7.zip"
+    dest: "/tmp/gnatsd-v{{ gnatsd_version }}-linux-arm7.zip"
+  tags: gnatsd
+
+- name: Unpack tarball
+  unarchive:
+    src: "/tmp/gnatsd-v{{ gnatsd_version }}-linux-arm7.zip"
+    dest: "/tmp/"
+    remote_src: true
+  tags: gnatsd
+
+- name: Put the binary in place
+  copy:
+    src: "/tmp/gnatsd-v{{ gnatsd_version }}-linux-arm7/gnatsd"
+    dest: "/usr/local/bin/"
+    remote_src: true
+    mode: "0755"
+  become: true
+  tags: gnatsd
+
+- name: Create system group
+  group:
+    name: gnatsd
+    state: present
+  become: true
+  tags: gnatsd
+
+- name: Create system user
+  user:
+    name: gnatsd
+    group: gnatsd
+    system: true
+    createhome: false
+    home: /var/lib/gnatsd
+    shell: /bin/false
+  become: true
+  tags: gnatsd
+
+- name: Create home directory
+  file:
+    path: /var/lib/gnatsd
+    state: directory
+    owner: gnatsd
+    group: gnatsd
+  become: true
+  tags: gnatsd
+
+- name: Create systemd service config
+  template:
+    src: "gnatsd.service.j2"
+    dest: "/etc/systemd/system/gnatsd.service"
+    mode: "0664"
+  become: true
+  tags: gnatsd,systemd
+
+- name: Start the service
+  systemd:
+    name: gnatsd
+    daemon_reload: true
+    state: restarted
+    enabled: true
+  become: true
+  tags: gnatsd,systemd

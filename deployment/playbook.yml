@@ -44,6 +44,8 @@
     telegraf_database: "{{ influxdb_database_name }}"
     telegraf_user: telegraf
 
+    gnatsd_version: 1.0.0
+
   roles:
     - common
     - wifi
@@ -55,4 +57,4 @@
     - nerab.rsyslog-patch
     - nerab.airprint-server
     - telegraf
-    # - nats
+    - nats
