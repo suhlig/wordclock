@@ -54,6 +54,5 @@
     - jnv.unattended-upgrades
     - nerab.rsyslog-patch
     - nerab.airprint-server
-    - influxdb
     - telegraf
     # - nats
