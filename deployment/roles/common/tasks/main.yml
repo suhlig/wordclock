@@ -11,6 +11,7 @@
       - tmux
       - htop
       - rsync
+      - i2c-tools
     state: present
   become: true
   tags: apt
