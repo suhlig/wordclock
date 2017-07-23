@@ -10,8 +10,9 @@ module WordClock
       @blue  = blue
     end
 
-    def luminance
-      0.3 * @red + 0.59 * @green + 0.11 * @blue
+    def relative_luminance
+      # https://en.wikipedia.org/wiki/Relative_luminance
+      (0.2126 * @red + 0.7152 * @green + 0.0722 * @blue)  / 255
     end
 
     def to_h
