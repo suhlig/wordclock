@@ -45,3 +45,14 @@
     group: root
     mode: 0644
   become: true
+
+- name: Create influxdb user with READ-only access
+  shell: "influx
+            -host '{{ influxdb_host }}'
+            -ssl
+            -port {{ influxdb_port }}
+            -username {{ influxdb_admin_user }}
+            -password {{ influxdb_admin_password }}
+            -execute \"CREATE USER {{ influxdb_wordclock_user }} WITH PASSWORD '{{ influxdb_wordclock_password }}';
+                       GRANT READ ON {{ sensor }} TO {{ influxdb_wordclock_user }}\""
+  tags: telegraf,grafana

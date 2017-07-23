@@ -17,8 +17,6 @@ else
   exit 1
 end
 
-clock = WordClock::Clock24.new(time)
-
 client = FadeRuby::Client.new(
   ENV.fetch('OPC_HOST', 'localhost'),
   ENV.fetch('OPC_PORT', '7890').to_i
@@ -28,9 +26,24 @@ strip = FadeRuby::Strip.new(18 * 16)
 strip.set_all(r: 0, g: 0, b: 0)
 client.write(strip)
 
-color_picker = WordClock::ColorPicker.new(WordClock::XkcdColors.new)
+current_luminance = begin
+                      WordClock::InfluxDbGateway.new(
+                        host:       ENV.fetch('INFLUXDB_HOST'),
+                        ssl:      !!ENV.fetch('INFLUXDB_SSL'),
+                        port:       ENV.fetch('INFLUXDB_PORT'),
+                        username:   ENV.fetch('INFLUXDB_USER'),
+                        password:   ENV.fetch('INFLUXDB_PASSWORD'),
+                      ).current_luminance
+                    rescue
+                      warn "Error querying current luminance: #{$ERROR_INFO.message}"
+                      500
+                    end
 
-clock.pixels.each do |i|
+luminance_range = WordClock::DeltaCalculator.new(current_luminance, 100).to_range
+color_sampler = WordClock::LuminanceRangeSampler.new(WordClock::XkcdColorSampler.new, luminance_range)
+color_picker = WordClock::ColorPicker.new(color_sampler)
+
+WordClock::Clock24.new(time).pixels.each do |i|
   color = color_picker.choose(time)
   strip.pixels[i].set(color.to_h)
 end
