@@ -3,7 +3,6 @@
 require 'spec_helper'
 require 'word_clock/delta_calculator'
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe WordClock::DeltaCalculator do
   subject { WordClock::DeltaCalculator.new(luminance, delta) }
 
@@ -15,18 +14,6 @@ RSpec.describe WordClock::DeltaCalculator do
 
       it 'calculates the correct range' do
         expect(subject.to_range).to eq(0.8..1.0)
-      end
-    end
-  end
-
-  context 'given a null luminance' do
-    let(:luminance) { 0 }
-
-    context 'and a small delta' do
-      let(:delta) { 0.2 }
-
-      it 'calculates a positive range' do
-        expect(subject.to_range).to eq(0..0.1)
       end
     end
   end

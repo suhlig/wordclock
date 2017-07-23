@@ -35,11 +35,11 @@ current_luminance = begin
                         password:   ENV.fetch('INFLUXDB_PASSWORD'),
                       ).current_luminance
                     rescue
-                      warn "Error querying current luminance: #{$ERROR_INFO.message}"
-                      500
+                      warn "Error querying current luminance: #{$ERROR_INFO.message}. Falling back to a medium value."
+                      0.5
                     end
 
-luminance_range = WordClock::DeltaCalculator.new(current_luminance, 100).to_range
+luminance_range = WordClock::DeltaCalculator.new(current_luminance, 0.2).to_range
 color_sampler = WordClock::LuminanceRangeSampler.new(WordClock::XkcdColorSampler.new, luminance_range)
 color_picker = WordClock::ColorPicker.new(color_sampler)
 

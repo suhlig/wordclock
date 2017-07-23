@@ -1,3 +1,4 @@
-select median(value) from light WHERE time > now() - 60m;
+InfluxDB query for median luminance of the last seconds:
 
-(current_luminance - luminance_delta / 2) .. (current_luminance + luminance_delta / 2)
+use metrics
+select median(value) from light WHERE time > now() - 60s;
