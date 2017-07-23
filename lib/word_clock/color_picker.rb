@@ -27,7 +27,7 @@ module WordClock
       }
     end
 
-    def choose(time=nil)
+    def choose(time)
       @samplers.each do |arbiter, sampler|
         return sampler.sample if arbiter.match?(time)
       end
