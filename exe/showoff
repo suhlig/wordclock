@@ -4,7 +4,7 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'word_clock/clock_24'
-require 'word_clock/xkcd_colors'
+require 'word_clock/xkcd_color_sampler'
 require 'word_clock/color_picker'
 require 'faderuby'
 
@@ -25,7 +25,7 @@ clock = WordClock::Clock24.new
     client.write(strip)
 
     clock.time = Time.parse("#{hour}:#{minute}")
-    color_picker = WordClock::ColorPicker.new(WordClock::XkcdColors.new)
+    color_picker = WordClock::ColorPicker.new(WordClock::XkcdColorSampler.new)
     warn clock.time
 
     clock.pixels.each do |i|

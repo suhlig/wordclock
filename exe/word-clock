@@ -4,7 +4,7 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'word_clock/clock_24'
-require 'word_clock/xkcd_colors'
+require 'word_clock/xkcd_color_sampler'
 require 'word_clock/color_picker'
 require 'faderuby'
 

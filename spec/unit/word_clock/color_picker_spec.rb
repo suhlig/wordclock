@@ -52,7 +52,7 @@ end
 # rubocop:disable Metrics/BlockLength
 RSpec.describe WordClock::ColorPicker do
   subject(:color_picker) { WordClock::ColorPicker.new(color_sampler) }
-  let(:color_sampler) { instance_double('XkcdColors') }
+  let(:color_sampler) { instance_double('XkcdColorSampler') }
 
   context 'on a regular day' do
     let(:time) { Time.parse('1.11.2017 14:32') }

@@ -4,7 +4,7 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'word_clock/clock_24'
-require 'word_clock/xkcd_colors'
+require 'word_clock/xkcd_color_sampler'
 require 'word_clock/color_picker'
 require 'word_clock/terminal/client'
 require 'word_clock/terminal/strip'
@@ -20,7 +20,7 @@ end
 
 clock = WordClock::Clock24.new(time)
 strip = WordClock::Terminal::Strip.new(clock)
-color_picker = WordClock::ColorPicker.new(WordClock::XkcdColors.new)
+color_picker = WordClock::ColorPicker.new(WordClock::XkcdColorSampler.new)
 
 clock.pixels.each do |i|
   color = color_picker.choose(time)
