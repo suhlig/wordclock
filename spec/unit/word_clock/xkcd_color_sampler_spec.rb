@@ -2,8 +2,6 @@
 
 require 'spec_helper'
 require 'word_clock/xkcd_color_sampler'
-
-# rubocop:disable Metrics/BlockLength
 RSpec.describe WordClock::XkcdColorSampler do
   subject(:colors) { WordClock::XkcdColorSampler.new }
 
