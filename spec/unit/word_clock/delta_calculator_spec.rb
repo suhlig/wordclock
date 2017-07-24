@@ -18,6 +18,18 @@ RSpec.describe WordClock::DeltaCalculator do
     end
   end
 
+  context 'given a null luminance' do
+    let(:luminance) { 0 }
+
+    context 'and a small delta' do
+      let(:delta) { 0.2 }
+
+      it 'calculates a positive range' do
+        expect(subject.to_range).to eq(0..0.1)
+      end
+    end
+  end
+
   context 'given a tiny luminance' do
     let(:luminance) { 0.1 }
 
