@@ -53,7 +53,7 @@
             -host '{{ influxdb_host }}'
             -ssl
             -port {{ influxdb_port }}
-            -username {{ influxdb_admin_user }}
+            -username {{ influxdb_admin_name }}
             -password {{ influxdb_admin_password }}
             -execute \"CREATE DATABASE {{ telegraf_database }}\""
   tags: telegraf
@@ -63,7 +63,7 @@
             -host '{{ influxdb_host }}'
             -ssl
             -port {{ influxdb_port }}
-            -username {{ influxdb_admin_user }}
+            -username {{ influxdb_admin_name }}
             -password {{ influxdb_admin_password }}
             -execute \"CREATE USER {{ telegraf_user }} WITH PASSWORD '{{ telegraf_password }}';
                        GRANT ALL ON {{ telegraf_database }} TO {{ telegraf_user }};\""
@@ -74,7 +74,7 @@
             -host '{{ influxdb_host }}'
             -ssl
             -port {{ influxdb_port }}
-            -username {{ influxdb_admin_user }}
+            -username {{ influxdb_admin_name }}
             -password {{ influxdb_admin_password }}
             -execute \"CREATE USER grafana WITH PASSWORD '{{ grafana_password }}';
                        GRANT READ ON {{ telegraf_database }} TO grafana\""

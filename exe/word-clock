@@ -3,10 +3,13 @@
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
+require 'faderuby'
 require 'word_clock/clock_24'
 require 'word_clock/xkcd_color_sampler'
+require 'word_clock/influxdb_gateway'
 require 'word_clock/color_picker'
-require 'faderuby'
+require 'word_clock/delta_calculator'
+require 'word_clock/luminance_range_sampler'
 
 if ARGV.size.zero?
   time = Time.now
@@ -26,20 +29,17 @@ strip = FadeRuby::Strip.new(18 * 16)
 strip.set_all(r: 0, g: 0, b: 0)
 client.write(strip)
 
-current_luminance = begin
-                      WordClock::InfluxDbGateway.new(
-                        host:       ENV.fetch('INFLUXDB_HOST'),
-                        ssl:      !!ENV.fetch('INFLUXDB_SSL'),
-                        port:       ENV.fetch('INFLUXDB_PORT'),
-                        username:   ENV.fetch('INFLUXDB_USER'),
-                        password:   ENV.fetch('INFLUXDB_PASSWORD'),
-                      ).current_luminance
-                    rescue
-                      warn "Error querying current luminance: #{$ERROR_INFO.message}. Falling back to a medium value."
-                      0.5
-                    end
+gw = WordClock::InfluxDbGateway.new(
+  ENV.fetch('INFLUXDB_DATABASE'),
+  host:       ENV.fetch('INFLUXDB_HOST'),
+  use_ssl:  !!ENV.fetch('INFLUXDB_SSL'),
+  port:       ENV.fetch('INFLUXDB_PORT'),
+  username:   ENV.fetch('INFLUXDB_USER'),
+  password:   ENV.fetch('INFLUXDB_PASSWORD'),
+)
 
-luminance_range = WordClock::DeltaCalculator.new(current_luminance, 0.2).to_range
+current_relative_luminance = gw.current_illuminance / gw.illuminance_percentile(95)
+luminance_range = WordClock::DeltaCalculator.new(current_relative_luminance, 0.2).to_range
 color_sampler = WordClock::LuminanceRangeSampler.new(WordClock::XkcdColorSampler.new, luminance_range)
 color_picker = WordClock::ColorPicker.new(color_sampler)
 

@@ -37,11 +37,11 @@
     influxdb_host: influxdb.uhlig.it
     influxdb_port: 443
     influxdb_url: https://{{ influxdb_host }}:{{ influxdb_port }}
-    influxdb_database_name: metrics
-    influxdb_admin_user: admin
-    influxdb_user: sensors
+    influxdb_database: metrics
+    influxdb_admin_name: admin
+    influxdb_user_name: wordclock
 
-    telegraf_database: "{{ influxdb_database_name }}"
+    telegraf_database: "{{ influxdb_database }}"
     telegraf_user: telegraf
 
     gnatsd_version: 1.0.0

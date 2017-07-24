@@ -8,6 +8,7 @@ gem 'influxdb'
 gem 'paint'
 gem 'pnm'
 gem 'rainbow'
+gem 'influxdb'
 
 group :development do
   gem 'bundler'

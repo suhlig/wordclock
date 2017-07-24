@@ -51,8 +51,8 @@
             -host '{{ influxdb_host }}'
             -ssl
             -port {{ influxdb_port }}
-            -username {{ influxdb_admin_user }}
+            -username {{ influxdb_admin_name }}
             -password {{ influxdb_admin_password }}
-            -execute \"CREATE USER {{ influxdb_wordclock_user }} WITH PASSWORD '{{ influxdb_wordclock_password }}';
-                       GRANT READ ON {{ sensor }} TO {{ influxdb_wordclock_user }}\""
-  tags: telegraf,grafana
+            -execute \"CREATE USER {{ influxdb_user_name }} WITH PASSWORD '{{ influxdb_user_password }}';
+                       GRANT READ ON {{ influxdb_database }} TO {{ influxdb_user_name }}\""
+  tags: influxdb
