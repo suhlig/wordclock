@@ -92,8 +92,6 @@ module WordClock
              'ABENDSMITTERNACHTS' \
              'MORGENSWARMMITTAGS' \
 
-    attr_reader :hour, :minute
-
     def lookup(*words)
       index = 0
 

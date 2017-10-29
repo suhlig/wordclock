@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.4.1
+  TargetRubyVersion: 2.4.2
   Include:
     - '**/Gemfile'
     - '**/Guardfile'
@@ -127,7 +127,7 @@ Style/Next:
 Style/NumericLiterals:
   Enabled: false
 
-Style/PredicateName:
+Naming/PredicateName:
   Enabled: false
 
 Style/RaiseArgs:
