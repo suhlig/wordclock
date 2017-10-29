@@ -142,6 +142,8 @@ DEPENDENCIES
   rb-readline
   rspec
   rubocop
+  terminal-notifier
+  terminal-notifier-guard
   travis
 
 BUNDLED WITH

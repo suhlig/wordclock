@@ -3,6 +3,7 @@
 require 'spec_helper'
 require 'word_clock/delta_calculator'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe WordClock::DeltaCalculator do
   subject { WordClock::DeltaCalculator.new(luminance, delta) }
 
