@@ -106,7 +106,7 @@ GEM
     ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
     shellany (0.0.1)
-    terminal-notifier (1.8.0)
+    terminal-notifier (2.0.0)
     terminal-notifier-guard (1.7.0)
     thor (0.20.0)
     travis (1.8.8)
