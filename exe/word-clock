@@ -28,7 +28,7 @@ strip = FadeRuby::Strip.new(18 * 16)
 strip.set_all(r: 0, g: 0, b: 0)
 client.write(strip)
 
-color_picker = WordClock::ColorPicker.new(WordClock::XkcdColors.new)
+color_picker = WordClock::ColorPicker.new(WordClock::XkcdColorSampler.new)
 
 clock.pixels.each do |i|
   color = color_picker.choose(time)
