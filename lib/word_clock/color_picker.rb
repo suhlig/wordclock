@@ -23,7 +23,7 @@ module WordClock
         AllDayArbiter.new(Time.parse('July 18'))    => sampler,
         AllDayArbiter.new(Time.parse('Dec 31'))     => sampler,
         NewYearPartyArbiter.new                     => sampler,
-        NewYearHangoverArbiter.new                  => always_grey,
+        NewYearHangoverArbiter.new                  => always_grey
       }
     end
 
@@ -32,7 +32,7 @@ module WordClock
         return sampler.sample if arbiter.match?(time)
       end
 
-      @color ||= @sampler.sample
+      @choose ||= @sampler.sample
     end
   end
 end

@@ -42,7 +42,8 @@ RSpec.describe WordClock::Terminal::Client do
       "|                                     |\n",
       "|                                     |\n",
       "|                                     |\n",
-      "+-------------------------------------+\n",
+      "+-------------------------------------+\n"
     ])
   end
 end
+# rubocop:enable Metrics/BlockLength

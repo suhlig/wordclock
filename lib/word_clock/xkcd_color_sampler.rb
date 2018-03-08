@@ -928,7 +928,7 @@ module WordClock
       'FCB001' => 'yelloworange',
       'FFE36E' => 'yellowtan',
       'AE8B0C' => 'yellowybrown',
-      'BFF128' => 'yellowygreen',
+      'BFF128' => 'yellowygreen'
     }.freeze
 
     def self.all

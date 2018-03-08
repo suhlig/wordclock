@@ -19,8 +19,8 @@
 
     ruby_version:
       major: 2
-      minor: 4
-      revision: 1
+      minor: 5
+      revision: 0
 
     ansistrano_deploy_from: "{{ playbook_dir }}/.."
     ansistrano_deploy_to: "~/apps/word-clock"
@@ -44,7 +44,7 @@
     telegraf_database: "{{ influxdb_database_name }}"
     telegraf_user: telegraf
 
-    gnatsd_version: 1.0.0
+    gnatsd_version: 1.0.6
 
   roles:
     - common

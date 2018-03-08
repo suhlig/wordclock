@@ -130,3 +130,4 @@ RSpec.describe WordClock::ColorPicker do
     it_behaves_like('polychromatic display')
   end
 end
+# rubocop:enable Metrics/BlockLength

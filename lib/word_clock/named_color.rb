@@ -6,8 +6,8 @@ module WordClock
   class NamedColor < Color
     attr_reader :name
 
-    def initialize(r, g, b, name)
-      super(r, g, b)
+    def initialize(red, green, blue, name)
+      super(red, green, blue)
       @name = name
     end
 

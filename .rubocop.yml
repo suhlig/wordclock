@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.4.2
+  TargetRubyVersion: 2.5.0
   Include:
     - '**/Gemfile'
     - '**/Guardfile'
@@ -152,9 +152,6 @@ Style/StructInheritance:
   Enabled: false
 
 Style/TrailingCommaInArguments:
-  Enabled: false
-
-Style/TrailingCommaInLiteral:
   Enabled: false
 
 Style/TrailingUnderscoreVariable:

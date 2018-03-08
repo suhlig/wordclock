@@ -51,3 +51,4 @@ RSpec.describe WordClock::DeltaCalculator do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

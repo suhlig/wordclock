@@ -193,3 +193,4 @@ RSpec.describe WordClock::Clock24 do
 
   # 01:55..01:59
 end
+# rubocop:enable Metrics/BlockLength

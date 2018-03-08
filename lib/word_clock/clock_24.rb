@@ -199,9 +199,10 @@ module WordClock
         %w[SECHS UND FÜNFZIG],
         %w[SIEBEN UND FÜNFZIG],
         %w[ACHT UND FÜNFZIG],
-        %w[NEUN UND FÜNFZIG],
+        %w[NEUN UND FÜNFZIG]
       ][minute]
     end
+    # rubocop:enable Metrics/MethodLength
 
     def hour
       time.hour
