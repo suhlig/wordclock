@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
 require 'word_clock/delta_calculator'
 
 # rubocop:disable Metrics/BlockLength
-RSpec.describe WordClock::DeltaCalculator do
+describe WordClock::DeltaCalculator do
   subject { WordClock::DeltaCalculator.new(luminance, delta) }
 
   context 'given a large luminance' do

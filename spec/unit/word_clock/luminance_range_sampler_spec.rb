@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
 require 'word_clock/color'
 require 'word_clock/luminance_range_sampler'
 
-RSpec.describe WordClock::LuminanceRangeSampler do
+describe WordClock::LuminanceRangeSampler do
   subject { WordClock::LuminanceRangeSampler.new(delegate, Range.new(min, max)) }
   let(:delegate) { double }
 

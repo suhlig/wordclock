@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
 require 'word_clock/color_picker'
 
-RSpec.shared_examples 'monochromatic display' do
+shared_examples 'monochromatic display' do
   describe 'the first call' do
     it 'returns the first color sampled from the color_sampler' do
       expect(color_sampler).to receive(:sample).and_return('blue')
@@ -22,7 +21,7 @@ RSpec.shared_examples 'monochromatic display' do
   end
 end
 
-RSpec.shared_examples 'polychromatic display' do
+shared_examples 'polychromatic display' do
   it 'retrieves a new color from the color_sampler with every sample' do
     expect(color_sampler).to receive(:sample).and_return('red')
     expect(color_sampler).to receive(:sample).and_return('green')
@@ -34,7 +33,7 @@ RSpec.shared_examples 'polychromatic display' do
   end
 end
 
-RSpec.shared_examples 'all-grey display' do
+shared_examples 'all-grey display' do
   it 'ignores the color_sampler and returns grey' do
     expect(color_sampler).to_not receive(:sample)
 
@@ -50,7 +49,7 @@ RSpec.shared_examples 'all-grey display' do
 end
 
 # rubocop:disable Metrics/BlockLength
-RSpec.describe WordClock::ColorPicker do
+describe WordClock::ColorPicker do
   subject(:color_picker) { WordClock::ColorPicker.new(color_sampler) }
   let(:color_sampler) { instance_double('XkcdColorSampler') }
 

@@ -3,3 +3,4 @@
 .byebug_history
 .envrc
 deployment/private-variables.yml
+spec/failure-state

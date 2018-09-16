@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
 require 'word_clock/xkcd_color_sampler'
 require 'word_clock/luminance_range_sampler'
 
-RSpec.describe 'XkcdColorSampler with limited luminance range' do
+describe 'XkcdColorSampler with limited luminance range' do
   subject(:color) { WordClock::LuminanceRangeSampler.new(WordClock::XkcdColorSampler.new, luminance_range).sample }
 
   context 'visible at all' do

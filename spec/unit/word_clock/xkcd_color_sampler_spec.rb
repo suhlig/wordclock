@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
 require 'word_clock/xkcd_color_sampler'
 
-RSpec.describe WordClock::XkcdColorSampler do
+describe WordClock::XkcdColorSampler do
   subject(:colors) { WordClock::XkcdColorSampler.new }
 
   it "returns the color 'acidgreen'" do

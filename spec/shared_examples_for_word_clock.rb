@@ -2,7 +2,7 @@
 
 require 'word_clock/clock_24'
 
-RSpec.shared_examples 'a word clock' do |description, hour, minute, expected_pixels|
+shared_examples 'a word clock' do |description, hour, minute, expected_pixels|
   let(:subject) { WordClock::Clock24.new(Time.parse("#{hour}:#{minute}")) }
   let(:pixels) { subject.pixels }
 

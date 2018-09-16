@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
 require 'shared_examples_for_word_clock'
 
 # rubocop:disable Metrics/BlockLength
-RSpec.describe WordClock::Clock24 do
+describe WordClock::Clock24 do
   # 23:00..23:53
 
   describe 'es ist drei und zwanzig uhr vier und fünfzig' do

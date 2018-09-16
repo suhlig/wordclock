@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
 require 'word_clock/color'
 
 # rubocop:disable Metrics/BlockLength
@@ -12,7 +11,7 @@ RSpec.shared_examples 'similar luminance' do |r, g, b|
   end
 end
 
-RSpec.describe WordClock::Color do
+describe WordClock::Color do
   context 'with luminance ~1' do
     let(:luminance) { 1 }
     it_behaves_like('similar luminance', 255, 255, 255)

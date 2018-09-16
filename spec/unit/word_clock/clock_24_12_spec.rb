@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
 require 'shared_examples_for_word_clock'
 
-RSpec.describe WordClock::Clock24 do
+describe WordClock::Clock24 do
   # 12:00..12:44
 
   describe 'es ist zwölf uhr fünfundvierzig' do

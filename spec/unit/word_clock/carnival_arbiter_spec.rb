@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
 require 'word_clock/carnival_arbiter'
 
 # rubocop:disable Metrics/BlockLength
-RSpec.describe WordClock::CarnivalArbiter do
+describe WordClock::CarnivalArbiter do
   subject(:arbiter) { WordClock::CarnivalArbiter.new }
 
   context 'around 11.11.' do
