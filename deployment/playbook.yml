@@ -32,8 +32,6 @@
       - 'origin=Raspbian,codename=${distro_codename},label=Raspbian'
     unattended_automatic_reboot_time: "03:25"
 
-    cups_admin_user: pi
-
     influxdb_host: influxdb.uhlig.it
     influxdb_port: 443
     influxdb_url: https://{{ influxdb_host }}:{{ influxdb_port }}
@@ -44,8 +42,6 @@
     telegraf_database: "{{ influxdb_database_name }}"
     telegraf_user: telegraf
 
-    gnatsd_version: 1.0.6
-
   roles:
     - common
     - wifi
@@ -55,6 +51,4 @@
     - carlosbuenosvinos.ansistrano-deploy
     - jnv.unattended-upgrades
     - nerab.rsyslog-patch
-    - nerab.airprint-server
     - telegraf
-    - nats
