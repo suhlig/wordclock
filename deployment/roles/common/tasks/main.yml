@@ -1,11 +1,11 @@
-- name: Update APT packages
+- name: APT packages are up-to-date
   apt:
     update_cache: yes
     upgrade: full
   become: true
   tags: apt
 
-- name: Install software
+- name: Common software is installed
   apt:
     name:
       - tmux
@@ -16,20 +16,20 @@
   become: true
   tags: apt
 
-- name: Copy the public key of the user who is running ansible to the remote machine
+- name: Public key of the user who is running ansible is present at the remote machine
   authorized_key:
     user: pi
     key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
   tags: ssh
 
-- name: Start the ssh service
+- name: SSH service is started
   systemd:
     name: ssh
     state: started
     enabled: true
   become: true
 
-- name: No stupid login message
+- name: Stupid login message is disabled
   file:
     path:  /home/pi/.hushlogin
     state: touch
@@ -37,7 +37,7 @@
     group: pi
     mode:  "0755"
 
-- name: Set keyboard layout to DE
+- name: Keyboard layout is set to DE
   copy:
     src: keyboard
     dest: /etc/default/keyboard
