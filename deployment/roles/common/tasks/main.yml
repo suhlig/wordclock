@@ -45,3 +45,9 @@
     group: root
     mode: 0644
   become: true
+
+- name: Locale exists
+  locale_gen:
+    name: en_US.UTF-8
+    state: present
+  become: true
