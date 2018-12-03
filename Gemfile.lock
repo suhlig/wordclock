@@ -43,7 +43,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     highline (1.7.10)
-    influxdb (0.6.1)
+    influxdb (0.6.4)
     jaro_winkler (1.5.1)
     json (2.1.0)
     launchy (2.4.3)
