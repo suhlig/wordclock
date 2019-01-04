@@ -30,7 +30,7 @@ clock = WordClock::Clock24.new
 
     clock.pixels.each do |i|
       color = color_picker.choose(clock.time)
-      strip.pixels[i].set({ r: color.red, g: color.green, b: color.blue })
+      strip.pixels[i].set(r: color.red, g: color.green, b: color.blue)
     end
 
     client.write(strip)
