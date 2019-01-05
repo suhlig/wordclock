@@ -43,7 +43,7 @@
     - fadecandy
     - geerlingguy.ntp
     - ruby
-    - carlosbuenosvinos.ansistrano-deploy
+    - ansistrano.deploy
     - jnv.unattended-upgrades
     - nerab.rsyslog-patch
     - telegraf
