@@ -49,6 +49,8 @@
     - geerlingguy.ntp
     - nerab.ruby
     - ansistrano.deploy
-    - jnv.unattended-upgrades
+    - role: jnv.unattended-upgrades
+      vars:
+        - become: true
     - nerab.rsyslog-patch
     - telegraf
