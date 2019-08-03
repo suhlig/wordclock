@@ -16,6 +16,6 @@
 
 - cron:
     user: pi
-    name: "Update time at word-clock"
-    job: "bundle exec {{ ansistrano_deploy_to }}/current/exe/word-clock"
+    name: "Update time at wordclock"
+    job: "bundle exec {{ ansistrano_deploy_to }}/current/exe/wordclock"
   tags: cron

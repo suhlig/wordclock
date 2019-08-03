@@ -35,7 +35,7 @@ will get you started with running the tests.
 For further investigation, there is also a terminal simulator that shows a text version of the clock in action:
 
   ```bash
-  $ bundle exec exe/word-clock-simulator "12.11.2017 17:23"
+  $ bundle exec exe/wordclock-simulator "12.11.2017 17:23"
   ```
 
   ![17:23](doc/simulator_1723.png)
@@ -43,7 +43,7 @@ For further investigation, there is also a terminal simulator that shows a text 
 It's even prettier when the party mode is enabled (e.g. on Shrove Tuesday):
 
   ```bash
-  $ bundle exec exe/word-clock-simulator "28.2.2017 23:59"
+  $ bundle exec exe/wordclock-simulator "28.2.2017 23:59"
   ```
 
   ![Party Mode](doc/simulator_party-mode.png)

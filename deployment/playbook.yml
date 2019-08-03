@@ -1,5 +1,5 @@
 ---
-- name: Deploy word-clock
+- name: Deploy wordclock
   hosts: all
 
   vars_files:
@@ -23,10 +23,10 @@
       teeny: 0
 
     ansistrano_deploy_from: "{{ playbook_dir }}/.."
-    ansistrano_deploy_to: "~/apps/word-clock"
+    ansistrano_deploy_to: "~/apps/wordclock"
     ansistrano_current_via: symlink
     ansistrano_deploy_via: rsync
-    ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/roles/word-clock/main.yml"
+    ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/roles/wordclock/main.yml"
 
     unattended_origins_patterns:
       - 'origin=Raspbian,codename=${distro_codename},label=Raspbian'
