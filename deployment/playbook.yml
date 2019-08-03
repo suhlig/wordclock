@@ -37,7 +37,6 @@
     influxdb_url: https://{{ influxdb_host }}:{{ influxdb_port }}
     influxdb_database_name: metrics
     influxdb_admin_user: admin
-    influxdb_user: sensors
 
     telegraf_database: "{{ influxdb_database_name }}"
     telegraf_user: telegraf
