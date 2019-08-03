@@ -50,7 +50,6 @@
     - nerab.ruby
     - ansistrano.deploy
     - role: jnv.unattended-upgrades
-      vars:
-        - become: true
+      become: true
     - nerab.rsyslog-patch
     - telegraf
