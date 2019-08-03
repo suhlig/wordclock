@@ -8,10 +8,11 @@
 - name: Common software is installed
   apt:
     name:
-      - tmux
+      - i2c-tools
       - htop
       - rsync
-      - i2c-tools
+      - tmux
+      - vim
     state: present
   become: true
   tags: apt
