@@ -48,27 +48,6 @@
   become: true
   tags: telegraf
 
-- name: Create telegraf database
-  shell: "influx
-            -host '{{ influxdb_host }}'
-            -ssl
-            -port {{ influxdb_port }}
-            -username {{ influxdb_admin_user }}
-            -password {{ influxdb_admin_password }}
-            -execute \"CREATE DATABASE {{ telegraf_database }}\""
-  tags: telegraf
-
-- name: Create telegraf user with R/W access
-  shell: "influx
-            -host '{{ influxdb_host }}'
-            -ssl
-            -port {{ influxdb_port }}
-            -username {{ influxdb_admin_user }}
-            -password {{ influxdb_admin_password }}
-            -execute \"CREATE USER {{ telegraf_user }} WITH PASSWORD '{{ telegraf_password }}';
-                       GRANT ALL ON {{ telegraf_database }} TO {{ telegraf_user }};\""
-  tags: telegraf
-
 - name: Render config file
   template:
     src: "telegraf.conf.j2"
