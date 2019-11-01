@@ -36,7 +36,6 @@
     influxdb_port: 443
     influxdb_url: https://{{ influxdb_host }}:{{ influxdb_port }}
     influxdb_database_name: metrics
-    influxdb_admin_user: admin
 
     telegraf_database: "{{ influxdb_database_name }}"
     telegraf_user: telegraf
