@@ -10,32 +10,33 @@
     # ansible_ssh_user: pi
     # ansible_ssh_pass: raspberry
 
-
-    ruby_version:
-      major: 2
-      minor: 6
-      teeny: 5
-
-    ansistrano_deploy_from: "{{ playbook_dir }}/.."
-    ansistrano_deploy_to: "~/apps/wordclock"
-    ansistrano_current_via: symlink
-    ansistrano_deploy_via: rsync
-    ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/roles/wordclock/main.yml"
-
-    unattended_origins_patterns:
-      - 'origin=Raspbian,codename=${distro_codename},label=Raspbian'
-    unattended_automatic_reboot_time: "03:25"
-
-
   roles:
-    - common
-    - wifi
-    - fadecandy
-    - nerab.ruby
-    - ansistrano.deploy
+    - role: common
+    - role: wifi
+    - role: fadecandy
+    - role: nerab.ruby
+      vars:
+        ruby_version:
+          major: 2
+          minor: 6
+          teeny: 5
+      tags: [ ruby ]
+    - role: ansistrano.deploy
+      vars:
+        ansistrano_deploy_from: "{{ playbook_dir }}/.."
+        ansistrano_deploy_to: "~/apps/wordclock"
+        ansistrano_current_via: symlink
+        ansistrano_deploy_via: rsync
+        ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/roles/wordclock/main.yml"
+      tags: [ deploy, capistrano, ansistrano ]
     - role: jnv.unattended-upgrades
       become: true
-    - nerab.rsyslog-patch
+      vars:
+        unattended_origins_patterns:
+          - 'origin=Raspbian,codename=${distro_codename},label=Raspbian'
+        unattended_automatic_reboot_time: "03:25"
+      tags: [ apt, dpkg, update, upgrade ]
+    - role: nerab.rsyslog-patch
     - role: ypsman.timedatectl
       become: true
       vars:
