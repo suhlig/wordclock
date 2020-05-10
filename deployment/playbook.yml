@@ -32,13 +32,6 @@
       - 'origin=Raspbian,codename=${distro_codename},label=Raspbian'
     unattended_automatic_reboot_time: "03:25"
 
-    influxdb_host: influxdb.uhlig.it
-    influxdb_port: 443
-    influxdb_url: https://{{ influxdb_host }}:{{ influxdb_port }}
-    influxdb_database_name: metrics
-
-    telegraf_database: "{{ influxdb_database_name }}"
-    telegraf_user: telegraf
 
   roles:
     - common
@@ -50,4 +43,16 @@
     - role: jnv.unattended-upgrades
       become: true
     - nerab.rsyslog-patch
-    - telegraf
+    - role: dj-wasabi.telegraf
+      vars:
+        telegraf_agent_package_state: latest
+        # https://github.com/dj-wasabi/ansible-telegraf#ansible_fqdn-problematic-for-getting-hostname
+        telegraf_agent_hostname: "{{ ansible_nodename }}"
+        telegraf_agent_output:
+          - type: influxdb
+            config:
+              - urls = [ "https://influxdb.uhlig.it" ]
+              - database = "metrics"
+              - username = "wordclock"
+              - password = "{{ telegraf_password }}"
+      tags: [ telegraf, metrics ]
