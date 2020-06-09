@@ -6,10 +6,11 @@
     # First-time setup without SSH keys deployed use this
     # ansible_ssh_user: pi
     # ansible_ssh_pass: raspberry
+    hostname: wordclock
 
   roles:
-    - role: common
-    - role: wifi
+    - role: nerab.raspi
+      become: true
     - role: fadecandy
     - role: nerab.ruby
       vars:

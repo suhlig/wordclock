@@ -1,0 +1,1 @@
+group_vars/all/secrets.yml diff=ansible-vault merge=binary
