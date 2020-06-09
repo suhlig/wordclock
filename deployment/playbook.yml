@@ -2,9 +2,6 @@
 - name: Deploy wordclock
   hosts: all
 
-  vars_files:
-    - private-variables.yml
-
   vars:
     # First-time setup without SSH keys deployed use this
     # ansible_ssh_user: pi
@@ -62,3 +59,5 @@
               - username = "wordclock"
               - password = "{{ telegraf_password }}"
       tags: [ telegraf, metrics ]
+    - role: uhlig-it.ansible-role-mosquitto-bridge
+      tags: [ mqtt, mosquitto ]
