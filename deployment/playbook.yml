@@ -55,9 +55,9 @@
         telegraf_agent_output:
           - type: influxdb
             config:
-              - urls = [ "https://influxdb.uhlig.it" ]
-              - database = "metrics"
-              - username = "wordclock"
+              - urls = [ "https://influxdb.test.uhlig.it" ]
+              - database = "telegraf"
+              - username = "telegraf-wordclock"
               - password = "{{ telegraf_password }}"
       tags: [ telegraf, metrics ]
     - role: uhlig-it.ansible-role-mosquitto-bridge
