@@ -55,7 +55,7 @@
         telegraf_agent_output:
           - type: influxdb
             config:
-              - urls = [ "https://influxdb.test.uhlig.it" ]
+              - urls = [ "https://influxdb.uhlig.it" ]
               - database = "telegraf"
               - username = "telegraf-wordclock"
               - password = "{{ telegraf_password }}"
