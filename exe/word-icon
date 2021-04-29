@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -I lib
+#!/usr/bin/env ruby
 # frozen_string_literal: true
 
 #
@@ -6,6 +6,8 @@
 #
 # convert -resize '18x16' image.png image.pnm
 #
+
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 
 require 'pnm'
 require 'faderuby'
