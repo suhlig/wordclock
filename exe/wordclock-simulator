@@ -24,7 +24,7 @@ color_picker = WordClock::ColorPicker.new(WordClock::XkcdColorSampler.new)
 
 clock.pixels.each do |i|
   color = color_picker.choose(time)
-  strip.pixels[i].set(color)
+  strip.pixels[i].set(**color.to_h)
 end
 
 WordClock::Terminal::Client.new($stdout, 18, 16).write(strip)
