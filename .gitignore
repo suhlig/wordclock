@@ -4,3 +4,4 @@
 .envrc
 deployment/private-variables.yml
 spec/failure-state
+.rake_tasks

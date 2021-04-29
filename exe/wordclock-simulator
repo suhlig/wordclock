@@ -27,4 +27,4 @@ clock.pixels.each do |i|
   strip.pixels[i].set(color)
 end
 
-WordClock::Terminal::Client.new(STDOUT, 18, 16).write(strip)
+WordClock::Terminal::Client.new($stdout, 18, 16).write(strip)
