@@ -1,6 +1,6 @@
 # Ruby Word Clock
 
-[![Build Status](https://travis-ci.org/suhlig/wordclock.svg?branch=master)](https://travis-ci.org/suhlig/wordclock)
+[![Build Status](https://app.travis-ci.com/suhlig/wordclock.svg?branch=master)](https://app.travis-ci.com/suhlig/wordclock)
 
 ![Front](doc/front.jpg) ![Back](doc/back.jpg)
 
