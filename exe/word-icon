@@ -31,7 +31,7 @@ client.write(strip)
 
 PNM.read(ARGV.first).pixels.each.with_index do |row, y|
   row.each.with_index do |pixel, x|
-    idx = y * WIDTH + x
+    idx = (y * WIDTH) + x
     strip.pixels[idx].set(r: pixel[0], g: pixel[1], b: pixel[2])
   end
 end
