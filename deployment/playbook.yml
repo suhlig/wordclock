@@ -34,7 +34,6 @@
           - 'origin=Raspbian,codename=${distro_codename},label=Raspbian'
         unattended_automatic_reboot_time: "03:25"
       tags: [ apt, dpkg, update, upgrade ]
-    - role: nerab.rsyslog-patch
     - role: ypsman.timedatectl
       become: true
       vars:
