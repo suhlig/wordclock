@@ -61,3 +61,6 @@
       tags: [ telegraf, metrics ]
     - role: uhlig-it.ansible-role-mosquitto-bridge
       tags: [ mqtt, mosquitto ]
+    - role: telegraf-inputs-mosquitto
+      become: true
+      tags: [ telegraf, mqtt, mosquitto, debug ]
