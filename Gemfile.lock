@@ -146,7 +146,7 @@ GEM
     terminal-notifier-guard (1.7.0)
     thor (1.1.0)
     thread_safe (0.3.6)
-    travis (1.10.0)
+    travis (1.11.0)
       faraday (~> 1.0)
       faraday_middleware (~> 1.0)
       gh (~> 0.13)
