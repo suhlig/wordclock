@@ -142,8 +142,8 @@ GEM
       parser (>= 3.1.1.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rspec (2.12.1)
-      rubocop (~> 1.31)
+    rubocop-rspec (2.13.2)
+      rubocop (~> 1.33)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     shellany (0.0.1)
@@ -161,7 +161,7 @@ GEM
       pusher-client (~> 0.4)
     tzinfo (1.2.10)
       thread_safe (~> 0.1)
-    unicode-display_width (2.2.0)
+    unicode-display_width (2.3.0)
     websocket (1.2.9)
 
 PLATFORMS
