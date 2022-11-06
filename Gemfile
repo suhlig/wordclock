@@ -4,7 +4,6 @@ source 'http://rubygems.org'
 
 gem 'easter'
 gem 'faderuby'
-gem 'influxdb'
 gem 'paint'
 gem 'pnm'
 gem 'rainbow'
