@@ -3,5 +3,4 @@
 - src: nerab.rsyslog-patch
 - src: nerab.ruby
 - src: ypsman.timedatectl
-- src: dj-wasabi.telegraf
 - src: uhlig-it.ansible-role-mosquitto-bridge

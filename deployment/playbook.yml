@@ -9,8 +9,8 @@
     hostname: wordclock
 
   roles:
-    - role: nerab.raspi
-      become: true
+    # - role: nerab.raspi
+    #   become: true
     - role: fadecandy
     - role: nerab.ruby
       vars:

@@ -1,8 +1,0 @@
-# {{ ansible_managed }}
-[[inputs.mqtt_consumer]]
-  servers = [ "tcp://localhost:1883" ]
-  username = "{{ telegraf_input_mosquitto.username }}"
-  password = "{{ telegraf_input_mosquitto.password }}"
-  topics = [ "$SYS/broker/#" ]
-  data_format = "value"
-  data_type = "float"

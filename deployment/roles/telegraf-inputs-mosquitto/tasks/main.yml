@@ -1,8 +1,0 @@
-- name: Register mosquitto input with telegraf
-  template:
-    src: etc/telegraf/telegraf.d/mosquitto.conf.j2
-    dest: /etc/telegraf/telegraf.d/mosquitto.conf
-    mode: 0644
-  tags: [ telegraf, mosquitto ]
-  notify:
-    - telegraf restarted
