@@ -46,7 +46,6 @@
           - 1.debian.pool.ntp.org
         timedatectl_timezone: Europe/Berlin
       tags: [ time, date, ntp ]
-
     - role: thorian93.journald
       become: true
       tags: [ journald, systemd, storage, persistent ]
