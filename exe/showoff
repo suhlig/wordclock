@@ -19,8 +19,8 @@ client.write(strip)
 
 clock = WordClock::Clock24.new
 
-(0..23).each do |hour|
-  (0..59).each do |minute|
+24.times do |hour|
+  60.times do |minute|
     strip.set_all(r: 0, g: 0, b: 0)
     client.write(strip)
 
