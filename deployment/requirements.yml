@@ -2,4 +2,4 @@
 - src: jnv.unattended-upgrades
 - src: nerab.ruby
 - src: ypsman.timedatectl
-- src: uhlig-it.ansible-role-mosquitto-bridge
+- src: artis3n.tailscale
