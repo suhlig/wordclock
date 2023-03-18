@@ -1,6 +1,7 @@
+- name: Bundler options are present
+  shell: bundle config set --local deployment 'true'
 - name: Bundle dependencies
   bundler:
     state: present
     chdir: "{{ ansistrano_deploy_to }}/current"
     gem_path: vendor/bundle
-    deployment_mode: yes
