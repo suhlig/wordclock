@@ -1,20 +1,23 @@
----
 - name: Deploy wordclock
   hosts: all
   vars:
     # First-time setup without SSH keys deployed use this
-    # ansible_ssh_user: pi
     # ansible_ssh_pass: raspberry
+    ansible_ssh_user: pi
     hostname: wordclock
   roles:
-    # - role: nerab.raspi
-    #   become: true
+    - role: suhlig.foundation.minimal
+      become: true
+      tags: [ suhlig ]
+    - role: suhlig.foundation.raspberry_pi
+      become: true
+      tags: [ suhlig, raspi, raspberry, pi ]
     - role: fadecandy
     - role: nerab.ruby
       vars:
         ruby_version:
           major: 3
-          minor: 2
+          minor: 3
           teeny: 1
       tags: [ ruby ]
     - role: ansistrano.deploy
@@ -25,26 +28,3 @@
         ansistrano_deploy_via: rsync
         ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/roles/wordclock/main.yml"
       tags: [ deploy, capistrano, ansistrano ]
-    - role: jnv.unattended-upgrades
-      become: true
-      vars:
-        unattended_origins_patterns:
-          - 'origin=Raspbian,codename=${distro_codename},label=Raspbian'
-        unattended_automatic_reboot_time: "03:25"
-      tags: [ apt, dpkg, update, upgrade ]
-    - role: ypsman.timedatectl
-      become: true
-      vars:
-        timedatectl_timeservers:
-          - ptbtime1.ptb.de
-          - ptbtime2.ptb.de
-          - ptbtime3.ptb.de
-        timedatectl_timeservers_fallback:
-          - 0.debian.pool.ntp.org
-          - 1.debian.pool.ntp.org
-        timedatectl_timezone: Europe/Berlin
-      tags: [ time, date, ntp ]
-    # not for Debian 11 yet
-    # - role: thorian93.journald
-    #   become: true
-    #   tags: [ journald, systemd, storage, persistent ]

@@ -1,10 +1,12 @@
-- name: Download fcserver
-  get_url:
-    url: "https://github.com/scanlime/fadecandy/raw/master/bin/fcserver-rpi"
-    dest: "/usr/sbin/fcserver"
-    owner: "root"
-    mode: "0755"
-  become: true
+# https://github.com/scanlime does not exist anymore :-/
+# There is a backup at diskstation:/volume1/backup/fcserver-rpi
+# - name: Download fcserver
+#   get_url:
+#     url: "https://github.com/scanlime/fadecandy/raw/master/bin/fcserver-rpi"
+#     dest: "/usr/sbin/fcserver"
+#     owner: "root"
+#     mode: "0755"
+#   become: true
 
 - name: Create the /etc/fadecandy directory
   file:
