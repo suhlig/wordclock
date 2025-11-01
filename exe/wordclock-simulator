@@ -9,7 +9,7 @@ require 'word_clock/color_picker'
 require 'word_clock/terminal/client'
 require 'word_clock/terminal/strip'
 
-if ARGV.size.zero?
+if ARGV.empty?
   time = Time.now
 elsif ARGV.size == 1
   time = Time.parse(ARGV.first)

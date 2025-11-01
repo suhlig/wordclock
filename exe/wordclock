@@ -8,7 +8,7 @@ require 'word_clock/xkcd_color_sampler'
 require 'word_clock/color_picker'
 require 'faderuby'
 
-if ARGV.size.zero?
+if ARGV.empty?
   time = Time.now
 elsif ARGV.size == 1
   time = Time.parse(ARGV.first)
