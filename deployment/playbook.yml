@@ -3,7 +3,6 @@
   vars:
     # First-time setup without SSH keys deployed use this
     # ansible_ssh_pass: raspberry
-    ansible_ssh_user: pi
     hostname: wordclock
   roles:
     - role: suhlig.foundation.minimal
