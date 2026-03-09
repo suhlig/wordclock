@@ -2,8 +2,13 @@
 
 source 'http://rubygems.org'
 
+# Workaround for broken LOAD_PATH
+# see https://github.com/ruby/json/issues/752#issuecomment-2660377640
+$LOAD_PATH.unshift(*Gem::Dependency.new('json').to_spec.full_require_paths)
+
 gem 'easter'
 gem 'faderuby'
+gem 'ostruct'
 gem 'paint'
 gem 'pnm'
 gem 'rainbow'
