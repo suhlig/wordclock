@@ -15,9 +15,9 @@
     - role: nerab.ruby
       vars:
         ruby_version:
-          major: 3
-          minor: 3
-          teeny: 2
+          major: 4
+          minor: 0
+          teeny: 1
       tags: [ ruby ]
     - role: ansistrano.deploy
       vars:

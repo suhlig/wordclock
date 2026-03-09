@@ -1,34 +1,17 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (7.0.10)
-      base64
-      benchmark (>= 0.3)
-      bigdecimal
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      drb
-      i18n (>= 1.6, < 2)
-      logger (>= 1.4.2)
-      minitest (>= 5.1)
-      mutex_m
-      securerandom (>= 0.3)
-      tzinfo (~> 2.0)
-    addressable (2.8.7)
-      public_suffix (>= 2.0.2, < 7.0)
+    addressable (2.8.9)
+      public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     base64 (0.3.0)
-    benchmark (0.5.0)
-    bigdecimal (3.3.1)
-    byebug (12.0.0)
+    bigdecimal (4.0.1)
+    byebug (13.0.0)
+      reline (>= 0.6.0)
     coderay (1.1.3)
-    concurrent-ruby (1.3.5)
-    connection_pool (2.5.4)
     diff-lcs (1.6.2)
-    drb (2.2.3)
     easter (0.2.0)
       human_speakable (~> 0.1, >= 0.1.2)
-    ethon (0.15.0)
-      ffi (>= 1.15.0)
     faderuby (0.0.1)
     faraday (2.7.12)
       base64
@@ -37,37 +20,31 @@ GEM
     faraday-net_http (3.0.2)
     faraday-rack (2.1.3)
       faraday (~> 2.0)
-    faraday-retry (2.3.2)
-      faraday (~> 2.0)
-    faraday-typhoeus (1.1.0)
-      faraday (~> 2.0)
-      typhoeus (~> 1.4)
-    ffi (1.17.2)
-    ffi (1.17.2-aarch64-linux-gnu)
-    ffi (1.17.2-aarch64-linux-musl)
-    ffi (1.17.2-arm-linux-gnu)
-    ffi (1.17.2-arm-linux-musl)
-    ffi (1.17.2-arm64-darwin)
-    ffi (1.17.2-x86-linux-gnu)
-    ffi (1.17.2-x86-linux-musl)
-    ffi (1.17.2-x86_64-darwin)
-    ffi (1.17.2-x86_64-linux-gnu)
-    ffi (1.17.2-x86_64-linux-musl)
-    formatador (1.2.2)
+    ffi (1.17.3)
+    ffi (1.17.3-aarch64-linux-gnu)
+    ffi (1.17.3-aarch64-linux-musl)
+    ffi (1.17.3-arm-linux-gnu)
+    ffi (1.17.3-arm-linux-musl)
+    ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x86-linux-gnu)
+    ffi (1.17.3-x86-linux-musl)
+    ffi (1.17.3-x86_64-darwin)
+    ffi (1.17.3-x86_64-linux-gnu)
+    ffi (1.17.3-x86_64-linux-musl)
+    formatador (1.2.3)
       reline
-    guard (2.19.1)
+    guard (2.20.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
       logger (~> 1.6)
       lumberjack (>= 1.0.12, < 2.0)
       nenv (~> 0.1)
       notiffany (~> 0.0)
-      ostruct (~> 0.6)
       pry (>= 0.13.0)
       shellany (~> 0.0)
       thor (>= 0.18.1)
-    guard-bundler (3.0.1)
-      bundler (>= 2.1, < 3)
+    guard-bundler (3.1.0)
+      bundler (>= 2.1, < 5)
       guard (~> 2.2)
       guard-compat (~> 1.1)
     guard-compat (1.2.1)
@@ -77,53 +54,49 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     highline (2.1.0)
     human_speakable (0.2.0)
-    i18n (1.14.7)
-      concurrent-ruby (~> 1.0)
-    io-console (0.8.1)
-    json (2.15.2)
+    io-console (0.8.2)
+    json (2.19.1)
+    json-schema (6.2.0)
+      addressable (~> 2.8)
+      bigdecimal (>= 3.1, < 5)
     json_pure (2.6.3)
     language_server-protocol (3.17.0.5)
     launchy (2.5.2)
       addressable (~> 2.8)
     lint_roller (1.1.0)
-    listen (3.9.0)
+    listen (3.10.0)
+      logger
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.7.0)
     lumberjack (1.4.2)
+    mcp (0.8.0)
+      json-schema (>= 4.1)
     method_source (1.1.0)
-    minitest (5.26.0)
-    multi_json (1.17.0)
-    mutex_m (0.3.0)
     nenv (0.3.0)
-    net-http-persistent (4.0.6)
-      connection_pool (~> 2.2, >= 2.2.4)
-    net-http-pipeline (1.0.1)
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
     ostruct (0.6.3)
     paint (2.3.0)
     parallel (1.27.0)
-    parser (3.3.10.0)
+    parser (3.3.10.2)
       ast (~> 2.4.1)
       racc
     pnm (0.7.0)
-    prism (1.6.0)
-    pry (0.15.2)
+    prism (1.9.0)
+    pry (0.16.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    pry-byebug (3.11.0)
-      byebug (~> 12.0)
-      pry (>= 0.13, < 0.16)
-    public_suffix (6.0.2)
+      reline (>= 0.6.0)
+    pry-byebug (3.12.0)
+      byebug (~> 13.0)
+      pry (>= 0.13, < 0.17)
+    public_suffix (7.0.5)
     pusher-client (0.6.2)
       json
       websocket (~> 1.0)
     racc (1.8.1)
-    rack (3.2.3)
-    rack-test (2.1.0)
-      rack (>= 1.3)
     rainbow (3.1.1)
     rake (13.3.1)
     rb-fsevent (0.11.2)
@@ -131,7 +104,7 @@ GEM
       ffi (~> 1.0)
     rb-readline (0.5.5)
     regexp_parser (2.11.3)
-    reline (0.6.2)
+    reline (0.6.3)
       io-console (~> 0.5)
     rspec (3.13.2)
       rspec-core (~> 3.13.0)
@@ -142,62 +115,47 @@ GEM
     rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-mocks (3.13.7)
+    rspec-mocks (3.13.8)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-support (3.13.6)
-    rubocop (1.81.7)
+    rspec-support (3.13.7)
+    rubocop (1.85.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
+      mcp (~> 0.6)
       parallel (~> 1.10)
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.47.1, < 2.0)
+      rubocop-ast (>= 1.49.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.47.1)
+    rubocop-ast (1.49.0)
       parser (>= 3.3.7.2)
-      prism (~> 1.4)
+      prism (~> 1.7)
     rubocop-rake (0.7.1)
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1)
-    rubocop-rspec (3.7.0)
+    rubocop-rspec (3.9.0)
       lint_roller (~> 1.1)
-      rubocop (~> 1.72, >= 1.72.1)
+      rubocop (~> 1.81)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
-    securerandom (0.4.1)
     shellany (0.0.1)
     terminal-notifier (2.0.0)
     terminal-notifier-guard (1.7.0)
-    thor (1.4.0)
-    travis (1.14.0)
+    thor (1.5.0)
+    travis (1.13.1)
       faraday (~> 2.7.10)
       faraday-rack (~> 2)
       highline (~> 2.1.0)
       json_pure (~> 2.6.3)
       launchy (~> 2.5.2)
       pusher-client (~> 0.6.2)
-      rack-test (~> 2.1.0)
-      travis-gh (~> 0.21.0)
-    travis-gh (0.21.0)
-      activesupport (~> 7.0.8)
-      addressable (~> 2.8)
-      faraday (~> 2)
-      faraday-retry
-      faraday-typhoeus
-      multi_json (~> 1)
-      net-http-persistent (~> 4)
-      net-http-pipeline
-    typhoeus (1.5.0)
-      ethon (>= 0.9.0, < 0.16.0)
-    tzinfo (2.0.6)
-      concurrent-ruby (~> 1.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
-    unicode-emoji (4.1.0)
+    unicode-emoji (4.2.0)
     websocket (1.2.11)
 
 PLATFORMS
@@ -219,6 +177,7 @@ DEPENDENCIES
   faderuby
   guard-bundler
   guard-rspec
+  ostruct
   paint
   pnm
   pry
@@ -234,5 +193,88 @@ DEPENDENCIES
   terminal-notifier-guard
   travis
 
+CHECKSUMS
+  addressable (2.8.9) sha256=cc154fcbe689711808a43601dee7b980238ce54368d23e127421753e46895485
+  ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
+  base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
+  bigdecimal (4.0.1) sha256=8b07d3d065a9f921c80ceaea7c9d4ae596697295b584c296fe599dd0ad01c4a7
+  byebug (13.0.0) sha256=d2263efe751941ca520fa29744b71972d39cbc41839496706f5d9b22e92ae05d
+  coderay (1.1.3) sha256=dc530018a4684512f8f38143cd2a096c9f02a1fc2459edcfe534787a7fc77d4b
+  diff-lcs (1.6.2) sha256=9ae0d2cba7d4df3075fe8cd8602a8604993efc0dfa934cff568969efb1909962
+  easter (0.2.0) sha256=194625b895adfb9756889cdc6b0e09d2f1f2512562adcaf598860215b54a1f36
+  faderuby (0.0.1) sha256=aff519431249bfddfca38d8c7c720f89a1d07cb97791f635bfc309e0b14ad831
+  faraday (2.7.12) sha256=ed38dcd396d2defcf8a536bbf7ef45e6385392ab815fe087df46777be3a781a7
+  faraday-net_http (3.0.2) sha256=6882929abed8094e1ee30344a3369e856fe34530044630d1f652bf70ebd87e8d
+  faraday-rack (2.1.3) sha256=9869993a8f1010ade286bda697dea43a8f29f0ab760877d73ec7de5d1d18faed
+  ffi (1.17.3) sha256=0e9f39f7bb3934f77ad6feab49662be77e87eedcdeb2a3f5c0234c2938563d4c
+  ffi (1.17.3-aarch64-linux-gnu) sha256=28ad573df26560f0aedd8a90c3371279a0b2bd0b4e834b16a2baa10bd7a97068
+  ffi (1.17.3-aarch64-linux-musl) sha256=020b33b76775b1abacc3b7d86b287cef3251f66d747092deec592c7f5df764b2
+  ffi (1.17.3-arm-linux-gnu) sha256=5bd4cea83b68b5ec0037f99c57d5ce2dd5aa438f35decc5ef68a7d085c785668
+  ffi (1.17.3-arm-linux-musl) sha256=0d7626bb96265f9af78afa33e267d71cfef9d9a8eb8f5525344f8da6c7d76053
+  ffi (1.17.3-arm64-darwin) sha256=0c690555d4cee17a7f07c04d59df39b2fba74ec440b19da1f685c6579bb0717f
+  ffi (1.17.3-x86-linux-gnu) sha256=868a88fcaf5186c3a46b7c7c2b2c34550e1e61a405670ab23f5b6c9971529089
+  ffi (1.17.3-x86-linux-musl) sha256=f0286aa6ef40605cf586e61406c446de34397b85dbb08cc99fdaddaef8343945
+  ffi (1.17.3-x86_64-darwin) sha256=1f211811eb5cfaa25998322cdd92ab104bfbd26d1c4c08471599c511f2c00bb5
+  ffi (1.17.3-x86_64-linux-gnu) sha256=3746b01f677aae7b16dc1acb7cb3cc17b3e35bdae7676a3f568153fb0e2c887f
+  ffi (1.17.3-x86_64-linux-musl) sha256=086b221c3a68320b7564066f46fed23449a44f7a1935f1fe5a245bd89d9aea56
+  formatador (1.2.3) sha256=19fa898133c2c26cdbb5d09f6998c1e137ad9427a046663e55adfe18b950d894
+  guard (2.20.1) sha256=ab9cd7873854e6b76080c0589f781ff3e390e441bdda20165804df54f977015a
+  guard-bundler (3.1.0) sha256=d0e60e46d6c06e201e79f61623211f64961cb000188f55fb76e36dc892ff0e35
+  guard-compat (1.2.1) sha256=3ad21ab0070107f92edfd82610b5cdc2fb8e368851e72362ada9703443d646fe
+  guard-rspec (4.7.3) sha256=a47ba03cbd1e3c71e6ae8645cea97e203098a248aede507461a43e906e2f75ca
+  highline (2.1.0) sha256=d63d7f472f8ffaa143725161ae6fb06895b5cb7527e0b4dac5ad1e4902c80cb9
+  human_speakable (0.2.0) sha256=6fb1fe6a739d1132d258bc67659153de7eb20c6019421bf7d5eae69c0b7d41c4
+  io-console (0.8.2) sha256=d6e3ae7a7cc7574f4b8893b4fca2162e57a825b223a177b7afa236c5ef9814cc
+  json (2.19.1) sha256=dd94fdc59e48bff85913829a32350b3148156bc4fd2a95a2568a78b11344082d
+  json-schema (6.2.0) sha256=e8bff46ed845a22c1ab2bd0d7eccf831c01fe23bb3920caa4c74db4306813666
+  json_pure (2.6.3) sha256=c39185aa41c04a1933b8d66d1294224743262ee6881adc7b5a488ab2ae19c74e
+  language_server-protocol (3.17.0.5) sha256=fd1e39a51a28bf3eec959379985a72e296e9f9acfce46f6a79d31ca8760803cc
+  launchy (2.5.2) sha256=8aa0441655aec5514008e1d04892c2de3ba57bd337afb984568da091121a241b
+  lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
+  listen (3.10.0) sha256=c6e182db62143aeccc2e1960033bebe7445309c7272061979bb098d03760c9d2
+  logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
+  lumberjack (1.4.2) sha256=40de5ae46321380c835031bcc1370f13bba304d29f2b5f5bb152061a5a191b95
+  mcp (0.8.0) sha256=ae8bd146bb8e168852866fd26f805f52744f6326afb3211e073f78a95e0c34fb
+  method_source (1.1.0) sha256=181301c9c45b731b4769bc81e8860e72f9161ad7d66dd99103c9ab84f560f5c5
+  nenv (0.3.0) sha256=d9de6d8fb7072228463bf61843159419c969edb34b3cef51832b516ae7972765
+  notiffany (0.1.3) sha256=d37669605b7f8dcb04e004e6373e2a780b98c776f8eb503ac9578557d7808738
+  ostruct (0.6.3) sha256=95a2ed4a4bd1d190784e666b47b2d3f078e4a9efda2fccf18f84ddc6538ed912
+  paint (2.3.0) sha256=327d623e4038619d5bd99ae5db07973859cd78400c7f0329eea283cef8e83be5
+  parallel (1.27.0) sha256=4ac151e1806b755fb4e2dc2332cbf0e54f2e24ba821ff2d3dcf86bf6dc4ae130
+  parser (3.3.10.2) sha256=6f60c84aa4bdcedb6d1a2434b738fe8a8136807b6adc8f7f53b97da9bc4e9357
+  pnm (0.7.0) sha256=83f4bd298ebc4ffbdb6870ad30cfc069a392c19073591eaf1966039e6d4a3c37
+  prism (1.9.0) sha256=7b530c6a9f92c24300014919c9dcbc055bf4cdf51ec30aed099b06cd6674ef85
+  pry (0.16.0) sha256=d76c69065698ed1f85e717bd33d7942c38a50868f6b0673c636192b3d1b6054e
+  pry-byebug (3.12.0) sha256=594e094ae8a8390a7ad4c7b36ae36e13304ed02664c67417d108dc5f7213d1b7
+  public_suffix (7.0.5) sha256=1a8bb08f1bbea19228d3bed6e5ed908d1cb4f7c2726d18bd9cadf60bc676f623
+  pusher-client (0.6.2) sha256=c405c931090e126c056d99f6b69a01b1bcb6cbfdde02389c93e7d547c6efd5a3
+  racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
+  rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
+  rake (13.3.1) sha256=8c9e89d09f66a26a01264e7e3480ec0607f0c497a861ef16063604b1b08eb19c
+  rb-fsevent (0.11.2) sha256=43900b972e7301d6570f64b850a5aa67833ee7d87b458ee92805d56b7318aefe
+  rb-inotify (0.11.1) sha256=a0a700441239b0ff18eb65e3866236cd78613d6b9f78fea1f9ac47a85e47be6e
+  rb-readline (0.5.5) sha256=9e9bd7e198bdef0822c46902f6c592b882c1f9777894a4c3dcf5b320824a8793
+  regexp_parser (2.11.3) sha256=ca13f381a173b7a93450e53459075c9b76a10433caadcb2f1180f2c741fc55a4
+  reline (0.6.3) sha256=1198b04973565b36ec0f11542ab3f5cfeeec34823f4e54cebde90968092b1835
+  rspec (3.13.2) sha256=206284a08ad798e61f86d7ca3e376718d52c0bc944626b2349266f239f820587
+  rspec-core (3.13.6) sha256=a8823c6411667b60a8bca135364351dda34cd55e44ff94c4be4633b37d828b2d
+  rspec-expectations (3.13.5) sha256=33a4d3a1d95060aea4c94e9f237030a8f9eae5615e9bd85718fe3a09e4b58836
+  rspec-mocks (3.13.8) sha256=086ad3d3d17533f4237643de0b5c42f04b66348c28bf6b9c2d3f4a3b01af1d47
+  rspec-support (3.13.7) sha256=0640e5570872aafefd79867901deeeeb40b0c9875a36b983d85f54fb7381c47c
+  rubocop (1.85.1) sha256=3dbcf9e961baa4c376eeeb2a03913dca5e3987033b04d38fa538aa1e7406cc77
+  rubocop-ast (1.49.0) sha256=49c3676d3123a0923d333e20c6c2dbaaae2d2287b475273fddee0c61da9f71fd
+  rubocop-rake (0.7.1) sha256=3797f2b6810c3e9df7376c26d5f44f3475eda59eb1adc38e6f62ecf027cbae4d
+  rubocop-rspec (3.9.0) sha256=8fa70a3619408237d789aeecfb9beef40576acc855173e60939d63332fdb55e2
+  ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
+  ruby2_keywords (0.0.5) sha256=ffd13740c573b7301cf7a2e61fc857b2a8e3d3aff32545d6f8300d8bae10e3ef
+  shellany (0.0.1) sha256=0e127a9132698766d7e752e82cdac8250b6adbd09e6c0a7fbbb6f61964fedee7
+  terminal-notifier (2.0.0) sha256=7a0d2b2212ab9835c07f4b2e22a94cff64149dba1eed203c04835f7991078cea
+  terminal-notifier-guard (1.7.0) sha256=66b21cb15ef9931ba0428e6d49e681042702919ebc216249f9443f5a25c59741
+  thor (1.5.0) sha256=e3a9e55fe857e44859ce104a84675ab6e8cd59c650a49106a05f55f136425e73
+  travis (1.13.1) sha256=93db37ed36b05c9ece353036fb9828fddaf0f64b7928da1bb27928e4405405af
+  unicode-display_width (3.2.0) sha256=0cdd96b5681a5949cdbc2c55e7b420facae74c4aaf9a9815eee1087cb1853c42
+  unicode-emoji (4.2.0) sha256=519e69150f75652e40bf736106cfbc8f0f73aa3fb6a65afe62fefa7f80b0f80f
+  websocket (1.2.11) sha256=b7e7a74e2410b5e85c25858b26b3322f29161e300935f70a0e0d3c35e0462737
+
 BUNDLED WITH
-   2.6.9
+  4.0.7
