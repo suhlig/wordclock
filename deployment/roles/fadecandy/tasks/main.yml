@@ -1,35 +1,53 @@
-# https://github.com/scanlime does not exist anymore :-/
-# There is a backup at diskstation:/volume1/backup/fcserver-rpi
-# - name: Download fcserver
-#   get_url:
-#     url: "https://github.com/scanlime/fadecandy/raw/master/bin/fcserver-rpi"
-#     dest: "/usr/sbin/fcserver"
-#     owner: "root"
-#     mode: "0755"
-#   become: true
-
-- name: Create the /etc/fadecandy directory
+- name: fcserver exists
+  stat:
+    path: /usr/sbin/fcserver
+  register: fcserver_check
+- name: git is installed
+  ansible.builtin.package:
+    name: git
+    state: present
+  when: not fcserver_check.stat.exists
+- name: fadecandy repository is cloned
+  ansible.builtin.git:
+    repo: https://git.approximate.life/fadecandy.git
+    dest: /tmp/fadecandy
+    depth: 1
+    update: no      # Prevents Ansible from checking for changes/new commits
+    version: HEAD   # Explicitly set the branch/commit
+    recursive: no   # IMPORTANT: Prevents recursive submodule loading
+  when: not fcserver_check.stat.exists
+- name: fcserver binary is at location
+  ansible.builtin.copy:
+    src: /tmp/fadecandy/bin/fcserver-rpi
+    dest: /usr/sbin/fcserver
+    owner: root
+    mode: '0755'
+    remote_src: yes
+  become: true
+  when: not fcserver_check.stat.exists
+- name: Remove temporary fadecandy repository clone
   file:
+    path: /tmp/fadecandy
+    state: absent
+- name: /etc/fadecandy exists
+  ansible.builtin.file:
     path: /etc/fadecandy
     state: directory
   become: true
-
-- name: Put config.json in place
-  copy:
-    src: "config.json"
-    dest: "/etc/fadecandy/config.json"
+- name: config.json is in place
+  ansible.builtin.copy:
+    src: config.json
+    dest: /etc/fadecandy/config.json
     mode: "0755"
   become: true
-
-- name: Create fcserver systemd service config
-  copy:
-    src: "fcserver.service"
-    dest: "/etc/systemd/system/fcserver.service"
+- name: fcserver systemd service is configured
+  ansible.builtin.copy:
+    src: fcserver.service
+    dest: /etc/systemd/system/fcserver.service
     mode: "0664"
   become: true
-
-- name: Start the fadecandy service
-  systemd:
+- name: fadecandy service is started
+  ansible.builtin.systemd:
     name: fcserver
     state: started
     enabled: true
