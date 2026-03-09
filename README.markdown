@@ -1,7 +1,5 @@
 # Ruby Word Clock
 
-[![Build Status](https://app.travis-ci.com/suhlig/wordclock.svg?branch=master)](https://app.travis-ci.com/suhlig/wordclock)
-
 ![Front](doc/front.jpg) ![Back](doc/back.jpg)
 
 This is an implementation of a [Word Clock](http://www.instructables.com/id/Wordclock/) in Ruby. It maps every point in time between midnight and 23:59 hours to a sentence, which is represented as positions of pixels to light up. The current implementation uses German words.
@@ -128,52 +126,3 @@ All prices as of Sept. 2016 incl. S&H.
 # Icons
 
 * X-Mas tree from https://grammio.com/static/images/emoji/D83CDF84.png
-
-# Switch to SSD (USB)
-
-https://forums.raspberrypi.com/viewtopic.php?t=196778
-
-## Benchmarks
-
-https://jamesachambers.com/raspberry-pi-storage-benchmarks-2019-benchmarking-script/
-
-* before:
-
-  Raspberry Pi 3 with Kingston - Model: SD32G
-
-  Running HDParm tests ...
-
-      Category                  Test                      Result
-  HDParm                    Disk Read                 20.87 MB/s
-  HDParm                    Cached Disk Read          20.71 MB/s
-  DD                        Disk Write                17.1 MB/s
-  FIO                       4k random read            1775 IOPS (7103 KB/s)
-  FIO                       4k random write           93 IOPS (375 KB/s)
-  IOZone                    4k read                   5818 KB/s
-  IOZone                    4k write                  1093 KB/s
-  IOZone                    4k random read            6255 KB/s
-  IOZone                    4k random write           599 KB/s
-
-                            Score: 634
-  ```
-
-* after:
-
-  Raspberry Pi 3 with SanDisk Extreme PRO USB 3.2 SSD 128 GB
-
-  ```
-      Category                  Test                      Result
-  HDParm                    Disk Read                 34.49 MB/s
-  HDParm                    Cached Disk Read          33.90 MB/s
-  DD                        Disk Write                32.1 MB/s
-  FIO                       4k random read            1985 IOPS (7941 KB/s)
-  FIO                       4k random write           2581 IOPS (10327 KB/s)
-  IOZone                    4k read                   11261 KB/s
-  IOZone                    4k write                  10129 KB/s
-  IOZone                    4k random read            7718 KB/s
-  IOZone                    4k random write           10143 KB/s
-
-                            Score: 2203
-  ```
-
-Not as impressive as I had hoped, but it's likely due to the Raspberry Pi 3 having only USB-2.
