@@ -54,7 +54,7 @@ GEM
     highline (2.1.0)
     human_speakable (0.2.0)
     io-console (0.8.2)
-    json (2.21.1)
+    json (2.21.2)
     json_pure (2.6.3)
     language_server-protocol (3.17.0.6)
     launchy (2.5.2)
@@ -217,7 +217,7 @@ CHECKSUMS
   highline (2.1.0) sha256=d63d7f472f8ffaa143725161ae6fb06895b5cb7527e0b4dac5ad1e4902c80cb9
   human_speakable (0.2.0) sha256=6fb1fe6a739d1132d258bc67659153de7eb20c6019421bf7d5eae69c0b7d41c4
   io-console (0.8.2) sha256=d6e3ae7a7cc7574f4b8893b4fca2162e57a825b223a177b7afa236c5ef9814cc
-  json (2.21.1) sha256=13a43df75d95641443f5702dff350f237164a9d811ff0f2c2800d4d980220583
+  json (2.21.2) sha256=1f1d3b7cf2b3ba1a69beca0bb6db13d5438b80bff3cd54cdaaa620b9b07c1c6a
   json_pure (2.6.3) sha256=c39185aa41c04a1933b8d66d1294224743262ee6881adc7b5a488ab2ae19c74e
   language_server-protocol (3.17.0.6) sha256=5ef2c0c138f8267e1bc631d3328347d354f96724b0af22f2c79516120443b7f0
   launchy (2.5.2) sha256=8aa0441655aec5514008e1d04892c2de3ba57bd337afb984568da091121a241b
