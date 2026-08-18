@@ -1,5 +1,2 @@
 - src: ansistrano.deploy
-- src: jnv.unattended-upgrades
 - src: nerab.ruby
-- src: ypsman.timedatectl
-- src: artis3n.tailscale

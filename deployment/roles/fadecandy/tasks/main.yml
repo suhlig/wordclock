@@ -1,3 +1,5 @@
+# https://github.com/scanlime does not exist anymore :-/
+# There is a backup at diskstation:/volume1/backup/fcserver-rpi
 - name: fcserver exists
   stat:
     path: /usr/sbin/fcserver

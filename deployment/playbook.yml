@@ -1,9 +1,6 @@
 - name: Deploy wordclock
   hosts: all
-  vars:
-    # First-time setup without SSH keys deployed use this
-    # ansible_ssh_pass: raspberry
-    hostname: wordclock
+  vars: { hostname: wordclock }
   roles:
     - role: suhlig.foundation.minimal
       become: true
