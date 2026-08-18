@@ -14,7 +14,7 @@
         ruby_version:
           major: 4
           minor: 0
-          teeny: 1
+          teeny: 5
       tags: [ ruby ]
     - role: ansistrano.deploy
       vars:
