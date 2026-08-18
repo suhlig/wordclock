@@ -8,6 +8,9 @@
     - role: suhlig.foundation.raspberry_pi
       become: true
       tags: [ suhlig, raspi, raspberry, pi ]
+    - role: artis3n.tailscale.machine
+      vars: { tailscale_up_skip: true }
+      tags: [ tailscale ]
     - role: fadecandy
     - role: nerab.ruby
       vars:
