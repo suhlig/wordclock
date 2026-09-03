@@ -137,7 +137,7 @@ GEM
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
     shellany (0.0.1)
-    terminal-notifier (2.0.0)
+    terminal-notifier (3.1.0)
     terminal-notifier-guard (1.7.0)
     thor (1.5.0)
     travis (1.13.1)
@@ -259,7 +259,7 @@ CHECKSUMS
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
   ruby2_keywords (0.0.5) sha256=ffd13740c573b7301cf7a2e61fc857b2a8e3d3aff32545d6f8300d8bae10e3ef
   shellany (0.0.1) sha256=0e127a9132698766d7e752e82cdac8250b6adbd09e6c0a7fbbb6f61964fedee7
-  terminal-notifier (2.0.0) sha256=7a0d2b2212ab9835c07f4b2e22a94cff64149dba1eed203c04835f7991078cea
+  terminal-notifier (3.1.0) sha256=073609e9da7bb60176ffadda903c8d9231fcdf18ffa7074dc9478b63fe25c69c
   terminal-notifier-guard (1.7.0) sha256=66b21cb15ef9931ba0428e6d49e681042702919ebc216249f9443f5a25c59741
   thor (1.5.0) sha256=e3a9e55fe857e44859ce104a84675ab6e8cd59c650a49106a05f55f136425e73
   travis (1.13.1) sha256=93db37ed36b05c9ece353036fb9828fddaf0f64b7928da1bb27928e4405405af
