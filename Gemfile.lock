@@ -53,7 +53,7 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     highline (2.1.0)
     human_speakable (0.2.0)
-    io-console (0.9.2)
+    io-console (0.9.4)
     json (3.1.0)
     json_pure (2.6.3)
     language_server-protocol (3.17.0.6)
@@ -79,7 +79,7 @@ GEM
       racc
     pnm (0.7.0)
     prism (1.9.0)
-    pry (0.16.0)
+    pry (0.16.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
       reline (>= 0.6.0)
@@ -217,7 +217,7 @@ CHECKSUMS
   guard-rspec (4.7.3) sha256=a47ba03cbd1e3c71e6ae8645cea97e203098a248aede507461a43e906e2f75ca
   highline (2.1.0) sha256=d63d7f472f8ffaa143725161ae6fb06895b5cb7527e0b4dac5ad1e4902c80cb9
   human_speakable (0.2.0) sha256=6fb1fe6a739d1132d258bc67659153de7eb20c6019421bf7d5eae69c0b7d41c4
-  io-console (0.9.2) sha256=efa74f891dd03c0939a931dfc6e74c2813d904763d456ea9762b0525e748db08
+  io-console (0.9.4) sha256=a403304f32928ee85e56d457b4612ca43f2703b561a3258844992bd24085fbb1
   json (3.1.0) sha256=3ce7ccf8fde58960177a3a756c31f292a4c1e1dedee884547096a5b0604e3bd8
   json_pure (2.6.3) sha256=c39185aa41c04a1933b8d66d1294224743262ee6881adc7b5a488ab2ae19c74e
   language_server-protocol (3.17.0.6) sha256=5ef2c0c138f8267e1bc631d3328347d354f96724b0af22f2c79516120443b7f0
@@ -235,7 +235,7 @@ CHECKSUMS
   parser (3.3.12.0) sha256=21a6d7f755d5a24dfbdc6e6b772e4e879a52e7631a88bc5a3a134606052c9828
   pnm (0.7.0) sha256=83f4bd298ebc4ffbdb6870ad30cfc069a392c19073591eaf1966039e6d4a3c37
   prism (1.9.0) sha256=7b530c6a9f92c24300014919c9dcbc055bf4cdf51ec30aed099b06cd6674ef85
-  pry (0.16.0) sha256=d76c69065698ed1f85e717bd33d7942c38a50868f6b0673c636192b3d1b6054e
+  pry (0.16.1) sha256=d92d82c86e7f2dc34beec6d2892d5cf5ea517eea22eed3ceabb38ee62a98accc
   pry-byebug (3.12.0) sha256=594e094ae8a8390a7ad4c7b36ae36e13304ed02664c67417d108dc5f7213d1b7
   public_suffix (7.0.5) sha256=1a8bb08f1bbea19228d3bed6e5ed908d1cb4f7c2726d18bd9cadf60bc676f623
   pusher-client (0.6.2) sha256=c405c931090e126c056d99f6b69a01b1bcb6cbfdde02389c93e7d547c6efd5a3
