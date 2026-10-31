@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 # Workaround for broken LOAD_PATH
 # see https://github.com/ruby/json/issues/752#issuecomment-2660377640
@@ -27,5 +27,4 @@ group :development do
   gem 'rubocop-rspec'
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
-  gem 'travis'
 end

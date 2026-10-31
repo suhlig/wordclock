@@ -1,10 +1,7 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
-    addressable (2.9.0)
-      public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
-    base64 (0.3.0)
     byebug (13.0.0)
       reline (>= 0.6.0)
     coderay (1.1.3)
@@ -12,13 +9,6 @@ GEM
     easter (0.2.0)
       human_speakable (~> 0.1, >= 0.1.2)
     faderuby (0.0.1)
-    faraday (2.7.12)
-      base64
-      faraday-net_http (>= 2.0, < 3.1)
-      ruby2_keywords (>= 0.0.4)
-    faraday-net_http (3.0.2)
-    faraday-rack (2.1.3)
-      faraday (~> 2.0)
     ffi (1.17.4)
     ffi (1.17.4-aarch64-linux-gnu)
     ffi (1.17.4-aarch64-linux-musl)
@@ -51,14 +41,10 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
-    highline (2.1.0)
     human_speakable (0.2.0)
     io-console (0.9.4)
     json (3.1.0)
-    json_pure (2.6.3)
     language_server-protocol (3.17.0.6)
-    launchy (2.5.2)
-      addressable (~> 2.8)
     lint_roller (1.1.0)
     listen (3.10.0)
       logger
@@ -86,10 +72,6 @@ GEM
     pry-byebug (3.12.0)
       byebug (~> 13.0)
       pry (>= 0.13, < 0.17)
-    public_suffix (7.0.5)
-    pusher-client (0.6.2)
-      json
-      websocket (~> 1.0)
     racc (1.8.1)
     rainbow (3.1.1)
     rake (13.4.2)
@@ -135,22 +117,13 @@ GEM
       regexp_parser (>= 2.0)
       rubocop (~> 1.86, >= 1.86.2)
     ruby-progressbar (1.13.0)
-    ruby2_keywords (0.0.5)
     shellany (0.0.1)
     terminal-notifier (3.1.0)
     terminal-notifier-guard (1.7.0)
     thor (1.5.0)
-    travis (1.13.1)
-      faraday (~> 2.7.10)
-      faraday-rack (~> 2)
-      highline (~> 2.1.0)
-      json_pure (~> 2.6.3)
-      launchy (~> 2.5.2)
-      pusher-client (~> 0.6.2)
     unicode-display_width (3.3.0)
       unicode-emoji (~> 4.3)
     unicode-emoji (4.3.0)
-    websocket (1.2.11)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -185,20 +158,14 @@ DEPENDENCIES
   rubocop-rspec
   terminal-notifier
   terminal-notifier-guard
-  travis
 
 CHECKSUMS
-  addressable (2.9.0) sha256=7fdf6ac3660f7f4e867a0838be3f6cf722ace541dd97767fa42bc6cfa980c7af
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
-  base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
   byebug (13.0.0) sha256=d2263efe751941ca520fa29744b71972d39cbc41839496706f5d9b22e92ae05d
   coderay (1.1.3) sha256=dc530018a4684512f8f38143cd2a096c9f02a1fc2459edcfe534787a7fc77d4b
   diff-lcs (1.6.2) sha256=9ae0d2cba7d4df3075fe8cd8602a8604993efc0dfa934cff568969efb1909962
   easter (0.2.0) sha256=194625b895adfb9756889cdc6b0e09d2f1f2512562adcaf598860215b54a1f36
   faderuby (0.0.1) sha256=aff519431249bfddfca38d8c7c720f89a1d07cb97791f635bfc309e0b14ad831
-  faraday (2.7.12) sha256=ed38dcd396d2defcf8a536bbf7ef45e6385392ab815fe087df46777be3a781a7
-  faraday-net_http (3.0.2) sha256=6882929abed8094e1ee30344a3369e856fe34530044630d1f652bf70ebd87e8d
-  faraday-rack (2.1.3) sha256=9869993a8f1010ade286bda697dea43a8f29f0ab760877d73ec7de5d1d18faed
   ffi (1.17.4) sha256=bcd1642e06f0d16fc9e09ac6d49c3a7298b9789bcb58127302f934e437d60acf
   ffi (1.17.4-aarch64-linux-gnu) sha256=b208f06f91ffd8f5e1193da3cae3d2ccfc27fc36fba577baf698d26d91c080df
   ffi (1.17.4-aarch64-linux-musl) sha256=9286b7a615f2676245283aef0a0a3b475ae3aae2bb5448baace630bb77b91f39
@@ -215,13 +182,10 @@ CHECKSUMS
   guard-bundler (3.1.0) sha256=d0e60e46d6c06e201e79f61623211f64961cb000188f55fb76e36dc892ff0e35
   guard-compat (1.2.1) sha256=3ad21ab0070107f92edfd82610b5cdc2fb8e368851e72362ada9703443d646fe
   guard-rspec (4.7.3) sha256=a47ba03cbd1e3c71e6ae8645cea97e203098a248aede507461a43e906e2f75ca
-  highline (2.1.0) sha256=d63d7f472f8ffaa143725161ae6fb06895b5cb7527e0b4dac5ad1e4902c80cb9
   human_speakable (0.2.0) sha256=6fb1fe6a739d1132d258bc67659153de7eb20c6019421bf7d5eae69c0b7d41c4
   io-console (0.9.4) sha256=a403304f32928ee85e56d457b4612ca43f2703b561a3258844992bd24085fbb1
   json (3.1.0) sha256=3ce7ccf8fde58960177a3a756c31f292a4c1e1dedee884547096a5b0604e3bd8
-  json_pure (2.6.3) sha256=c39185aa41c04a1933b8d66d1294224743262ee6881adc7b5a488ab2ae19c74e
   language_server-protocol (3.17.0.6) sha256=5ef2c0c138f8267e1bc631d3328347d354f96724b0af22f2c79516120443b7f0
-  launchy (2.5.2) sha256=8aa0441655aec5514008e1d04892c2de3ba57bd337afb984568da091121a241b
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   listen (3.10.0) sha256=c6e182db62143aeccc2e1960033bebe7445309c7272061979bb098d03760c9d2
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
@@ -237,8 +201,6 @@ CHECKSUMS
   prism (1.9.0) sha256=7b530c6a9f92c24300014919c9dcbc055bf4cdf51ec30aed099b06cd6674ef85
   pry (0.16.1) sha256=d92d82c86e7f2dc34beec6d2892d5cf5ea517eea22eed3ceabb38ee62a98accc
   pry-byebug (3.12.0) sha256=594e094ae8a8390a7ad4c7b36ae36e13304ed02664c67417d108dc5f7213d1b7
-  public_suffix (7.0.5) sha256=1a8bb08f1bbea19228d3bed6e5ed908d1cb4f7c2726d18bd9cadf60bc676f623
-  pusher-client (0.6.2) sha256=c405c931090e126c056d99f6b69a01b1bcb6cbfdde02389c93e7d547c6efd5a3
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
   rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
   rake (13.4.2) sha256=cb825b2bd5f1f8e91ca37bddb4b9aaf345551b4731da62949be002fa89283701
@@ -257,15 +219,12 @@ CHECKSUMS
   rubocop-rake (0.7.1) sha256=3797f2b6810c3e9df7376c26d5f44f3475eda59eb1adc38e6f62ecf027cbae4d
   rubocop-rspec (3.10.2) sha256=0b3e2ecc592cd10ecbf0095bb58d1e357905276e069643523cc19eb7495f65e2
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
-  ruby2_keywords (0.0.5) sha256=ffd13740c573b7301cf7a2e61fc857b2a8e3d3aff32545d6f8300d8bae10e3ef
   shellany (0.0.1) sha256=0e127a9132698766d7e752e82cdac8250b6adbd09e6c0a7fbbb6f61964fedee7
   terminal-notifier (3.1.0) sha256=073609e9da7bb60176ffadda903c8d9231fcdf18ffa7074dc9478b63fe25c69c
   terminal-notifier-guard (1.7.0) sha256=66b21cb15ef9931ba0428e6d49e681042702919ebc216249f9443f5a25c59741
   thor (1.5.0) sha256=e3a9e55fe857e44859ce104a84675ab6e8cd59c650a49106a05f55f136425e73
-  travis (1.13.1) sha256=93db37ed36b05c9ece353036fb9828fddaf0f64b7928da1bb27928e4405405af
   unicode-display_width (3.3.0) sha256=4b7aa66a4b11db50f6f7e98411215cd0dd10eaecb665d36eec5bcacb3fa0b613
   unicode-emoji (4.3.0) sha256=11c02fa73290378c066bb0562cd4c87d8e1b706fbbe0059ca12746a4244de8ce
-  websocket (1.2.11) sha256=b7e7a74e2410b5e85c25858b26b3322f29161e300935f70a0e0d3c35e0462737
 
 BUNDLED WITH
   4.0.10
